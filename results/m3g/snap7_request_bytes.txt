@@ -1,0 +1,20 @@
+# M3-G(f) python-snap7 3.1.2 kérésbájtok (redteam, kapcsolat nélkül)
+# futtató gép: <LAB_HOST>; UTC: 2026-10-29T18:58:49Z; ssh alias: redteam
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 redteam 'python3 -c "import snap7,sys; print(snap7.__file__); print(sys.version)"'
+/home/ot/.local/lib/python3.10/site-packages/snap7/__init__.py
+3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 redteam 'sha256sum /home/ot/.local/lib/python3.10/site-packages/snap7/s7protocol.py /home/ot/.local/lib/python3.10/site-packages/snap7/connection.py /home/ot/.local/lib/python3.10/site-packages/snap7/client.py'
+6bea1b651e5f2f31d2d701e967cf0ddfb5f1cd88ca892d8980af12162e6a4e34  /home/ot/.local/lib/python3.10/site-packages/snap7/s7protocol.py
+6f63bc88a590516a0bda7d61275e134a32231e1d045832bc743bc0a8d0fc3d1d  /home/ot/.local/lib/python3.10/site-packages/snap7/connection.py
+c0ecbbf81cc0225f5ab44fae616c440ef528fc71eb842b118fcbe174c6e14158  /home/ot/.local/lib/python3.10/site-packages/snap7/client.py
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 redteam 'python3 -c "from snap7.s7protocol import S7Protocol; a=S7Protocol(); print(\"cpu_state\", a.build_cpu_state_request().hex()); b=S7Protocol(); print(\"read_szl_0x0424_0\", b.build_read_szl_request(0x0424, 0).hex())"'
+cpu_state 3201000000010001000004
+read_szl_0x0424_0 3207000000010008000800011204114401000a00000404240000
+[exit=0]
+
+# vége UTC: 2026-10-29T18:58:50Z

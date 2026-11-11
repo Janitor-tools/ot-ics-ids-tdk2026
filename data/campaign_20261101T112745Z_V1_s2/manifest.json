@@ -1,0 +1,86 @@
+{
+  "campaign_id": "campaign_20261101T112745Z_V1_s2",
+  "git_head": "261f71ccb0433b5dd1850767ec5241159c97b502",
+  "window_vm_time": {
+    "start_vm": "2026-11-01T11:26:50.316358+00:00",
+    "end_vm": "2026-11-01T11:32:12.687981+00:00"
+  },
+  "laptop_date_u_info_only": "2026-11-01T11:34:07Z",
+  "excluded_windows": [
+    {
+      "kind": "init_baseline",
+      "episode_id": null,
+      "ts": "2026-11-01T11:27:50.316358+00:00"
+    }
+  ],
+  "scripts": {
+    "attack_runner.py": {
+      "git_commit": "261f71ccb0433b5dd1850767ec5241159c97b502",
+      "sha256": "c47a7a5c669b8692249da566c29227d58b1a49dca21a43396972afb9f36c0730"
+    },
+    "benign_generator.py": {
+      "git_commit": "261f71ccb0433b5dd1850767ec5241159c97b502",
+      "sha256": "13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084"
+    },
+    "run_campaign.sh": {
+      "git_commit": "261f71ccb0433b5dd1850767ec5241159c97b502",
+      "sha256": "87f2c96e627036c183e8e1aa7ba1605c0b6e9d0d8cb9956d1892ab8f4ad143c1"
+    },
+    "evaluate_campaign.py": {
+      "git_commit": "261f71ccb0433b5dd1850767ec5241159c97b502",
+      "sha256": "022acd2f4b799d21be39703e40b65d2d700804c5bf891049ac58f52226a9d0d1"
+    }
+  },
+  "files": {
+    "attack_control.jsonl": {
+      "sha256": "4b40350cbf4927da3c2766a148eeef29f19d88625ccd05a7e6d1d3e35ef63d4a",
+      "bytes": 175
+    },
+    "attack_log.jsonl": {
+      "sha256": "a16da628971625f3f868ee37bf11efae08deb236f896e25e60ae20a1292715e7",
+      "bytes": 3094
+    },
+    "attack_schedule.jsonl": {
+      "sha256": "195b1c9591bb7948993797cf7e50fc766b73e572d95a681442680c64accd10b7",
+      "bytes": 14598
+    },
+    "attack_stdout.log": {
+      "sha256": "50928cb25f2aa120e00477b9a15cbe9ad30803775006cac1242f3b5fb293af74",
+      "bytes": 1220
+    },
+    "benign_log.jsonl": {
+      "sha256": "a47adc02f938955344339a07e511edcd232da361ffb6124ee2e9a1aa11a10cea",
+      "bytes": 4701
+    },
+    "benign_stdout.log": {
+      "sha256": "a63e7704014e7345a776cf5b4a650b7ddad37a673cd8899c9b4b5e2140c8ca49",
+      "bytes": 258
+    },
+    "capture.pcap": {
+      "sha256": "8ead48812dc1db161ba10289c7387a9afcb49ea84f12670c8f0eed89cb093d0c",
+      "bytes": 136685
+    },
+    "capture_loss.log": {
+      "sha256": "d40aa123112a8d259d70405dfc5472a13276031c3267b2bbf8f957f5f835cf15",
+      "bytes": 214
+    },
+    "eve_slice.json": {
+      "sha256": "29451a031fdbd699fcc6ba3a4ff085928ad1981ba0be1756ed382c3b2eba1c4c",
+      "bytes": 688388
+    },
+    "window.txt": {
+      "sha256": "295987c535c9b10223d87ca54a9e1dcb3b1e115c03bb0b2e32b84e5b0365de31",
+      "bytes": 206
+    }
+  },
+  "generated_at": "2026-11-01T11:34:07.748398+00:00",
+  "status": "ABORTED",
+  "abort": {
+    "reason": "E-32: ket kampany futott PARHUZAMOSAN a redteamon (V1 s2, attack_pid=14103); operatori hiba (beillesztes futo laptop-poll kozben -> a poll kilepett, a masodik kampany elindult az elso mellett) + egy tegnaprol bent ragadt benign_generator (pid 9803, inditva 2026-11-01T05:22:29). Mindkettot a benign.pid 9803-ra mutatott.",
+    "excluded_window_vm_time": [
+      "2026-11-01T11:26:50.316358+00:00",
+      "2026-11-01T11:32:12.687981+00:00"
+    ],
+    "exclusion": "a teljes kampany kizart (D12); a parhuzamos futas miatt a forgalom kontaminalt (ket attack_runner + kozos benign ugyanarra a PLC-re)."
+  }
+}

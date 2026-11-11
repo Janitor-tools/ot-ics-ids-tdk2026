@@ -1,0 +1,93 @@
+{
+  "campaign_id": "campaign_20261101T142841Z_V1_s2",
+  "git_head": "fb3c1ab3b187b8eb2dc5f3213331e1a2fbd2d76f",
+  "window_vm_time": {
+    "start_vm": "2026-11-01T14:27:47.502644+00:00",
+    "end_vm": "2026-11-01T15:50:45.473232+00:00"
+  },
+  "laptop_date_u_info_only": "2026-11-01T16:10:02Z",
+  "excluded_windows": [
+    {
+      "kind": "init_baseline",
+      "episode_id": null,
+      "ts": "2026-11-01T14:28:47.502644+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A5_T0816_001",
+      "ts": "2026-11-01T15:45:35.379656+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A5_T0816_002",
+      "ts": "2026-11-01T15:47:34.052165+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A5_T0816_003",
+      "ts": "2026-11-01T15:49:45.473232+00:00"
+    }
+  ],
+  "benign_stop_verified": true,
+  "scripts": {
+    "attack_runner.py": {
+      "git_commit": "fb3c1ab3b187b8eb2dc5f3213331e1a2fbd2d76f",
+      "sha256": "c47a7a5c669b8692249da566c29227d58b1a49dca21a43396972afb9f36c0730"
+    },
+    "benign_generator.py": {
+      "git_commit": "fb3c1ab3b187b8eb2dc5f3213331e1a2fbd2d76f",
+      "sha256": "13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084"
+    },
+    "run_campaign.sh": {
+      "git_commit": "fb3c1ab3b187b8eb2dc5f3213331e1a2fbd2d76f",
+      "sha256": "0c0b6772ae81ea203cb3d36d668b51e96ce65c4f5d8c70e83c0833dfa811c799"
+    },
+    "evaluate_campaign.py": {
+      "git_commit": "fb3c1ab3b187b8eb2dc5f3213331e1a2fbd2d76f",
+      "sha256": "022acd2f4b799d21be39703e40b65d2d700804c5bf891049ac58f52226a9d0d1"
+    }
+  },
+  "files": {
+    "attack_control.jsonl": {
+      "sha256": "197e0e66416ff6f100f2d2dc6b9bda37aacabb9ffbf6ab73bacb7369e925466d",
+      "bytes": 937
+    },
+    "attack_log.jsonl": {
+      "sha256": "bb09989406fc5c4a505f3ae42b88b12d8906f00dc3f9488998c8086d9976a353",
+      "bytes": 63077
+    },
+    "attack_schedule.jsonl": {
+      "sha256": "9b651764652d9c674dfe872686789f33a98de7847fa66f3f3826d3d5e733623c",
+      "bytes": 14598
+    },
+    "attack_stdout.log": {
+      "sha256": "61a53cb0a86c20938606b4c5e7874413b920c3b224a3cf1cac7b7e71b0737d3e",
+      "bytes": 33335
+    },
+    "benign_log.jsonl": {
+      "sha256": "c6513846139ab536947c389144d48c04d260917dc239124f87e11f2c26cabed6",
+      "bytes": 103968
+    },
+    "benign_stdout.log": {
+      "sha256": "6ebcb50526be5ee7d3ef719af7275b236da4ae5487a1185c2eae1f60a677b3e5",
+      "bytes": 3135
+    },
+    "capture.pcap": {
+      "sha256": "196db666dd71221b50bf5cfc007afde5026962c19aaeaee431c3f5d4a35eb627",
+      "bytes": 1300058
+    },
+    "capture_loss.log": {
+      "sha256": "2e992f794f1bdd3fd9e19cc0bce8549b91293f16b7211cfd1ffd07c0c85a070c",
+      "bytes": 107
+    },
+    "eve_slice.json": {
+      "sha256": "f6c2967ef21223d88631a57ca476799e4728b69112ee817ed41704b1439811af",
+      "bytes": 8246840
+    },
+    "window.txt": {
+      "sha256": "04fd8aa32aeeb2bd8783431cb7b4767310b6b00e2811ff74213a662084575143",
+      "bytes": 206
+    }
+  },
+  "generated_at": "2026-11-01T16:10:02.548653+00:00"
+}

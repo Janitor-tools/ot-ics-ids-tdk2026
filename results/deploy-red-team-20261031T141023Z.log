@@ -1,0 +1,9 @@
+[2026-10-31T14:10:23Z] HEAD:scripts/attack_runner.py sha256=3484c26aa3ee4da031482fc028abf3f9bdbddb84f567c6fe46b53413ce68c710
+[2026-10-31T14:10:23Z] fe59748 (eredeti baseline) sha256=16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad
+[2026-10-31T14:10:24Z] ismert korabbi committolt blobok szama: 5
+[2026-10-31T14:10:25Z] VM /home/ot/attack_runner.py sha256=e9872d8951df6433ebfbbdecc26bfc139885a717af85eec122a698fe30cc823c
+[2026-10-31T14:10:25Z] a VM ismert, korabban committolt allapotban van: commit 6729b259ac50e376996ebad2e55eb3e480c7d501
+[2026-10-31T14:10:25Z] mentes neve: /home/ot/attack_runner.py.e9872d8951df.bak
+[2026-10-31T14:10:25Z] --yes: a jovahagyas a parancssorbol jott, nincs interaktiv kerdes
+[2026-10-31T14:10:26Z] mentes rendben: /home/ot/attack_runner.py.e9872d8951df.bak sha256=e9872d8951df6433ebfbbdecc26bfc139885a717af85eec122a698fe30cc823c
+[2026-10-31T14:10:29Z] KESZ: redteam:/home/ot/attack_runner.py sha256=3484c26aa3ee4da031482fc028abf3f9bdbddb84f567c6fe46b53413ce68c710 (== HEAD); mentes: /home/ot/attack_runner.py.e9872d8951df.bak

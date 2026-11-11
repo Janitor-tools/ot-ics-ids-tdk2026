@@ -1,0 +1,148 @@
+MITRE ATT&CK for ICS elavult azonosítók (T0855, T0812, T0839, T0808) -- bizonyítéknyom
+Ellenőrzés dátuma: 2026-08-30
+Kapcsolódó szerkesztés: chapters/2_Elmeleti_hatter.tex 47. és 118. sori lábjegyzet
+
+=== A) HTTP meta-refresh redirect (attack.mitre.org) ===
+
+$ for t in T0855 T0812 T0839 T0808; do
+    echo "=== $t ==="
+    curl -sIL "https://attack.mitre.org/techniques/$t/" | grep -i "^HTTP\|^location"
+    curl -sL  "https://attack.mitre.org/techniques/$t/" | grep -io "meta[^>]*refresh[^>]*" | head -5
+  done
+
+=== T0855 ===
+HTTP/1.1 200 OK
+meta http-equiv="refresh" content="0; url=/techniques/T1692/001"/
+=== T0812 ===
+HTTP/1.1 200 OK
+meta http-equiv="refresh" content="0; url=/techniques/T1694/001"/
+=== T0839 ===
+HTTP/1.1 200 OK
+meta http-equiv="refresh" content="0; url=/techniques/T1693/002"/
+=== T0808 ===
+HTTP/1.1 200 OK
+(nincs meta-refresh sor a kimenetben)
+
+=== B) STIX revoked-by reláció (mitre-attack/attack-stix-data, ics-attack-19.2.json) ===
+
+Forrás: https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/ics-attack/ics-attack-19.2.json
+Letöltve: 2026-08-30
+x-mitre-collection.name: "ICS ATT&CK 19.2"
+
+Keresett technikák jelenléte (external_reference source_name == 'mitre-attack'):
+T0855 -> ('T0855', 'Unauthorized Command Message', deprecated=False, revoked=True, 'attack-pattern')
+T0812 -> ('T0812', 'Default Credentials', deprecated=False, revoked=True, 'attack-pattern')
+T0839 -> ('T0839', 'Module Firmware', deprecated=False, revoked=True, 'attack-pattern')
+T0808 -> [] (nem szerepel 'mitre-attack' forrású külső hivatkozással ebben a verzióban)
+T1692        -> ('T1692', 'Unauthorized Message', deprecated=False, revoked=False)
+T1693        -> ('T1693', 'Modify Firmware', deprecated=False, revoked=False)
+T1694        -> ('T1694', 'Insecure Credentials', deprecated=False, revoked=False)
+T1692.001    -> ('T1692.001', 'Command Message', deprecated=False, revoked=False)
+T1693.002    -> ('T1693.002', 'Module Firmware', deprecated=False, revoked=False)
+T1694.001    -> ('T1694.001', 'Default Credentials', deprecated=False, revoked=False)
+
+Talált revoked-by relációk (technikák, teljes lista a bundle-ben):
+T0803 (Block Command Message)        --> T1691.001 (Command Message)
+T0805 (Block Serial COM)             --> T1695.001 (Serial COM)
+T0804 (Block Reporting Message)      --> T1691.002 (Reporting Message)
+T0856 (Spoof Reporting Message)      --> T1692.002 (Reporting Message)
+T0812 (Default Credentials)          --> T1694.001 (Default Credentials)
+T0857 (System Firmware)              --> T1693.001 (System Firmware)
+T0891 (Hardcoded Credentials)        --> T1694.002 (Hardcoded Credentials)
+T0839 (Module Firmware)              --> T1693.002 (Module Firmware)
+T0855 (Unauthorized Command Message) --> T1692.001 (Command Message)
+
+Objektumtípus-számlálás (v19.2 bundle): attack-pattern=118, relationship=1667,
+x-mitre-analytic=97, x-mitre-detection-strategy=97, course-of-action=52,
+x-mitre-data-component=36, malware=30, x-mitre-asset=18, x-mitre-data-source=17,
+intrusion-set=16, x-mitre-tactic=12, campaign=9, x-mitre-collection=1,
+x-mitre-matrix=1, identity=1, marking-definition=1.
+
+=== C) Mátrix-verzió (attack.mitre.org/resources/versions/) ===
+
+v5, v19.2, v19, v19.2, v18.1, v18, v18.1, v17.1, v17, v17.1, v16.1, v16, v16.1,
+v15.1, v15, v15.1, v14.1, v14, v14.1, v13.1
+(legmagasabb/legfrissebb: v19.2)
+
+=== D) T0808 célzott vizsgálat (mitre/cti master ág, ics-attack.json) ===
+
+$ grep -c "T0808" /tmp/ics.json
+2
+
+$ python3 -c "
+import json;d=json.load(open('/tmp/ics.json'))
+for o in d['objects']:
+    if 'T0808' in json.dumps(o):
+        print(o.get('type'),o.get('id'),o.get('name'),'dep:',o.get('x_mitre_deprecated'),'rev:',o.get('revoked'))
+"
+attack-pattern attack-pattern--abb0a255-eb9c-48d0-8f5c-874bb84c0e45 Control Device Identification dep: True rev: None
+
+Megjegyzés: ez az egyetlen objektum, amelynek JSON-reprezentációja tartalmazza a
+"T0808" alstringet ebben a fájlban; a korábbi, 'mitre-attack' source_name-re
+szűrt lekérdezésben (lásd B szakasz) T0808 nem jelent meg -- azaz T0808 nem a
+fő ('mitre-attack') external_reference mezőben hordozza ezt az azonosítót ebben
+a snapshotban. A "Control Device Identification" technika jelenlegi aktív
+azonosítója (mitre-attack forrású external_reference) T0842 (Network Sniffing)
+-tól különböző; ezt ez a bizonyítéknyom nem tisztázza tovább, mivel a kérdés
+nem volt frontier-kérdés ebben a körben -- 2_Elmeleti_hatter.tex-ben T0808
+sehol nem szerepel (0 grep-találat), tehát szövegjavítást nem igényel.
+
+=== E) Attack-pattern státusz-összesítés (mitre/cti master ág, ics-attack.json) ===
+
+$ python3 -c "
+import json;d=json.load(open('/tmp/ics.json'))
+a=[o for o in d['objects'] if o.get('type')=='attack-pattern']
+rev=[o for o in a if o.get('revoked')]
+dep=[o for o in a if o.get('x_mitre_deprecated')]
+akt=[o for o in a if not o.get('revoked') and not o.get('x_mitre_deprecated')]
+sub=[o for o in akt if o.get('x_mitre_is_subtechnique')]
+print('osszes',len(a),'revoked',len(rev),'deprecated',len(dep),'aktiv',len(akt),'ebbol altechnika',len(sub))
+"
+osszes 118 revoked 9 deprecated 12 aktiv 97 ebbol altechnika 18
+
+(Az aktív=97 érték egybevág a chapters/data/mitre_ics_techniques_v19.2.csv
+97 sorával -- ez a forrás konzisztenciáját erősíti.)
+
+Megjegyzés a nyílhasználatról: az A_Melleklet_Technika_Szukites.tex $\to$ (LaTeX
+matematikai nyíl), a mitre_ics_techniques_v19.2.csv -> (ASCII) jelölést használ
+ugyanarra az utódlási relációra -- ez tudatos, a CSV egyszerű szöveges fájl,
+nem LaTeX-forrás, nem elírás vagy inkonzisztencia.
+
+=== F) Repó-szintű konzisztencia-ellenőrzés (2026-08-30) ===
+
+$ grep -rn "T0855\|T0812\|T0839\|T0808" chapters/ --include=*.tex --include=*.csv --include=*.md
+(lásd a session-jegyzőkönyvet / git történetet a teljes találati listáért;
+érintett fájlok: 2_Elmeleti_hatter.tex, 3_Modszertan.tex, A_Melleklet_Technika_Szukites.tex,
+data/mitre_ics_techniques_v19.2.csv, ICS-Lab-Allapot-Atadas.md, Milestone5-Terv.md,
+TDK-Zarokor-Feladatlista.md)
+
+$ git log --oneline -10
+797075d Allapotatadas frissitve: T0836 melyellenorzes osszefoglalasa + nyitott tablazat-tulfutasok
+2a4e9a7 6. fejezet: mask_fp vakfolt, retry-jelenség, T0836 FP-eredet pontosítása
+55da574 Fix: T0812 es T0839 MITRE azonositok es labjegyzetek frissitese elo redirect alapjan
+1d73561 6. fejezet: 4 kritikus TODO lezárása (többszörös illeszkedés, lefedettségi szakadék, üres A-sorok, allowlist-bypass)
+d30c9b1 fix: Bírálati kör utáni korrekciók és TODO frissítés
+8dc5914 A. melleklet: technika-szukites tablazat megirasa, bekotes, 2-3. fejezet javitasa
+f31e851 A. melleklet: teljes 97 soros MITRE ATT&CK for ICS besorolas kesz
+3b997ec Session-atadas frissitve: Gate 0, T0855/T0839, 97-es lista
+0d3985a A. melleklet 1. lepes: teljes MITRE ATT&CK for ICS lista (v19.2) mentese
+424d320 Elavult MITRE ID-k javitasa: T0855->T1692.001, T0839->T1693.002
+
+$ git show --stat 55da574
+commit 55da5741b497a7bffa6be099b8f13839bac661bd
+Author: cesiumtools <<REDACTED_EMAIL>>
+Date:   Sun Aug 30 17:25:26 2026 +0200
+
+    Fix: T0812 es T0839 MITRE azonositok es labjegyzetek frissitese elo redirect alapjan
+
+ chapters/2_Elmeleti_hatter.tex | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+=== Következtetés (a fenti nyers adatok alapján) ===
+
+A T0855/T0812/T0839 -> T1692.001/T1694.001/T1693.002 utódlás a STIX
+revoked-by relációval autoritatívan megerősített, nem csak tartalmi
+következtetés vagy HTTP-redirect-alapú feltételezés. A 2_Elmeleti_hatter.tex
+47. és 118. sori lábjegyzete ennek megfelelően frissítve 2026-08-30-án.
+T0808 a jelenlegi fejezetszövegben nem szerepel, célzott javítást nem
+igényelt; a feladatlista (c) tétele ennek megfelelően frissítendő.

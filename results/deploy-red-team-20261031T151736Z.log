@@ -1,0 +1,5 @@
+[2026-10-31T15:17:36Z] HEAD:scripts/attack_runner.py sha256=7f200d99cb14681753c8d3fde37eba4f1a95086b9daf2d0d739053854e2bc6fc
+[2026-10-31T15:17:36Z] fe59748 (eredeti baseline) sha256=16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad
+[2026-10-31T15:17:37Z] ismert korabbi committolt blobok szama: 7
+[2026-10-31T15:17:37Z] VM /home/ot/attack_runner.py sha256=7f200d99cb14681753c8d3fde37eba4f1a95086b9daf2d0d739053854e2bc6fc
+[2026-10-31T15:17:37Z] a VM-en mar a HEAD-valtozat van, nincs teendo

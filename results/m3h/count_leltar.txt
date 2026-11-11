@@ -1,0 +1,8 @@
+táblázatsorok: 110; 12 oszlopos: 110; nem 12 oszlopos: nincs
+sorszámok: 1–110; hiányzó: nincs; ismétlődő: nincs
+átnézve – darabszám kategóriánként:
+  NEM: 67 (ID: 1–42, 44–50, 52–69)
+  IGEN (2026-10-31): 36 (ID: 43, 51, 70, 72–94, 99–106, 108–109)
+  IGEN – csak metaadat (2026-10-31): 6 (ID: 95–98, 107, 110)
+  NEM – nem releváns, a #103 kiváltja (2026-10-31): 1 (ID: 71)
+összesen: 110

@@ -1,0 +1,38 @@
+{
+  "campaign_id": "campaign_20261101T174612Z_V2_s1",
+  "rule": "reg-0 iras epizod, status != error, value_before != 1009 (D9 baseline)",
+  "note": "E-39: eloallapot-sertes; a fo elemzesben BENNE maradnak (prereg nem zarja ki), erzekenysegi elemzesben kizarva",
+  "generated_at": "2026-11-01T22:04:32.304667+00:00",
+  "violations": [
+    {
+      "episode_id": "V21_T0836_016",
+      "value_before": 1012,
+      "preceding_episode": "V25_T0836_005",
+      "preceding_reset_after": {
+        "performed": false,
+        "error": "Modbus Error: [Input/Output] No response received after 3 retries, continue with next request",
+        "ts": "2026-11-01T17:57:39.942120+00:00"
+      }
+    },
+    {
+      "episode_id": "V21_T0836_006",
+      "value_before": 1023,
+      "preceding_episode": "V21_T0836_015",
+      "preceding_reset_after": {
+        "performed": false,
+        "error": "Modbus Error: [Input/Output] No response received after 3 retries, continue with next request",
+        "ts": "2026-11-01T18:02:00.142881+00:00"
+      }
+    },
+    {
+      "episode_id": "V21_T0836_007",
+      "value_before": 1027,
+      "preceding_episode": "V24_T0836_001",
+      "preceding_reset_after": {
+        "performed": false,
+        "error": "Modbus Error: [Input/Output] No response received after 3 retries, continue with next request",
+        "ts": "2026-11-01T18:12:23.117052+00:00"
+      }
+    }
+  ]
+}

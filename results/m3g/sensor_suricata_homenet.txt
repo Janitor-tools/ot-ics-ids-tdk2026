@@ -1,0 +1,50 @@
+# M3-G(e) Sensor: Suricata HOME_NET és SID-állapot (csak olvasás)
+# futtató gép: <LAB_HOST>; UTC: 2026-10-29T18:20:06Z; ssh alias: sensor
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'grep -nE "^\s*(HOME_NET|EXTERNAL_NET):" /etc/suricata/suricata.yaml || sudo -n grep -nE "^\s*(HOME_NET|EXTERNAL_NET):" /etc/suricata/suricata.yaml'
+18:    HOME_NET: "[192.168.0.0/16,10.0.0.0/8,172.16.0.0/12]"
+24:    EXTERNAL_NET: "!$HOME_NET"
+grep: /etc/suricata/suricata.yaml: Permission denied
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'grep -nE "^\s*(default-rule-path|rule-files):" -A3 /etc/suricata/suricata.yaml || sudo -n grep -nE "^\s*(default-rule-path|rule-files):" -A3 /etc/suricata/suricata.yaml'
+2328:default-rule-path: /var/lib/suricata/rules
+2329-
+2330:rule-files:
+2331-  - suricata.rules
+2332-
+2333-##
+grep: /etc/suricata/suricata.yaml: Permission denied
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'grep -nE "sid:(2009286|2048689|2250008);" /var/lib/suricata/rules/suricata.rules | cut -c1-60'
+grep: /var/lib/suricata/rules/suricata.rules: Permission denied
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'sha256sum /var/lib/suricata/rules/suricata.rules'
+sha256sum: /var/lib/suricata/rules/suricata.rules: Permission denied
+[exit=1]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'grep -n "sid:2048689;" /var/lib/suricata/rules/suricata.rules'
+grep: /var/lib/suricata/rules/suricata.rules: Permission denied
+[exit=2]
+
+# vége UTC: 2026-10-29T18:20:14Z
+
+# (e2) futtató gép: <LAB_HOST>; UTC: 2026-10-29T18:57:26Z; ssh alias: sensor
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'sudo -n grep -nE "sid:(2009286|2048689|2250008);" /var/lib/suricata/rules/suricata.rules'
+275:alert modbus any any -> any any (msg:"SURICATA Modbus Data mismatch"; flow:to_client; app-layer-event:modbus.value_mismatch; classtype:protocol-command-decode; sid:2250008; rev:2;)
+57356:alert tcp any any -> $HOME_NET 102 (msg:"ET SCADA [nsacyber/ELITEWOLF] Siemens S7 Redpoint NSE Request CPU Function Read SZL attempt"; flow:established,to_server; content:"|32 07 00 00 00 00 00 08 00 08|"; startswith; content:"|00 01 12 04 11 44 01 00|"; within:16; fast_pattern; reference:url,github.com/nsacyber/ELITEWOLF; classtype:attempted-recon; sid:2048689; rev:2; metadata:created_at 2023_10_19, confidence Medium, signature_severity Major, tag Description_Generated_By_Proofpoint_Nexus, updated_at 2024_03_08, reviewed_at 2024_10_02;)
+57529:# alert tcp any any -> any 502 (msg:"ET SCAN Modbus Scanning detected"; flow:established,to_server; content:"|00 00 00 00 00 02|"; depth:6; threshold: type both, track by_src, count 100, seconds 10; reference:url,code.google.com/p/modscan/; reference:url,www.rtaautomation.com/modbustcp/; classtype:bad-unknown; sid:2009286; rev:4; metadata:created_at 2010_07_30, confidence Medium, signature_severity Informational, updated_at 2020_11_12;)
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'sudo -n sha256sum /var/lib/suricata/rules/suricata.rules'
+b44673b6e0f369e9e0024b76fc0928a6cfbc81ee26db1283216a1d46f735740b  /var/lib/suricata/rules/suricata.rules
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'sudo -n stat -c "%n %s %y" /var/lib/suricata/rules/suricata.rules'
+/var/lib/suricata/rules/suricata.rules 45233457 2026-08-19 19:44:48.603792124 +0000
+[exit=0]
+
+# (e2) vége UTC: 2026-10-29T18:57:29Z

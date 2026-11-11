@@ -1,0 +1,1645 @@
+M2a – állapotfelmérés
+=====================
+Dátum: 2026-10-29 (UTC 12:37–12:45 körül). Végrehajtó: Claude Code, helyi shell: Git Bash.
+Mód: CSAK OLVASÁS. A VM-eken semmi nem módosult (nincs apt, nincs szolgáltatás-indítás/-leállítás,
+nincs konfigurációs írás, nincs IP-cím-felvétel, nincs óraállítás). Nincs commit.
+A SIEM-en sudo csak `sudo -n` formában szerepelt (SUDO-JELSZO-KELL). A Sensoron, a PLC-n és a Red-Team-en
+csak olvasó parancsok futottak `sudo -n`-nel (ls/cat/grep/journalctl/zeekctl status+diag/find).
+
+ÖSSZESÍTŐ – VÉGLEGES ÁLLAPOT (M2 lezárása, 2026-10-29 13:40 UTC)
+------------------------------------------------------------------
+Eredmény: OK / ELTÉRÉS-DOKUMENTÁLVA (E-xx, docs/tdk/ELTERESNAPLO.md) / HIBA. Az M2a-kori nyers felmérés lent, változatlanul.
+
+| Ellenőrzés                              | Elvárt                              | Talált (végleges)                                                      | Eredmény |
+|-----------------------------------------|-------------------------------------|------------------------------------------------------------------------|----------|
+| VM-ek futnak (labhost)                  | 4/4                                 | 4/4                                                                    | OK |
+| SSH-elérés (ProxyJump labhost)          | 4/4                                 | 4/4                                                                    | OK |
+| chrony Leap status                      | Normal ×4                           | Normal ×4 (M2a; lab_up L0 13:23:38Z)                                   | OK |
+| chrony-kliensek forrása                 | SIEM (192.168.56.10)                | ^* 192.168.56.10 a Sensor/PLC/Red-Team gépen                            | OK |
+| SIEM időforrása                         | helyi Stratum 10 (B.3)              | Ref 7F7F0101 (helyi óra), Stratum 10                                   | OK |
+| SIEM a valós UTC-hez                    | –                                   | ≈ −0,84 s ± 0,36 s; a laptop ≈ +3,32 s (nem időforrás)                 | ELTÉRÉS-DOKUMENTÁLVA (E-09) |
+| apt-daily(-upgrade).timer               | disabled ×4                         | disabled ×4 (lab_up L0b 13:23:39–41Z)                                  | OK (E-06) |
+| Frissítés a 2026-08-22-i kampányablakban | nincs                              | nincs (utolsó: 11:47:03 UTC, a Sensoron)                               | OK |
+| Kernel                                  | –                                   | 5.15.0-190 ×4 (a kampány 187-en futott)                                | ELTÉRÉS-DOKUMENTÁLVA (E-07) |
+| Elasticsearch / Kibana                  | 8.19.19, hold                       | 8.19.19, hold                                                          | OK |
+| Wazuh Manager                           | 4.14.7, hold                        | 4.14.7-1, hold                                                         | OK |
+| Filebeat a SIEM-en                      | (téves elvárás)                     | nincs telepítve – a Filebeat a Sensoron fut                            | ELTÉRÉS-DOKUMENTÁLVA (E-12) |
+| Filebeat a Sensoron                     | 8.19.19, hold, active               | 8.19.19, hold, active                                                  | OK |
+| Zeek / Suricata                         | 8.0.9 / 8.0.6, hold                 | 8.0.9 / 8.0.6, hold                                                    | OK |
+| icsnpp-modbus                           | v2.0.0                              | v2.0.0                                                                 | OK |
+| icsnpp-s7comm                           | a2f9302                             | a2f930241b72… (a `main` ágat követi; commit-hash-sel rögzítve)         | ELTÉRÉS-DOKUMENTÁLVA (E-17) |
+| SIEM-szolgáltatások: ES/Kibana/Wazuh    | active                              | active ×3                                                              | OK |
+| Zeek fut a Sensoron                     | running                             | running, pid 3749, indítva 13:21:58 (lab_up L1)                        | OK (E-01) |
+| OpenPLC futtatókörnyezet (502/102)      | figyel                              | :502 és :102 figyel (lab_up L2 13:23:54Z); CPU: S7CpuStatusRun         | OK (E-02) |
+| .51 alias (Red-Team enp0s8)             | .50 + .51                           | 192.168.1.50/24 192.168.1.51/24 (lab_up L3)                            | OK (E-03) |
+| OT-Net címek                            | PLC .100, RT .50/.51, Sensor IP nélkül | egyezik                                                             | ELTÉRÉS-DOKUMENTÁLVA (E-13: az M2a-elvárás volt téves) |
+| Sensor OT-interfész (enp0s8)            | PROMISC, nincs IP                   | PROMISC, nincs IP                                                      | OK |
+| SIEM sudo                               | –                                   | jelszót kér; a sudót igénylő lépés kézi (E-06 SIEM)                    | ELTÉRÉS-DOKUMENTÁLVA (E-21) |
+| ES cluster health                       | green/yellow; csak replika unassigned | yellow; 5 unassigned, mind replika                                  | OK |
+| ES lemez a vízjelhez képest             | < 85%                               | 63%                                                                    | OK |
+| icsnpp data streamek + pipeline-ok      | 4 + 4                               | 4 + 4                                                                  | OK |
+| Kibana Detection Engine                 | használható (M3)                    | HTTP 500: hiányzó encryptionKey                                        | ELTÉRÉS-DOKUMENTÁLVA (E-16, → M3) |
+| Suricata SID 2009286                    | kommentelt (M3 előtt)               | kommentelt                                                             | OK |
+| attack_runner.py: VM = HEAD             | egyezik                             | 6bdf18f5… = HEAD; mentés .fe59748.bak = 16d267c1…                      | OK (E-04) |
+| benign_generator.py: VM = HEAD          | egyezik                             | 13fc9c94… = HEAD                                                       | OK |
+| Nyers kampányadat eredetije             | a repóban                           | attack_log.original.jsonl = 9f0543de… + CORRECTIONS.md                 | OK (E-05) |
+| Indítási eljárás dokumentálva           | igen                                | scripts/lab_up.sh, éles futás OK (13:23:27Z)                           | OK (E-14) |
+| B. melléklet vs. valóság                | egyezik                             | két pontatlanság (errata; a chapters/ befagyasztott)                   | ELTÉRÉS-DOKUMENTÁLVA (E-10, E-11) |
+| Füstteszt K1 (Modbus FC3, forrás .50)   | modbus + modbus_detailed az ES-ben  | 2 + 1 dokumentum, késleltetés 0,9 ms                                   | OK |
+| Füstteszt K2 (Modbus FC3, forrás .51)   | modbus + modbus_detailed az ES-ben  | 2 + 1 dokumentum, késleltetés 1,1 ms                                   | OK |
+| Füstteszt K3 (S7 get_cpu_state, .50)    | cotp + s7comm az ES-ben             | 8 + 4 dokumentum, késleltetés 0,1 / 1,1 ms                             | OK |
+| Suricata-alert a füstteszt ablakában    | nincs                               | 2× SID 2250008 „Modbus Data mismatch” (K1, K2 válasz); augusztusban is (2883×) | ELTÉRÉS-DOKUMENTÁLVA (E-19) |
+| PLC holding regiszter 0 kiinduló értéke | 1009 (BASELINE_VALUE)               | 0 (2026-08-22-én a kampány elején: 1)                                  | ELTÉRÉS-DOKUMENTÁLVA (E-20) |
+| Füstteszt kizárandó időablaka           | rögzítve                            | [2026-10-29T13:38:58.406050Z, 2026-10-29T13:40:15.225466Z]              | OK |
+
+=====================================================================
+0. REPÓ – docs/tdk/ATADAS-2026-11.md (git diff)
+=====================================================================
+warning: in the working copy of 'docs/tdk/ATADAS-2026-11.md', LF will be replaced by CRLF the next time Git touches it
+diff --git a/docs/tdk/ATADAS-2026-11.md b/docs/tdk/ATADAS-2026-11.md
+index 80e4e5c..b8dae63 100644
+--- a/docs/tdk/ATADAS-2026-11.md
++++ b/docs/tdk/ATADAS-2026-11.md
+@@ -26,8 +26,8 @@ A régi `chapters/ICS-Lab-Allapot-Atadas.md` archív (2026-09-14), új munkához
+ | # | Tartalom | Cél-dátum | Állapot |
+ |---|---|---|---|
+ | M0 | Repó-szétválasztás, tdk-2026 projekt, beadott absztrakt HU/EN, forrásleltár | okt. 27. | KÉSZ |
+-| M1 | „A" gyorsjavítások (CI-k, számhibák, T0855, önminősítő címkék) | okt. 27–28. | folyamatban (4. lépés) |
+-| M2 | Labor indítása + állapotellenőrzés (VM-ek, chrony, Zeek/Suricata/Filebeat → ES ingest) | okt. 28. | KÖVETKEZŐ |
++| M1 | „A" gyorsjavítások (CI-k, számhibák, T0855, önminősítő címkék) | okt. 27–28. | KÉSZ (7101b49) |
++| M2 | Labor indítása + állapotellenőrzés (VM-ek, chrony, Zeek/Suricata/Filebeat → ES ingest) | okt. 28. | folyamatban (2026-10-29) – M2a felmérés |
+ | M3 | Validációs protokoll előzetes rögzítése; szkriptek: seed, kitérési variánsok; T0836/T0816 élő Elastic-szabállyá; ET SID 2009286 visszakapcsolása | okt. 29. | – |
+ | M4 | 2–3 független validációs kampány + kitérési kampány (konzulensi 4., 5., 6.) | okt. 30.–nov. 3. | – |
+ | M5 | CIC Modbus 2023: megvalósíthatósági vizsgálat, majd mérés, ha kivitelezhető (konzulensi 7.) | okt. 29.–nov. 4. | – |
+
+=====================================================================
+1. ALAPADATOK
+=====================================================================
+=== siem ===
+siem
+2026-10-29 12:28:50
+2026-10-29T12:37:47.485Z
+/dev/mapper/ubuntu--vg-ubuntu--lv   39G   22G   15G  60% /
+               total        used        free      shared  buff/cache   available
+Mem:            7937        4900         319           1        2716        2562
+=== sensor ===
+sensor
+2026-10-29 12:32:24
+2026-10-29T12:37:51.625Z
+/dev/mapper/ubuntu--vg-ubuntu--lv   19G  9.1G  8.6G  52% /
+               total        used        free      shared  buff/cache   available
+Mem:            3911         691        2595           1         624        2996
+=== plc ===
+plc
+2026-10-29 12:33:25
+2026-10-29T12:37:58.653Z
+/dev/mapper/ubuntu--vg-ubuntu--lv   12G  6.9G  3.9G  65% /
+               total        used        free      shared  buff/cache   available
+Mem:            1963         246        1345           1         371        1563
+=== redteam ===
+redteam
+2026-10-29 12:33:33
+2026-10-29T12:38:01.932Z
+/dev/mapper/ubuntu--vg-ubuntu--lv   14G  7.2G  5.9G  56% /
+               total        used        free      shared  buff/cache   available
+Mem:            3911         222        3374           1         314        3467
+
+=====================================================================
+2. IDŐ (chrony; 30 s-os várakozási ciklus, max. 10 perc; óraeltérés: Ts − (T1+T2)/2)
+=====================================================================
+[12:38:32] try 1: siem=<Leap status     : Normal> sensor=<Leap status     : Normal> plc=<Leap status     : Normal> redteam=<Leap status     : Normal>
+ALL NORMAL
+=== siem: chronyc tracking ===
+Reference ID    : 7F7F0101 ()
+Stratum         : 10
+Ref time (UTC)  : Thu Oct 29 12:37:32 2026
+System time     : 0.000000000 seconds slow of NTP time
+Last offset     : +0.000000000 seconds
+RMS offset      : 0.000000000 seconds
+Frequency       : 10.743 ppm slow
+Residual freq   : +0.000 ppm
+Skew            : 0.000 ppm
+Root delay      : 0.000000000 seconds
+Root dispersion : 0.000000000 seconds
+Update interval : 0.0 seconds
+Leap status     : Normal
+--- sources -v ---
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+=== sensor: chronyc tracking ===
+Reference ID    : C0A8380A (192.168.56.10)
+Stratum         : 11
+Ref time (UTC)  : Thu Oct 29 12:37:33 2026
+System time     : 0.000003041 seconds slow of NTP time
+Last offset     : -0.000012640 seconds
+RMS offset      : 0.000028754 seconds
+Frequency       : 10.745 ppm slow
+Residual freq   : -0.098 ppm
+Skew            : 0.011 ppm
+Root delay      : 0.000269716 seconds
+Root dispersion : 0.000093213 seconds
+Update interval : 65.3 seconds
+Leap status     : Normal
+--- sources -v ---
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+^* 192.168.56.10                10   6   377    60    -14us[  -27us] +/-  135us
+=== plc: chronyc tracking ===
+Reference ID    : C0A8380A (192.168.56.10)
+Stratum         : 11
+Ref time (UTC)  : Thu Oct 29 12:38:24 2026
+System time     : 0.000022599 seconds slow of NTP time
+Last offset     : -0.000013260 seconds
+RMS offset      : 0.000017631 seconds
+Frequency       : 10.746 ppm slow
+Residual freq   : -0.057 ppm
+Skew            : 0.007 ppm
+Root delay      : 0.000295828 seconds
+Root dispersion : 0.000046857 seconds
+Update interval : 64.3 seconds
+Leap status     : Normal
+--- sources -v ---
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+^* 192.168.56.10                10   6   377     9  -4507ns[  -18us] +/-  148us
+=== redteam: chronyc tracking ===
+Reference ID    : C0A8380A (192.168.56.10)
+Stratum         : 11
+Ref time (UTC)  : Thu Oct 29 12:37:34 2026
+System time     : 0.000000233 seconds slow of NTP time
+Last offset     : -0.000007713 seconds
+RMS offset      : 0.000015212 seconds
+Frequency       : 10.743 ppm slow
+Residual freq   : -0.039 ppm
+Skew            : 0.008 ppm
+Root delay      : 0.000334673 seconds
+Root dispersion : 0.000080429 seconds
+Update interval : 64.3 seconds
+Leap status     : Normal
+--- sources -v ---
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+^* 192.168.56.10                10   6   177    60  -5634ns[  -13us] +/-  167us
+=== skew local vs SIEM ===
+run1 T1=1793277520158 Ts=1793277516309 T2=1793277520972 offset_ms=-4256 rtt_ms=814
+run2 T1=1793277520994 Ts=1793277517141 T2=1793277521610 offset_ms=-4161 rtt_ms=616
+run3 T1=1793277521630 Ts=1793277517739 T2=1793277522201 offset_ms=-4176 rtt_ms=571
+
+Medián: offset = −4176 ms (−4256, −4161, −4176), RTT = 616 ms (814, 616, 571). Előjel: negatív = a SIEM késik a laptophoz képest.
+
+=====================================================================
+3–4. VERZIÓK, ROGZÍTETTSÉG, SZOLGÁLTATÁSOK
+=====================================================================
+=== SIEM ===
+    "number" : "8.19.19",
+--- dpkg ---
+elasticsearch 8.19.19
+kibana 8.19.19
+wazuh-manager 4.14.7-1
+--- showhold ---
+elasticsearch
+kibana
+wazuh-manager
+--- is-active ---
+elasticsearch: active
+kibana: active
+wazuh-manager: active
+filebeat: inactive
+=== SENSOR ===
+which zeek: /opt/zeek/bin/zeek
+zeek version 8.0.9
+This is Suricata version 8.0.6 RELEASE
+--- dpkg ---
+filebeat 8.19.19
+--- showhold ---
+filebeat
+suricata
+zeek-lts
+--- zkg list ---
+PermissionError: [Errno 13] Permission denied: '/opt/zeek/share/zeek/site/packages/packages.zeek'
+error: user does not have write access in /opt/zeek/var/lib/zkg
+error: user does not have write access in /opt/zeek/lib/zeek/plugins
+error: user does not have write access in /opt/zeek/bin
+Consider the --user flag to manage zkg state via /home/ot/.zkg/config
+--- is-active ---
+suricata: active
+filebeat: active
+
+--- kiegészítés: SIEM filebeat-unit, Sensor zkg manifest (csak olvasás) ---
+=== SIEM filebeat unit ===
+rc=1
+ls: cannot access '/etc/filebeat': No such file or directory
+ls: cannot access '/usr/share/filebeat': No such file or directory
+=== SENSOR zkg manifest (read-only) ===
+total 28
+drwxr-xr-x 6 root root 4096 Aug 10 17:06 .
+drwxr-xr-x 3 root root 4096 Aug 10 17:04 ..
+drwxr-xr-x 4 root root 4096 Aug 10 17:06 clones
+drwxr-xr-x 2 root root 4096 Aug 10 17:07 logs
+-rw-r--r-- 1 root root 2350 Aug 19 19:37 manifest.json
+drwxr-xr-x 4 root root 4096 Aug 10 17:12 scratch
+drwxr-xr-x 4 root root 4096 Aug 10 17:12 testing
+icsnpp-modbus
+icsnpp-s7comm
+"name": "icsnpp-modbus"
+"current_hash": "16428919f5efb034eda625bf989c68543e2a5e76"
+"current_version": "v2.0.0"
+"name": "icsnpp-s7comm"
+"current_hash": "a2f930241b72dd7111f25dad25fa1c523670cda3"
+"current_version": "main"
+
+=====================================================================
+5. (E1) ZEEK – Sensor
+=====================================================================
+--- list-unit-files zeek ---
+--- pgrep ---
+rc=1
+--- sudo -n true ---
+rc=0
+--- zeekctl status ---
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     crashed
+--- zeekctl diag ---
+[zeek]
+
+No core file found and gdb is not installed.  It is recommended to
+install gdb so that ZeekControl can output a backtrace if Zeek crashes.
+
+Zeek 8.0.9
+Linux 5.15.0-190-generic
+
+Zeek plugins:
+ICSNPP::S7COMM - S7comm, S7comm-plus, and COTP Protocol analyzer (dynamic, version 1.3.0)
+
+==== No reporter.log
+
+==== stderr.log
+listening on enp0s8
+
+
+==== stdout.log
+max memory size             (kbytes, -m) unlimited
+data seg size               (kbytes, -d) unlimited
+virtual memory              (kbytes, -v) unlimited
+core file size              (blocks, -c) unlimited
+
+==== .cmdline
+-i enp0s8 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto
+
+==== .env_vars
+PATH=/opt/zeek/bin:/opt/zeek/share/zeekctl/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+ZEEKPATH=/opt/zeek/spool/installed-scripts-do-not-touch/site::/opt/zeek/spool/installed-scripts-do-not-touch/auto:/opt/zeek/share/zeek:/opt/zeek/share/zeek/policy:/opt/zeek/share/zeek/site:/opt/zeek/share/zeek/builtin-plugins
+CLUSTER_NODE=
+
+==== .status
+RUNNING [run_loop]
+
+==== No prof.log
+
+==== No packet_filter.log
+
+==== No loaded_scripts.log
+--- spool ---
+/opt/zeek/spool/:
+total 48
+drwxrws---  7 root zeek  4096 Oct 29 12:38 .
+drwxr-xr-x 10 root root  4096 Aug 10 17:04 ..
+drwxr-xr-x  2 root root  4096 Jan 28  2015 brokerstore
+drwxr-xr-x  2 root root  4096 Jan 28  2015 extract_files
+drwxr-sr-x  4 root zeek  4096 Aug 22 11:15 installed-scripts-do-not-touch
+-rw-r--r--  1 root zeek 12288 Aug 25 16:56 state.db
+-rw-r--r--  1 root zeek   191 Aug 22 11:15 stats.log
+drwxrws---  4 root zeek  4096 Aug 22 20:00 tmp
+drwxr-sr-x  2 root zeek  4096 Aug 22 20:37 zeek
+-rw-r--r--  1 root zeek  2864 Oct 29 12:38 zeekctl-config.sh
+
+/opt/zeek/spool/zeek/:
+total 1824
+drwxr-sr-x 2 root zeek    4096 Aug 22 20:37 .
+drwxrws--- 7 root zeek    4096 Oct 29 12:38 ..
+-rw-r--r-- 1 root zeek     420 Aug 22 20:46 capture_loss.log
+-rw-r--r-- 1 root zeek     130 Aug 22 11:15 .cmdline
+-rw-r--r-- 1 root zeek     623 Aug 22 20:39 conn.log
+-rw-r--r-- 1 root zeek     362 Aug 22 11:15 .env_vars
+-rw-r--r-- 1 root zeek     510 Aug 22 20:39 modbus_detailed.log
+-rw-r--r-- 1 root zeek     800 Aug 22 20:46 notice.log
+-rw-r--r-- 1 root zeek       5 Aug 22 11:15 .pid
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.capture_loss
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.conn
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.conn-summary
+-rw-r--r-- 1 root zeek      18 Aug 22 16:00 .rotated.cotp
+-rw-r--r-- 1 root zeek      18 Aug 22 16:00 .rotated.files
+-rw-r--r-- 1 root zeek      18 Aug 22 16:00 .rotated.http
+-rw-r--r-- 1 root zeek      18 Aug 22 13:00 .rotated.known_hosts
+-rw-r--r-- 1 root zeek      18 Aug 22 16:00 .rotated.known_services
+-rw-r--r-- 1 root zeek      18 Aug 22 12:00 .rotated.loaded_scripts
+-rw-r--r-- 1 root zeek      18 Aug 22 17:00 .rotated.modbus
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.modbus_detailed
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.notice
+-rw-r--r-- 1 root zeek      18 Aug 22 12:00 .rotated.packet_filter
+-rw-r--r-- 1 root zeek      18 Aug 22 16:00 .rotated.s7comm
+-rw-r--r-- 1 root zeek      18 Aug 22 14:00 .rotated.software
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.stats
+-rw-r--r-- 1 root zeek      18 Aug 22 20:00 .rotated.telemetry
+-rw-r--r-- 1 root zeek      18 Aug 22 16:00 .rotated.weird
+-rw-r--r-- 1 root zeek      61 Aug 22 11:15 .startup
+-rw-r--r-- 1 root zeek    4591 Aug 22 20:45 stats.log
+-rwxr-xr-x 1 root zeek      19 Aug 22 11:15 .status
+-rw-r--r-- 1 root zeek      21 Aug 22 11:15 stderr.log
+-rw-r--r-- 1 root zeek     204 Aug 22 11:15 stdout.log
+-rw-r--r-- 1 root zeek 1725812 Aug 22 20:46 telemetry.log
+--- state.db / pid ---
+## /opt/zeek/spool/zeek/.pid
+2090
+
+## /opt/zeek/spool/zeek/.status
+RUNNING [run_loop]
+
+## /opt/zeek/spool/zeek/.startup
+1787397351
+Sat Aug 22 11:15:51 AM UTC 2026
+26-08-22_11.15.51
+
+## state.db (sqlite readonly)
+sudo: sqlite3: command not found
+('configchksum', '"6436ba566a3fef10565b6ba11243e1d4be40a3bd"')
+('confignodechksum', '"0e1d9d8be6b7eaa0e06f71960035477a54d0f846"')
+('cronenabled', 'true')
+('zeek-port', '27760')
+('global-hash-seed', '"2631ee5e"')
+('zeekversion', '"8.0.9"')
+('hash-zeekctlcfg', '"10bde711eddcd5d32fd78c6c0de7229ded65b76e"')
+('hash-nodecfg', '"9b3ff5086d023e678953ac74a356066a1b418e84"')
+('zeek-host', '"localhost"')
+('zeek-expect-running', 'true')
+('zeek-pid', 'null')
+('zeek-crashed', 'true')
+--- node.cfg ---
+[zeek]
+type=standalone
+host=localhost
+interface=enp0s8
+--- zeekctl.cfg ---
+7:MailTo = root@localhost
+30:LogRotationInterval = 3600
+58:CrashExpireInterval = 0
+63:SitePolicyScripts = local.zeek
+67:LogDir = /opt/zeek/logs
+71:SpoolDir = /opt/zeek/spool
+85:CfgDir = /opt/zeek/etc
+--- journalctl ---
+Oct 29 12:38:56 sensor sudo[2040]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/opt/zeek/bin/zeekctl status
+Oct 29 12:38:56 sensor sudo[2051]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/opt/zeek/bin/zeekctl diag
+Oct 29 12:39:12 sensor sudo[2158]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/usr/bin/ls -la /opt/zeek/spool/ /opt/zeek/spool/zeek/
+Oct 29 12:39:12 sensor sudo[2160]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/usr/bin/cat /opt/zeek/spool/zeek/.pid
+Oct 29 12:39:12 sensor sudo[2162]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/usr/bin/cat /opt/zeek/spool/zeek/.status
+Oct 29 12:39:12 sensor sudo[2164]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/usr/bin/cat /opt/zeek/spool/zeek/.startup
+Oct 29 12:39:12 sensor sudo[2167]:       ot : PWD=/home/ot ; USER=root ; COMMAND=/usr/bin/python3 -c 'import sqlite3;c=sqlite3.connect("file:/opt/zeek/spool/state.db?mode=ro",uri=True);[print(r) for r in c.execute("select * from state")]'
+--- crontab ---
+--- ip -d link enp0s8 ---
+3: enp0s8: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:e8:db:72 brd ff:ff:ff:ff:ff:ff promiscuity 3 minmtu 46 maxmtu 16110 addrgenmode none numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus pci parentdev 0000:00:08.0
+--- ip -br addr enp0s8 ---
+enp0s8           UP
+--- last shutdown ---
+reboot   system boot  5.15.0-190-gener Thu Oct 29 12:32   still running
+reboot   system boot  5.15.0-190-gener Tue Aug 25 16:55   still running
+reboot   system boot  5.15.0-187-gener Sat Aug 22 11:08   still running
+reboot   system boot  5.15.0-187-gener Thu Aug 20 08:58   still running
+reboot   system boot  5.15.0-186-gener Mon Aug 10 16:58   still running
+shutdown system down  5.15.0-186-gener Sun Aug  2 16:20 - 16:58 (8+00:37)
+
+wtmp begins Sun Aug  2 14:48:40 2026
+
+E1 KÖVETKEZTETÉS
+MEGFIGYELÉS:
+ - Nincs zeek folyamat; nincs systemd-unit; sem a root, sem az ot crontabjában nincs zeekctl cron (a state.db szerint cronenabled=true, de cron-bejegyzés nincs).
+ - .pid=2090, .startup=2026-08-22 11:15:51 UTC, .status="RUNNING [run_loop]" – ez a 2026-08-22 11:08-as boot állapota.
+ - A state.db-ben zeek-crashed=true, zeek-pid=null; a fájl mtime-ja 2026-08-25 16:56, ~1 perccel a 2026-08-25 16:55-ös boot után.
+ - Nincs core-fájl és nincs reporter.log; a stderr.log tartalma csak „listening on enp0s8”. A spool-logok utolsó írása 2026-08-22 20:46.
+ - A `last` egyik boot után sem mutat tiszta leállítást (a 2026-08-02-i óta mind „still running”) → nem tiszta kikapcsolások.
+ - Az ebben a bootban készült journalban nincs Zeek-bejegyzés (csak a mostani olvasó sudo-hívások).
+ - Az enp0s8 PROMISC, IP-cím nincs rajta.
+ - Kernel: 2026-08-22-én 5.15.0-187, 2026-08-25-től 5.15.0-190 → a kettő között csomagfrissítés történt (a Zeekre nem hat, de M2-releváns).
+FELTÉTELEZÉS:
+ - Nem valódi összeomlás, hanem a nem tiszta leállítás után maradt elavult állapot (stale pid/.status). Ez megegyezik az archív
+   chapters/ICS-Lab-Allapot-Atadas.md 4.13. buktatójával.
+ - A state.db 2026-08-25 16:56-os írását valószínűleg egy kézi `zeekctl status` okozta a boot után; ez állította crashed=true-ra.
+ - A Zeek bootkor eleve nem indul (nincs unit és nincs cron), tehát a „crashed” állapot minden hidegindítás után várható.
+
+=====================================================================
+6. (E2) OPENPLC – Target-PLC
+=====================================================================
+--- pgrep ---
+668 /bin/bash /home/ot/OpenPLC_v3/start_openplc.sh
+rc=0
+--- ss ---
+LISTEN 0      128          0.0.0.0:8080      0.0.0.0:*
+rc=0
+--- ls ~ /opt ---
+/home/ot:
+OpenPLC_v3
+
+/opt:
+--- find OpenPLC_v3 / start_openplc.sh ---
+/home/ot/OpenPLC_v3
+/home/ot/OpenPLC_v3/start_openplc.sh
+--- unit-files plc ---
+openplc.service                            enabled         enabled
+rc=0
+--- systemctl cat ---
+# /lib/systemd/system/openplc.service
+[Unit]
+Description=OpenPLC Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+Group=root
+WorkingDirectory=/home/ot/OpenPLC_v3
+ExecStart=/home/ot/OpenPLC_v3/start_openplc.sh
+
+[Install]
+WantedBy=multi-user.target
+--- is-enabled / is-active ---
+enabled
+active
+--- start_openplc.sh ---
+#!/bin/bash
+if [ -d "/docker_persistent" ]; then
+    mkdir -p /docker_persistent/st_files
+    cp -n /workdir/webserver/dnp3_default.cfg /docker_persistent/dnp3.cfg
+    cp -n /workdir/webserver/openplc_default.db /docker_persistent/openplc.db
+    cp -n /workdir/webserver/active_program_default /docker_persistent/active_program
+    cp -n /workdir/webserver/st_files_default/* /docker_persistent/st_files/
+    cp -n /dev/null /docker_persistent/persistent.file
+    cp -n /dev/null /docker_persistent/mbconfig.cfg
+fi
+cd "/home/ot/OpenPLC_v3/webserver"
+"/home/ot/OpenPLC_v3/.venv/bin/python3" webserver.py
+--- db files ---
+/home/ot/OpenPLC_v3/webserver/openplc.db
+/home/ot/OpenPLC_v3/installed.db
+DB=/home/ot/OpenPLC_v3/webserver/openplc.db
+/usr/bin/sqlite3
+--- Settings ---
+['Key', 'Value']
+('Modbus_port', '502')
+('Dnp3_port', 'disabled')
+('Start_run_mode', 'false')
+('Slave_polling', '100')
+('Slave_timeout', '1000')
+('Enip_port', '44818')
+('Pstorage_polling', 'disabled')
+('snap7', 'true')
+--- Programs ---
+['Prog_ID', 'Name', 'Description', 'File', 'Date_upload']
+(1, 'Blank Program', 'Dummy empty program', 'blank_program.st', 1527184953)
+(17, 'webserver_program', 'This entry is used by the REST API to upload programs to the OpenPLC Runtime.\n\n** DO NOT DELETE THIS PROGRAM **', 'webserver_program.st', 1527184953)
+--- tables ---
+['sqlite_sequence', 'Users', 'Programs', 'Settings', 'Slave_dev']
+--- active_program ---
+blank_program.st
+
+--- bash_history ---
+21:git clone https://github.com/thiagoralves/OpenPLC_v3.git
+22:cd OpenPLC_v3
+24:sudo systemctl status openplc --no-pager | head -5
+26:sudo systemctl start openplc
+27:sleep 10 && sudo systemctl status openplc --no-pager | head -12
+29:sudo journalctl -u openplc -n 30 --no-pager
+--- journal openplc ---
+Oct 29 12:34:01 plc systemd[1]: Started OpenPLC Service.
+Oct 29 12:34:10 plc start_openplc.sh[675]: [INFO] 12:34:10 - GET Callback registered successfully for rest_blueprint!
+Oct 29 12:34:10 plc start_openplc.sh[675]: [INFO] 12:34:10 - POST Callback registered successfully for rest_blueprint!
+Oct 29 12:34:10 plc start_openplc.sh[675]: Database tables created successfully.
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Serving Flask app 'webserver'
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Debug mode: off
+Oct 29 12:34:10 plc start_openplc.sh[675]: [INFO] 12:34:10 - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Running on all addresses (0.0.0.0)
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Running on http://127.0.0.1:8080
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Running on http://10.0.4.15:8080
+Oct 29 12:34:10 plc start_openplc.sh[675]: [INFO] 12:34:10 - Press CTRL+C to quit
+Oct 29 12:34:10 plc start_openplc.sh[675]: Certificate is valid. notAfter=Jul 17 17:42:50 2126 GMT
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Serving Flask app 'restapi'
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Debug mode: off
+Oct 29 12:34:10 plc start_openplc.sh[675]: [INFO] 12:34:10 - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Running on all addresses (0.0.0.0)
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Running on https://127.0.0.1:8443
+Oct 29 12:34:10 plc start_openplc.sh[675]:  * Running on https://10.0.4.15:8443
+Oct 29 12:34:10 plc start_openplc.sh[675]: [INFO] 12:34:10 - Press CTRL+C to quit
+--- program-fájlok, 8443 ---
+-rwxrwxr-x 1 ot ot    17 2026-08-10 17:45 /home/ot/OpenPLC_v3/webserver/active_program
+-rw-rw-r-- 1 ot ot 53248 2026-08-10 17:39 /home/ot/OpenPLC_v3/webserver/openplc.db
+
+/home/ot/OpenPLC_v3/webserver/st_files/:
+total 20
+drwxrwxr-x 2 ot ot 4096 2026-08-10 17:39 .
+drwxrwxr-x 9 ot ot 4096 2026-08-10 17:39 ..
+-rw-rw-r-- 1 ot ot  287 2026-08-10 17:39 blank_program.st
+-rw-rw-r-- 1 ot ot 1711 2026-08-10 17:39 blank_program.st.dbg
+-rw-rw-r-- 1 ot ot  287 2026-08-10 17:39 webserver_program.st
+LISTEN 0      128          0.0.0.0:8443      0.0.0.0:*
+
+E2 KÖVETKEZTETÉS
+MEGFIGYELÉS: az openplc.service engedélyezve van és fut (webszerver: 8080, REST: 8443). A futtatókörnyezet viszont nem
+indul el (az 502-es és a 102-es port nem figyel), mert Start_run_mode=false. Aktív program: blank_program.st; az openplc.db
+2026-08-10 óta változatlan.
+FELTÉTELEZÉS: augusztusban a futtatókörnyezetet kézi /start_plc hívás indította (archív ICS-Lab-Allapot-Atadas.md:975),
+és ugyanezt a blank programot futtatta. Az E2 tehát pontosítva: a szolgáltatás automatikusan indul, a PLC RUN mód nem.
+
+=====================================================================
+7. (E3) A „.51” ALIAS
+=====================================================================
+--- repo: git grep -n "\.51" -- scripts docs results config (a docs/tdk/related-works/forrasok/waagsnes2018.crossref.json:1 találat egy Crossref-JSON „3.51.4” verziószáma; irreleváns, ezért kihagyva) ---
+scripts/benign_generator.py:5:Fut a Red-Team-VM-en, a masodlagos, allowlistelt '.51' ("engineering
+scripts/benign_generator.py:154:    feltetel elnyomja, mert a forras a '.51'."""
+scripts/benign_generator.py:222:        "benign_generator elindult (.51-rol), poll=%ss idempotent=%ss setpoint=%ss. "
+--- repo: célzott keresés ---
+scripts/benign_generator.py:5:Fut a Red-Team-VM-en, a masodlagos, allowlistelt '.51' ("engineering
+scripts/benign_generator.py:44:SOURCE_IP = "192.168.1.51"          # allowlistelt "engineering station" alias
+scripts/benign_generator.py:154:    feltetel elnyomja, mert a forras a '.51'."""
+scripts/benign_generator.py:222:        "benign_generator elindult (.51-rol), poll=%ss idempotent=%ss setpoint=%ss. "
+scripts/evaluate_campaign.py:90:ALLOWLIST_IP = "192.168.1.51"   # D2 szerinti masodlagos, "engineering station" alias
+--- repo: IP-konstansok ---
+scripts/attack_runner.py:85:SOURCE_IP = "192.168.1.50"          # tamadasi identitas -- NEM allowlistelt
+scripts/attack_runner.py:86:TARGET_IP = "192.168.1.100"
+scripts/attack_runner.py:93:OPENPLC_WEB_BASE = "http://192.168.1.100:8080"
+scripts/benign_generator.py:44:SOURCE_IP = "192.168.1.51"          # allowlistelt "engineering station" alias
+scripts/benign_generator.py:45:TARGET_IP = "192.168.1.100"
+scripts/benign_generator.py:83:        source_address=(SOURCE_IP, 0),   # PoC-ban igazolt: pymodbus 3.14+ tamogatja
+scripts/evaluate_campaign.py:89:ATTACKER_IP = "192.168.1.50"    # nem allowlistelt tamadasi identitas
+=== redteam ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp0s3           UP             192.168.56.30/24 fe80::a00:27ff:feb2:b65e/64
+enp0s8           UP             192.168.1.50/24 fe80::a00:27ff:feab:a3d7/64
+enp0s9           UP             10.0.4.15/24 metric 100 fd17:625c:f037:4:a00:27ff:fe14:5131/64 fe80::a00:27ff:fe14:5131/64
+--- netplan (sudo -n cat) ---
+## /etc/netplan/50-cloud-init.yaml
+# This file is generated from information provided by the datasource.  Changes
+# to it will not persist across an instance reboot.  To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    ethernets:
+        enp0s3:
+            addresses:
+            - 192.168.56.30/24
+            nameservers:
+                addresses: []
+                search: []
+        enp0s8:
+            addresses:
+            - 192.168.1.50/24
+            nameservers:
+                addresses: []
+                search: []
+        enp0s9:
+            dhcp4: true
+    version: 2
+--- bash_history .51 (ot) ---
+--- root bash_history .51 ---
+grep: /root/.bash_history: No such file or directory
+--- any .51 in /etc /home ---
+/home/ot/benign_generator.py
+/home/ot/benign_log.jsonl
+=== siem ip -br addr ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp0s3           UP             192.168.56.10/24 fe80::a00:27ff:fe9d:a1e4/64
+enp0s9           UP             10.0.4.15/24 metric 100 fd17:625c:f037:4:a00:27ff:fe09:2fa0/64 fe80::a00:27ff:fe09:2fa0/64
+=== sensor ip -br addr ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp0s3           UP             192.168.56.15/24 fe80::a00:27ff:fe34:afab/64
+enp0s8           UP
+enp0s9           UP             10.0.4.15/24 metric 100 fd17:625c:f037:4:a00:27ff:fea7:f908/64 fe80::a00:27ff:fea7:f908/64
+=== plc ip -br addr ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp0s3           UP             192.168.56.20/24 fe80::a00:27ff:fe1e:302f/64
+enp0s8           UP             192.168.1.100/24 fe80::a00:27ff:feaa:90fb/64
+enp0s9           UP             10.0.4.15/24 metric 100 fd17:625c:f037:4:a00:27ff:fe94:5487/64 fe80::a00:27ff:fe94:5487/64
+
+E3 KÖVETKEZTETÉS
+MEGFIGYELÉS: a .51 a Red-Team-VM forráscíme (benign_generator.py:44, source_address; evaluate_campaign.py:90 ALLOWLIST_IP),
+a kampányban a legitim, allowlistelt „engineering station” identitás. Az archív ICS-Lab-Allapot-Atadas.md:973 szerint enp0s8-on van.
+Most nincs jelen. A netplanben csak a .50 szerepel, és sem az ot, sem a root bash_historyjában nincs .51.
+ELLENTMONDÁS: a B_Melleklet_Kornyezet.tex B.2/4. pontja a .51-et a Vezérlő-VM-re (Target-PLC) teszi, ami ütközik a kóddal.
+OT-NET: a prompt szerinti .10/.15/.20/.30 a 192.168.56.0/24 menedzsmenthálózat címei. Az OT-Neten (192.168.1.0/24): PLC .100,
+Red-Team .50 (+.51 alias), a Sensor IP nélkül (passzív), a SIEM nincs az OT-Neten. Ez megegyezik a repó konstansaival.
+FELTÉTELEZÉS: augusztusban a .51-et nem interaktív SSH-paranccsal vették fel (`ip addr add 192.168.1.51/24 dev enp0s8`), ezért nincs a historyban.
+
+=====================================================================
+8. (E4) SIEM SUDO
+=====================================================================
+sudorc=1
+uid=1000(ot) gid=1000(ot) groups=1000(ot),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+: a password is required
+→ SUDO-JELSZO-KELL. (A „sudo” és az „rc=1” az stderr-sorrend miatt egy sorba került; a stderr-sor: „sudo: a password is required”.)
+A 3., 4. és 9. pont SIEM-parancsai közül egyik sem igényelt sudót (dpkg -l, apt-mark showhold, systemctl is-active, curl localhost:9200).
+Az 5–6. pont nem a SIEM-en fut. A Sensoron a zeekctl status/diag és a spool olvasása igényelt sudót (ott NOPASSWD van).
+
+=====================================================================
+9. ELASTICSEARCH (SIEM) + SURICATA-SZABÁLYOK (Sensor)
+=====================================================================
+--- health ---
+{
+  "cluster_name" : "ics-lab",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 45,
+  "active_shards" : 45,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 5,
+  "unassigned_primary_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 90.0
+}
+--- UNASSIGNED shards ---
+.ds-logs-zeek.icsnpp_modbus_detailed-otlab-2026.08.20-000001       0     r      UNASSIGNED
+.ds-filebeat-8.19.19-2026.08.20-000001                             0     r      UNASSIGNED
+.ds-logs-zeek.icsnpp_s7comm-otlab-2026.08.20-000001                0     r      UNASSIGNED
+.ds-logs-zeek.icsnpp_modbus-otlab-2026.08.20-000001                0     r      UNASSIGNED
+.ds-logs-zeek.icsnpp_cotp-otlab-2026.08.20-000001                  0     r      UNASSIGNED
+--- UNASSIGNED by prirep ---
+      5 r UNASSIGNED
+--- allocation ---
+shards shards.undesired write_load.forecast disk.indices.forecast disk.indices disk.used disk.avail disk.total disk.percent host      ip        node        node.role
+    45                0                 0.0                 6.1mb        6.1mb    24.3gb     13.7gb       38gb           63 10.0.4.15 10.0.4.15 siem-node-1 cdfhilmrstw
+     5                                                                                                                                          UNASSIGNED
+--- watermark ---
+    "cluster.routing.allocation.disk.watermark.enable_for_single_data_node" : "true",
+    "cluster.routing.allocation.disk.watermark.flood_stage" : "95%",
+    "cluster.routing.allocation.disk.watermark.flood_stage.frozen" : "95%",
+    "cluster.routing.allocation.disk.watermark.flood_stage.frozen.max_headroom" : "20GB",
+    "cluster.routing.allocation.disk.watermark.flood_stage.max_headroom" : "100GB",
+    "cluster.routing.allocation.disk.watermark.high" : "90%",
+    "cluster.routing.allocation.disk.watermark.high.max_headroom" : "150GB",
+    "cluster.routing.allocation.disk.watermark.low" : "85%",
+    "cluster.routing.allocation.disk.watermark.low.max_headroom" : "200GB",
+    "indexing_pressure.memory.split_bulk.watermark.high" : "7.5%",
+    "indexing_pressure.memory.split_bulk.watermark.high.bulk_size" : "1mb",
+    "indexing_pressure.memory.split_bulk.watermark.low" : "5.0%",
+    "indexing_pressure.memory.split_bulk.watermark.low.bulk_size" : "4mb",
+    "indices.merge.disk.watermark.high" : "95%",
+    "indices.merge.disk.watermark.high.max_headroom" : "100gb",
+--- data streams ---
+      "name" : "logs-zeek.icsnpp_cotp-otlab",
+        "name" : "@timestamp"
+      "status" : "YELLOW",
+      "name" : "logs-zeek.icsnpp_modbus-otlab",
+        "name" : "@timestamp"
+      "status" : "YELLOW",
+      "name" : "logs-zeek.icsnpp_modbus_detailed-otlab",
+        "name" : "@timestamp"
+      "status" : "YELLOW",
+      "name" : "logs-zeek.icsnpp_s7comm-otlab",
+        "name" : "@timestamp"
+      "status" : "YELLOW",
+--- per-stream count + last ts ---
+logs-zeek.icsnpp_cotp-otlab | {"count":598,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}} | {"hits":{"hits":[{"_source":{"@timestamp":"2026-08-22T15:41:54.392Z"}}]}}
+logs-zeek.icsnpp_modbus_detailed-otlab | {"count":4729,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}} | {"hits":{"hits":[{"_source":{"@timestamp":"2026-08-22T16:47:24.881Z"}}]}}
+logs-zeek.icsnpp_modbus-otlab | {"count":6129,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}} | {"hits":{"hits":[{"_source":{"@timestamp":"2026-08-22T16:47:24.933Z"}}]}}
+logs-zeek.icsnpp_s7comm-otlab | {"count":366,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}} | {"hits":{"hits":[{"_source":{"@timestamp":"2026-08-22T15:41:54.391Z"}}]}}
+--- ingest pipelines ---
+  "reindex-data-stream-pipeline" : {
+  "logs@default-pipeline" : {
+  "ent-search-generic-ingestion" : {
+  "icsnpp-cotp-pipeline" : {
+  "search-default-ingestion" : {
+  "icsnpp-modbus-detailed-pipeline" : {
+  "apm@pipeline" : {
+  "logs-apm.error@default-pipeline" : {
+  "metrics-apm.app@default-pipeline" : {
+  "icsnpp-modbus-pipeline" : {
+  "traces-apm@pipeline" : {
+  "logs-default-pipeline" : {
+  "metrics-apm@pipeline" : {
+  "logs@json-pipeline" : {
+  "logs-apm@pipeline" : {
+  "metrics-apm.internal@default-pipeline" : {
+  "behavioral_analytics-events-final_pipeline" : {
+  "traces-apm@default-pipeline" : {
+  "metrics-apm.transaction@default-pipeline" : {
+  "icsnpp-s7comm-pipeline" : {
+  "metrics-apm.service_transaction@default-pipeline" : {
+  "metrics-apm.service_summary@default-pipeline" : {
+  "metrics-apm.service_destination@default-pipeline" : {
+  "traces-apm.rum@default-pipeline" : {
+  "logs@json-message" : {
+  "logs-apm.app@default-pipeline" : {
+--- Suricata (Sensor): default-rule-path / rule-files ---
+2328:default-rule-path: /var/lib/suricata/rules
+2329-
+2330:rule-files:
+2331-  - suricata.rules
+2332-
+2333-##
+2334-## Auxiliary configuration files.
+2335-##
+2336-
+2337-classification-file: /etc/suricata/classification.config
+2338-reference-config-file: /etc/suricata/reference.config
+RP=/var/lib/suricata/rules
+## /var/lib/suricata/rules/suricata.rules
+-rw-r--r-- 1 root suricata 45233457 Aug 19 19:44 /var/lib/suricata/rules/suricata.rules
+57529:# alert tcp any any -> any 502 (msg:"ET SCAN Modbus Scanning detected"; flow:established,to_server; content:"|00 00 00 00 00 02|"; depth:6; threshold: type both, track by_src, count 100, seconds 10; reference:url,code.google.com/p/modscan/; reference:url
+--- loaded (suricata.log) ---
+[739 - Suricata-Main] 2026-08-25 16:55:51 Info: detect: 52428 signatures processed. 1329 are IP-only rules, 4511 are inspecting packet payload, 46352 inspect application layer, 110 are decoder event only
+[745 - Suricata-Main] 2026-10-29 12:33:56 Info: detect: 1 rule files processed. 52423 rules successfully loaded, 0 rules failed, 0 rules skipped
+[745 - Suricata-Main] 2026-10-29 12:33:56 Info: detect: 52428 signatures processed. 1329 are IP-only rules, 4511 are inspecting packet payload, 46352 inspect application layer, 110 are decoder event only
+→ A 2009286-os SID kommentelve van (a sor „# alert” kezdetű). A grep-kimenet 260 karakternél le van vágva (cut), a SID-szám a sor levágott végén van; a grep a teljes sorra illeszkedett.
+
+=====================================================================
+10. TÁMADÓSZKRIPTEK EGYEZÉSE
+=====================================================================
+=== redteam find + sha256 ===
+/home/ot/benign_generator.py
+/home/ot/attack_runner.py
+13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084  /home/ot/benign_generator.py
+-rwxr-xr-x 1 ot ot 8736 2026-08-22 11:26 /home/ot/benign_generator.py
+16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad  /home/ot/attack_runner.py
+-rwxr-xr-x 1 ot ot 21174 2026-08-22 13:45 /home/ot/attack_runner.py
+=== repo HEAD sha256 ===
+6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9 *-  HEAD:scripts/attack_runner.py
+13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084 *-  HEAD:scripts/benign_generator.py
+=== CRLF in HEAD blobs? ===
+attack_runner.py CR-count: 0
+benign_generator.py CR-count: 0
+VM CR-count: 0
+VM sha (fetched): 16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad *-
+=== git log scripts/attack_runner.py ===
+482f560 2026-08-25 20:45:42 +0200 Sprint 2 (2.4/0.1): T0846/T0888 technika-ID-csere vegrehajtva
+fe59748 2026-08-22 18:07:51 +0200 Milestone 6: Fix plc_hot_start, logging order and add wrapper
+=== sha256 a kampánykori commitokon ===
+fe59748: 16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad *-
+482f560^: 16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad *-
+=== diff --strip-trailing-cr -u HEAD:scripts/attack_runner.py  VM:/home/ot/attack_runner.py ===
+--- HEAD:scripts/attack_runner.py
++++ VM:/home/ot/attack_runner.py
+@@ -26,8 +26,8 @@
+ 
+ Epizodszam (Milestone5-Terv.md D.1/D.3, 2026-08-22-i vegleges allapot):
+   A.1 (T0836)         N=20, 30s +/-10s szunet, epizodvegi reset
+-  A.2 (T0888)         N=20, 30s +/-10s szunet, nincs reset (csak olvasas) [Javitva 2026-08-25, 2.4 tetel]
+-  A.3 (T0846)         N=3,  60s szunet, kvalitativ (CI-bol kizarva) [Javitva 2026-08-25, 2.4 tetel]
++  A.2 (T0846)         N=20, 30s +/-10s szunet, nincs reset (csak olvasas)
++  A.3 (T0888)         N=3,  60s szunet, kvalitativ (CI-bol kizarva)
+   A.4 (T0816 S7 Stop) N=20, 30s +/-10s szunet, epizodvegi reset (plc_hot_start+verify)
+   A.6 (T0843)         N=3,  60s szunet, kvalitativ (garantalt vakfolt)
+   -----------------------------------------------------------------
+@@ -149,21 +149,14 @@
+         ))
+     for i in range(1, N_A2 + 1):
+         episodes.append(Episode(
+-            # Javitva 2026-08-25 (2.4/0.1 tetel): a hivatalos MITRE-definicio szerint
+-            # egyetlen ismert eszkozon vegzett regisztertermkep-enumeracio T0888
+-            # (Remote System Information Discovery), nem T0846 -- lasd
+-            # TDK-Zarokor-Feladatlista.md 0.1/2.4 tetel.
+-            episode_id=f"A2_T0888_{i:03d}", scenario_id="A2",
+-            mitre_technique_id="T0888",
++            episode_id=f"A2_T0846_{i:03d}", scenario_id="A2",
++            mitre_technique_id="T0846",
+             pause_after_s=PAUSE_DEFAULT_BASE_S + random.uniform(-PAUSE_DEFAULT_JITTER_S, PAUSE_DEFAULT_JITTER_S),
+         ))
+     for i in range(1, N_A3 + 1):
+         episodes.append(Episode(
+-            # Javitva 2026-08-25 (2.4/0.1 tetel): a hivatalos MITRE-definicio szerint
+-            # a /24 alhalozati TCP connect-sweep T0846 (Remote System Discovery),
+-            # nem T0888 -- lasd TDK-Zarokor-Feladatlista.md 0.1/2.4 tetel.
+-            episode_id=f"A3_T0846_{i:03d}", scenario_id="A3",
+-            mitre_technique_id="T0846",
++            episode_id=f"A3_T0888_{i:03d}", scenario_id="A3",
++            mitre_technique_id="T0888",
+             pause_after_s=PAUSE_QUALITATIVE_S,
+             notes="Kvalitativ, garantalt vakfolt (D6) -- CI-bol kizarva.",
+         ))
+@@ -219,7 +212,7 @@
+ 
+ 
+ def run_a2(episode: Episode) -> dict:
+-    """T0888: gyors, tobbfunkciós olvasasi sorozat egy kapcsolaton belul (Javitva 2026-08-25, 2.4 tetel)."""
++    """T0846: gyors, tobbfunkciós olvasasi sorozat egy kapcsolaton belul."""
+     client = modbus_client()
+     client.connect()
+     results = {}
+@@ -239,7 +232,7 @@
+ 
+ 
+ def run_a3(episode: Episode) -> dict:
+-    """T0846: TCP connect-sweep az OT-Net-en, 502/102 portokra (Javitva 2026-08-25, 2.4 tetel)."""
++    """T0888: TCP connect-sweep az OT-Net-en, 502/102 portokra."""
+     import socket
+     open_hosts = []
+     for last_octet in range(1, 255):
+diff rc=1
+
+10. KÖVETKEZTETÉS: a benign_generator.py bájtra azonos a HEAD-del. Az attack_runner.py TARTALMILAG eltér (egyik oldalon sincs CR,
+tehát nem sorvégi különbség). A VM-en lévő változat bájtra azonos a kampánykori fe59748 (2026-08-22) állapottal. A HEAD a
+482f560 (2026-08-25) utólagos javítását tartalmazza: az A.2 és az A.3 forgatókönyv technika-ID-ja felcserélve
+(A.2: T0846→T0888, A.3: T0888→T0846), a hozzá tartozó megjegyzésekkel és docstringekkel. A diff szerint a végrehajtott
+logika (run_a2/run_a3 törzse, az epizódszámok és a szünetek) nem változott, csak a címkék. Ha a VM-ről újra kampány
+indul, a JSONL ground truth-ban a régi (csere előtti) címkék szerepelnek majd.
+
+=====================================================================
+11. AZ AUGUSZTUSI REFERENCIA-ELJÁRÁS A REPÓBÓL
+=====================================================================
+=== git grep -n -i -E "zeekctl (deploy|start)|start_openplc|ip addr add|ip a add" -- docs scripts results ===
+(nincs találat)
+=== ugyanez a teljes repóra (tájékoztatásul; a chapters/ befagyasztott, csak olvasva) ===
+chapters/ICS-Lab-Allapot-Atadas.md:973:- **`.51` másodlagos IP-alias** (`ip addr add`, `enp0s8`-on) `pymodbus` `source_address` paraméterrel csomagszinten igazoltan működik (Sensor-VM tcpdump-capture-jével independensen ellenőrizve).
+chapters/ICS-Lab-Allapot-Atadas.md:1144:A Zeek `sensor`-on **nem systemd-egység**, kizárólag `zeekctl`-lel kezelt — VM-újraindítás után **nem indul el magától** (lásd 4.13. buktató), miközben a Filebeat systemd-szolgáltatásk
+chapters/ICS-Lab-Allapot-Atadas.md:1424:**Tünet:** hosszabb `labhost`-leállás (és ezzel a VM-ek leállása) után a `zeekctl status` `crashed` állapotot jelez, holott a Zeek korábban hibátlanul futott, és a `zeekctl start` minden hi
+chapters/ICS-Lab-Allapot-Atadas.md:1428:**Megoldás:** a diagnózist mindig `.pid`-fájl-életkor (a jelenlegi boot-időhöz képest), `reporter.log`/`stderr.log`, core dump és `dmesg` alapján kell elvégezni, mielőtt "crash"-ként dokum
+=== kiegészítő: OpenPLC / B. melléklet / run_campaign.sh ===
+chapters/ICS-Lab-Allapot-Atadas.md:975:- **Kritikus, korábban sehol nem dokumentált tény:** az OpenPLC futásidejű szolgáltatás (502/102 port) **nem indul el automatikusan** hidegindítás után — csak a webszerver (port 8080), mert az `openplc.db` `Start_run_mode|false` beállítást tartalmaz. Minden hidegindítás után kézi `/start_plc` hívás szükséges (bejelentkezve, `openplc`/`openplc` alapértelmezett hitelesítéssel) — ez egy negyedik, eddig nem rögzített blokkoló előfeltétel a Négy Kapu mellé.
+chapters/B_Melleklet_Kornyezet.tex:28-40 (B.2): VM-sorrend SIEM → Szenzor → Vezérlő → Red-Team, `VBoxManage.exe startvm "<VM neve>" --type headless`;
+  3. pont: OpenPLC: kézi /start_plc, „dedikált systemd egység jelenleg nincs hozzá rendelve”;
+  4. pont: „A Vezérlő-VM másodlagos, .51 végű IP-aliasa … nem perzisztens”.
+scripts/run_campaign.sh:11-14: „A Negy Kapu (hidegindites, zeekctl, ES/count-baseline, chrony) ellenorzese 2026-08-22-en, ebben a
+  munkamenetben, kulon SSH-parancsokkal MAR MEGTORTENT … GATES_PRECONFIRMED=1” – a kapuk nincsenek a szkriptben kódolva.
+=== git log --oneline --since=2026-08-01 --until=2026-09-15 -- scripts results ===
+482f560 Sprint 2 (2.4/0.1): T0846/T0888 technika-ID-csere vegrehajtva
+7cbbcbd Sprint 1 (8/8 tétel) lezárása élő labor-adatból: detekciós metrikák, mérési érvényesség és M-mátrix kalibráció
+238c57a Konzulensi zárókör-munkacsomag rögzítése és Sprint 0 (tárgyi/formai hibák) lezárása
+8684bd8 Milestone 6: EQL kiertekelo szkript + a 2026-08-22-i kampany eredmenyei
+283d138 Milestone 5-6: Add benign generator and M5 plan
+fe59748 Milestone 6: Fix plc_hot_start, logging order and add wrapper
+
+LELET: a docs/, scripts/ és results/ mappában az augusztusi indítás módja NINCS dokumentálva. Csak az archív (befagyasztott)
+chapters/ICS-Lab-Allapot-Atadas.md és a chapters/B_Melleklet_Kornyezet.tex írja le, ott is pontos parancs nélkül
+(a zeekctl-nél „zeekctl start”, a .51-nél csak „ip addr add, enp0s8”), a B. melléklet pedig két ponton ellentmond a valóságnak/kódnak.
+
+| Összetevő | Augusztusi indítás módja (fájl:sor) | Mostani állapot | Eltérés |
+|---|---|---|---|
+| Zeek | kézi `zeekctl start` (ICS-Lab-Allapot-Atadas.md:1144, :1424–1428); a spool .startup szerint 2026-08-22 11:15:51 UTC. docs/scripts/results: NINCS | nem fut; zeekctl: crashed (elavult pid 2090); nincs unit, nincs cron | nem indul bootkor; a „crashed” elavult állapot, nem összeomlás |
+| OpenPLC | kézi `/start_plc` REST-hívás (ICS-Lab-Allapot-Atadas.md:975; B_Melleklet_Kornyezet.tex B.2/3). docs/scripts/results: NINCS | openplc.service enabled+active (8080/8443); 502/102 nem figyel; Start_run_mode=false; blank_program.st | RUN mód hiányzik; a B. melléklet „nincs systemd-egység” állítása pontatlan |
+| .51 alias | `ip addr add`, enp0s8 (ICS-Lab-Allapot-Atadas.md:973), pontos parancs nélkül; B.2/4 szerint a Vezérlő-VM-en (téves). docs/scripts/results: NINCS | a Red-Team enp0s8-on csak a .50 van; a netplanben csak a .50; a historyban nincs | hiányzik; a B. melléklet rossz VM-et nevez meg |
+| Négy Kapu (wrapper) | run_campaign.sh:11–14: „külön SSH-parancsokkal”, GATES_PRECONFIRMED=1 | – | a kapuellenőrzés nincs kódolva/rögzítve |
+| attack_runner.py | fe59748 (2026-08-22) a VM-en | VM = fe59748 ≠ HEAD (482f560) | csak a címkék (T0846↔T0888) |
+| chrony | B_Melleklet_Kornyezet.tex B.3: helyi Stratum 10 a SIEM-en | Normal ×4, kliensek → .56.10 | nincs (laptop→SIEM −4,2 s) |
+
+
+=====================================================================
+M2b – HELYREÁLLÍTÁS (2026-10-29)
+=====================================================================
+- apt-időzítők (E-06): a Sensoron, a PLC-n és a RT-n `sudo -n systemctl disable --now apt-daily.timer apt-daily-upgrade.timer`
+  (előtte: enabled/enabled, active/active; utána: disabled/disabled, inactive/inactive; a history.log 0 bájt maradt).
+  A SIEM-en a felhasználó kézzel végezte el (`ssh -t siem 'sudo systemctl disable --now …'`); a lab_up L0b igazolja: „siem: disabled disabled”.
+- attack_runner.py (E-04): `deploy_red_team_scripts.sh --yes` 13:06:39Z → VM = 6bdf18f5… (HEAD), mentés attack_runner.py.fe59748.bak = 16d267c1….
+- lab_up.sh éles futások (a felhasználó futtatta, `4391e0c`-n, lab_up.sh sha256 8c9322d1…):
+  1) 13:21:53Z – L0, L0b, L1, L1b OK; L2 HIBA: hibás webes felhasználónév (login: 200, start_plc: 302 → /login); nem szkripthiba.
+  2) 13:23:27Z – minden lépés OK (L1 kihagyva: már running; L2: :502/:102 figyel; L3: .51 felvéve; L4: egyezik).
+  A hitelesítő adat egyik naplóban sem szerepel (csak a bekérő prompt szövege).
+
+--- results/lab-up-20261029T132153Z.log ---
+[2026-10-29T13:21:53Z] lab_up.sh indul (dry-run=0), repo=/c/Users/szaba/projects/ot-tdk
+[2026-10-29T13:21:53Z] git HEAD: 4391e0c2074894c5156ff32cf6ce11e5388e0e70
+[2026-10-29T13:21:53Z] git status --porcelain:
+(tiszta)
+[2026-10-29T13:21:53Z] lab_up.sh sha256: 8c9322d17728bde75a15647d91f214d1f9555349895ba9bd659a3fcac9af1c4d
+[2026-10-29T13:21:53Z] futtato: <USER>@<LAB_HOST>
+[2026-10-29T13:21:53Z] >>> L0 (chrony) kezdete
+[2026-10-29T13:21:58Z] <<< L0 (chrony) vege
+[2026-10-29T13:21:58Z] >>> L0b (apt-idozitok) kezdete
+[2026-10-29T13:21:59Z] siem: disabled disabled
+[2026-10-29T13:22:00Z] sensor: disabled disabled
+[2026-10-29T13:22:00Z] plc: disabled disabled
+[2026-10-29T13:22:01Z] redteam: disabled disabled
+[2026-10-29T13:22:01Z] <<< L0b (apt-idozitok) vege
+[2026-10-29T13:22:01Z] >>> L1 (Sensor: Zeek) kezdete
+[2026-10-29T13:22:02Z] zeekctl start (augusztusi eljaras; NEM deploy, NEM install)
+starting zeek ...
+creating crash report for previously crashed nodes: zeek
+3749 /opt/zeek/bin/zeek -i enp0s8 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto
+[2026-10-29T13:22:06Z] <<< L1 (Sensor: Zeek) vege
+[2026-10-29T13:22:06Z] >>> L1b (Sensor: Zeek allapot, csak olvasas) kezdete
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   3749   29 Oct 13:21:58
+[2026-10-29T13:22:08Z] capture_loss utolso sor: (nincs capture_loss.log)
+[2026-10-29T13:22:08Z] <<< L1b (Sensor: Zeek allapot, csak olvasas) vege
+[2026-10-29T13:22:08Z] >>> L2 (Target-PLC: OpenPLC RUN) kezdete
+OpenPLC felhasznalo: OpenPLC jelszo: 
+login: 200 
+start_plc: 302 http://127.0.0.1:8080/login
+nincs bejelentkezve (hibas hitelesito adat?)
+[2026-10-29T13:22:28Z] HIBA (L2): a web-API hivas sikertelen
+[2026-10-29T13:22:28Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | Normal, forras SIEM: siem sensor plc redteam | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L0b  | mind disabled                      | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L1   | nem running                        | zeekctl start                  | running + pgrep ok                 | OK      |
+| L1b  | -                                  | nincs (csak olvasas)           | lasd naplo                         | OK      |
+| L2   | :502/:102 nem figyel               | login + /start_plc             | a web-API hivas sikertelen         | HIBA    |
+[2026-10-29T13:22:28Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261029T132153Z.log
+
+--- results/lab-up-20261029T132327Z.log ---
+[2026-10-29T13:23:27Z] lab_up.sh indul (dry-run=0), repo=/c/Users/szaba/projects/ot-tdk
+[2026-10-29T13:23:27Z] git HEAD: 4391e0c2074894c5156ff32cf6ce11e5388e0e70
+[2026-10-29T13:23:27Z] git status --porcelain:
+(tiszta)
+[2026-10-29T13:23:27Z] lab_up.sh sha256: 8c9322d17728bde75a15647d91f214d1f9555349895ba9bd659a3fcac9af1c4d
+[2026-10-29T13:23:27Z] futtato: <USER>@<LAB_HOST>
+[2026-10-29T13:23:27Z] >>> L0 (chrony) kezdete
+[2026-10-29T13:23:38Z] <<< L0 (chrony) vege
+[2026-10-29T13:23:38Z] >>> L0b (apt-idozitok) kezdete
+[2026-10-29T13:23:39Z] siem: disabled disabled
+[2026-10-29T13:23:40Z] sensor: disabled disabled
+[2026-10-29T13:23:40Z] plc: disabled disabled
+[2026-10-29T13:23:41Z] redteam: disabled disabled
+[2026-10-29T13:23:41Z] <<< L0b (apt-idozitok) vege
+[2026-10-29T13:23:41Z] >>> L1 (Sensor: Zeek) kezdete
+[2026-10-29T13:23:42Z] <<< L1 (Sensor: Zeek) vege
+[2026-10-29T13:23:42Z] >>> L1b (Sensor: Zeek allapot, csak olvasas) kezdete
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   3749   29 Oct 13:21:58
+[2026-10-29T13:23:43Z] capture_loss utolso sor: {"ts":1793280181.110917,"ts_delta":60.001275062561035,"peer":"zeek","gaps":0,"acks":0,"percent_lost":0.0}
+[2026-10-29T13:23:43Z] <<< L1b (Sensor: Zeek allapot, csak olvasas) vege
+[2026-10-29T13:23:43Z] >>> L2 (Target-PLC: OpenPLC RUN) kezdete
+OpenPLC felhasznalo: OpenPLC jelszo: 
+login: 302 http://127.0.0.1:8080/dashboard
+start_plc: 302 http://127.0.0.1:8080/dashboard
+LISTEN 0      4096         0.0.0.0:102        0.0.0.0:*          
+LISTEN 0      5            0.0.0.0:502        0.0.0.0:*          
+[2026-10-29T13:23:54Z] <<< L2 (Target-PLC: OpenPLC RUN) vege
+[2026-10-29T13:23:54Z] >>> L3 (Red-Team: .51 alias) kezdete
+enp0s8           UP             192.168.1.50/24 192.168.1.51/24 fe80::a00:27ff:feab:a3d7/64 
+[2026-10-29T13:23:57Z] <<< L3 (Red-Team: .51 alias) vege
+[2026-10-29T13:23:57Z] >>> L4 (Red-Team szkriptek == HEAD) kezdete
+[2026-10-29T13:23:58Z] attack_runner.py: HEAD=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9 VM=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9
+[2026-10-29T13:23:59Z] benign_generator.py: HEAD=13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084 VM=13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084
+[2026-10-29T13:23:59Z] <<< L4 (Red-Team szkriptek == HEAD) vege
+[2026-10-29T13:23:59Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | Normal, forras SIEM: siem sensor plc redteam | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L0b  | mind disabled                      | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L1   | running                            | kihagyva                       | running                            | OK      |
+| L1b  | -                                  | nincs (csak olvasas)           | lasd naplo                         | OK      |
+| L2   | :502/:102 nem figyel               | login + /start_plc             | :502 es :102 figyel                | OK      |
+| L3   | .51 hianyzik                       | ip addr add .51 (nem perz.)    | .50 es .51 jelen                   | OK      |
+| L4   | egyezik                            | nincs                          | egyezik                            | OK      |
+[2026-10-29T13:23:59Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261029T132327Z.log
+
+=====================================================================
+M2c – FÜSTTESZT (2026-10-29)
+=====================================================================
+KIZÁRANDÓ IDŐABLAK (a kampányokból kizárandó): [2026-10-29T13:38:58.406050Z, 2026-10-29T13:40:15.225466Z] UTC
+  (= az első kérés előtti RT-időbélyeg − 5 s, illetve az utolsó ES-lekérdezés ideje)
+
+--- 1. Előellenőrzés (csak olvasás) ---
+=== sensor zeekctl status ===
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   3749   29 Oct 13:21:58
+=== plc ss ===
+LISTEN 0      4096         0.0.0.0:102        0.0.0.0:*
+LISTEN 0      5            0.0.0.0:502        0.0.0.0:*
+=== redteam enp0s8 ===
+enp0s8           UP             192.168.1.50/24 192.168.1.51/24 fe80::a00:27ff:feab:a3d7/64
+=== sensor spool ===
+total 452
+drwxr-sr-x 2 root zeek   4096 Oct 29 13:23 .
+drwxrws--- 7 root zeek   4096 Oct 29 13:38 ..
+-rw-r--r-- 1 root zeek    210 Oct 29 13:38 capture_loss.log
+-rw-r--r-- 1 root zeek    130 Oct 29 13:21 .cmdline
+-rw-r--r-- 1 root zeek    362 Oct 29 13:21 .env_vars
+-rw-r--r-- 1 root zeek  42074 Oct 29 13:22 loaded_scripts.log
+-rw-r--r-- 1 root zeek    400 Oct 29 13:38 notice.log
+-rw-r--r-- 1 root zeek     90 Oct 29 13:22 packet_filter.log
+-rw-r--r-- 1 root zeek      5 Oct 29 13:21 .pid
+-rw-r--r-- 1 root zeek     61 Oct 29 13:21 .startup
+-rw-r--r-- 1 root zeek   1833 Oct 29 13:37 stats.log
+-rwxr-xr-x 1 root zeek     19 Oct 29 13:22 .status
+-rw-r--r-- 1 root zeek     21 Oct 29 13:22 stderr.log
+-rw-r--r-- 1 root zeek    204 Oct 29 13:21 stdout.log
+-rw-r--r-- 1 root zeek 360775 Oct 29 13:38 telemetry.log
+→ egyezik a lab_up L5-tel (13:23:59Z).
+
+--- 2. Paraméterek (scripts/attack_runner.py:85-91, :200-204, :262-266; benign_generator.py:44-48, :80-84) ---
+PLC = 192.168.1.100, Modbus port = 502, DEVICE_ID (unit) = 1, REGISTER_ADDRESS = 0, S7 rack/slot = 0/1, CONNECT_TIMEOUT_S = 3
+K1: ModbusTcpClient(192.168.1.100, port=502, timeout=3).read_holding_registers(address=0, count=1, device_id=1), forrás .50 (alapértelmezett)
+K2: ugyanez, source_address=("192.168.1.51", 0)
+K3: snap7.client.Client().connect(192.168.1.100, 0, 1); get_cpu_state(); disconnect()
+A program a Red-Team-VM-en stdin-ről futott (`ssh redteam 'python3 -'`), fájl nem került a VM-re. Időbélyeg: `date -u +%FT%T.%6NZ` a RT-n.
+
+--- 2. Válaszok (nyers) ---
+K1 src=192.168.1.50 (alapert.) before=2026-10-29T13:39:03.406050Z after=2026-10-29T13:39:03.575198Z connect=True result=[0]
+K2 src=192.168.1.51 before=2026-10-29T13:39:23.615946Z after=2026-10-29T13:39:23.725821Z connect=True result=[0]
+K3 src=192.168.1.50 before=2026-10-29T13:39:43.749938Z after=2026-10-29T13:39:43.752743Z cpu_state=S7CpuStatusRun
+
+--- 3. ES (SIEM, localhost:9200). Mezők a mappingből: forrás-IP = source.ip, idő = @timestamp; event.ingested NINCS a mappingben → az ingest-késleltetés nem mérhető ---
+Ablak kérésenként: [küldés − 5 s, küldés + 120 s]; lekérdezés 15 s-onként, legfeljebb 120 s-ig (az 1. lekérdezésre mind megvolt).
+[lekerdezes 1] 2026-10-29T13:40:15.225466Z talalat: ['K1/modbus', 'K1/modbus_detailed', 'K2/modbus', 'K2/modbus_detailed', 'K3/cotp', 'K3/s7comm']
+UTOLSO_LEKERDEZES=2026-10-29T13:40:15.225466Z
+
+===== K1 | modbus | source.ip=192.168.1.50 =====
+TALALAT: 2
+@timestamp: 2026-10-29T13:39:03.407Z  event.ingested: None
+kesleltetes (@timestamp - kuldes): 0.9 ms
+osszes talalat @timestamp: 2026-10-29T13:39:03.407Z, 2026-10-29T13:39:03.573Z
+ELSO _source:
+{
+ "icsnpp": {
+  "modbus": {
+   "unit": 1,
+   "pdu_type": "REQ",
+   "function": "READ_HOLDING_REGISTERS",
+   "tid": 1
+  }
+ },
+ "observer": {
+  "product": "icsnpp-modbus",
+  "vendor": "Zeek"
+ },
+ "input": {
+  "type": "filestream"
+ },
+ "agent": {
+  "name": "sensor",
+  "id": "9365937a-c237-4957-be11-392ebe5f0aac",
+  "type": "filebeat",
+  "ephemeral_id": "4405bb10-e04b-4a29-9890-59836dac1403",
+  "version": "8.19.19"
+ },
+ "@timestamp": "2026-10-29T13:39:03.407Z",
+ "ecs": {
+  "version": "8.0.0"
+ },
+ "log": {
+  "file": {
+   "inode": "660541",
+   "path": "/opt/zeek/spool/zeek/modbus.log",
+   "device_id": "64768"
+  },
+  "offset": 0
+ },
+ "host": {
+  "name": "sensor"
+ },
+ "destination": {
+  "port": 502,
+  "ip": "192.168.1.100"
+ },
+ "source": {
+  "port": 40438,
+  "ip": "192.168.1.50"
+ },
+ "event": {
+  "kind": "event",
+  "module": "zeek",
+  "action": "READ_HOLDING_REGISTERS",
+  "id": "CSZUSbkb4UgOh0KGa",
+  "category": [
+   "network"
+  ],
+  "type": [
+   "connection",
+   "protocol"
+  ],
+  "dataset": "zeek.icsnpp_modbus"
+ },
+ "network": {
+  "protocol": "modbus",
+  "transport": "tcp"
+ }
+}
+
+===== K1 | modbus_detailed | source.ip=192.168.1.50 =====
+TALALAT: 1
+@timestamp: 2026-10-29T13:39:03.407Z  event.ingested: None
+kesleltetes (@timestamp - kuldes): 0.9 ms
+osszes talalat @timestamp: 2026-10-29T13:39:03.407Z
+ELSO _source:
+{
+ "icsnpp": {
+  "modbus_detailed": {
+   "quantity": 1,
+   "address": 0,
+   "response_values": [
+    0
+   ],
+   "tid": 1,
+   "unit": 1,
+   "function": "READ_HOLDING_REGISTERS",
+   "matched": true
+  }
+ },
+ "input": {
+  "type": "filestream"
+ },
+ "observer": {
+  "product": "icsnpp-modbus",
+  "vendor": "Zeek"
+ },
+ "agent": {
+  "name": "sensor",
+  "id": "9365937a-c237-4957-be11-392ebe5f0aac",
+  "type": "filebeat",
+  "ephemeral_id": "4405bb10-e04b-4a29-9890-59836dac1403",
+  "version": "8.19.19"
+ },
+ "@timestamp": "2026-10-29T13:39:03.407Z",
+ "ecs": {
+  "version": "8.0.0"
+ },
+ "log": {
+  "file": {
+   "inode": "660543",
+   "path": "/opt/zeek/spool/zeek/modbus_detailed.log",
+   "device_id": "64768"
+  },
+  "offset": 0
+ },
+ "host": {
+  "name": "sensor"
+ },
+ "destination": {
+  "port": 502,
+  "ip": "192.168.1.100"
+ },
+ "source": {
+  "port": 40438,
+  "ip": "192.168.1.50"
+ },
+ "event": {
+  "kind": "event",
+  "module": "zeek",
+  "action": "READ_HOLDING_REGISTERS",
+  "id": "CSZUSbkb4UgOh0KGa",
+  "category": [
+   "network"
+  ],
+  "type": [
+   "connection",
+   "protocol"
+  ],
+  "dataset": "zeek.icsnpp_modbus_detailed"
+ },
+ "network": {
+  "protocol": "modbus",
+  "transport": "tcp"
+ }
+}
+
+===== K2 | modbus | source.ip=192.168.1.51 =====
+TALALAT: 2
+@timestamp: 2026-10-29T13:39:23.617Z  event.ingested: None
+kesleltetes (@timestamp - kuldes): 1.1 ms
+osszes talalat @timestamp: 2026-10-29T13:39:23.617Z, 2026-10-29T13:39:23.723Z
+ELSO _source:
+{
+ "icsnpp": {
+  "modbus": {
+   "unit": 1,
+   "pdu_type": "REQ",
+   "function": "READ_HOLDING_REGISTERS",
+   "tid": 1
+  }
+ },
+ "input": {
+  "type": "filestream"
+ },
+ "observer": {
+  "product": "icsnpp-modbus",
+  "vendor": "Zeek"
+ },
+ "agent": {
+  "name": "sensor",
+  "id": "9365937a-c237-4957-be11-392ebe5f0aac",
+  "type": "filebeat",
+  "ephemeral_id": "4405bb10-e04b-4a29-9890-59836dac1403",
+  "version": "8.19.19"
+ },
+ "@timestamp": "2026-10-29T13:39:23.617Z",
+ "ecs": {
+  "version": "8.0.0"
+ },
+ "log": {
+  "file": {
+   "inode": "660541",
+   "path": "/opt/zeek/spool/zeek/modbus.log",
+   "device_id": "64768"
+  },
+  "offset": 413
+ },
+ "host": {
+  "name": "sensor"
+ },
+ "destination": {
+  "port": 502,
+  "ip": "192.168.1.100"
+ },
+ "source": {
+  "port": 45377,
+  "ip": "192.168.1.51"
+ },
+ "event": {
+  "kind": "event",
+  "module": "zeek",
+  "action": "READ_HOLDING_REGISTERS",
+  "id": "C6xbUC4KZbwC6obXa8",
+  "category": [
+   "network"
+  ],
+  "type": [
+   "connection",
+   "protocol"
+  ],
+  "dataset": "zeek.icsnpp_modbus"
+ },
+ "network": {
+  "protocol": "modbus",
+  "transport": "tcp"
+ }
+}
+
+===== K2 | modbus_detailed | source.ip=192.168.1.51 =====
+TALALAT: 1
+@timestamp: 2026-10-29T13:39:23.617Z  event.ingested: None
+kesleltetes (@timestamp - kuldes): 1.1 ms
+osszes talalat @timestamp: 2026-10-29T13:39:23.617Z
+ELSO _source:
+{
+ "icsnpp": {
+  "modbus_detailed": {
+   "address": 0,
+   "quantity": 1,
+   "response_values": [
+    0
+   ],
+   "tid": 1,
+   "unit": 1,
+   "function": "READ_HOLDING_REGISTERS",
+   "matched": true
+  }
+ },
+ "input": {
+  "type": "filestream"
+ },
+ "observer": {
+  "product": "icsnpp-modbus",
+  "vendor": "Zeek"
+ },
+ "agent": {
+  "name": "sensor",
+  "id": "9365937a-c237-4957-be11-392ebe5f0aac",
+  "ephemeral_id": "4405bb10-e04b-4a29-9890-59836dac1403",
+  "type": "filebeat",
+  "version": "8.19.19"
+ },
+ "@timestamp": "2026-10-29T13:39:23.617Z",
+ "ecs": {
+  "version": "8.0.0"
+ },
+ "log": {
+  "file": {
+   "inode": "660543",
+   "path": "/opt/zeek/spool/zeek/modbus_detailed.log",
+   "device_id": "64768"
+  },
+  "offset": 251
+ },
+ "host": {
+  "name": "sensor"
+ },
+ "destination": {
+  "port": 502,
+  "ip": "192.168.1.100"
+ },
+ "source": {
+  "port": 45377,
+  "ip": "192.168.1.51"
+ },
+ "event": {
+  "kind": "event",
+  "module": "zeek",
+  "action": "READ_HOLDING_REGISTERS",
+  "id": "C6xbUC4KZbwC6obXa8",
+  "category": [
+   "network"
+  ],
+  "type": [
+   "connection",
+   "protocol"
+  ],
+  "dataset": "zeek.icsnpp_modbus_detailed"
+ },
+ "network": {
+  "protocol": "modbus",
+  "transport": "tcp"
+ }
+}
+
+===== K3 | cotp | source.ip=192.168.1.50 =====
+TALALAT: 8
+@timestamp: 2026-10-29T13:39:43.750Z  event.ingested: None
+kesleltetes (@timestamp - kuldes): 0.1 ms
+osszes talalat @timestamp: 2026-10-29T13:39:43.750Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.752Z
+ELSO _source:
+{
+ "icsnpp": {
+  "cotp": {
+   "pdu_code": "0x0e",
+   "is_orig": true,
+   "pdu_name": "CR Connection Request",
+   "destination_h": "192.168.1.100",
+   "source_h": "192.168.1.50",
+   "destination_p": 102,
+   "source_p": 57010
+  }
+ },
+ "input": {
+  "type": "filestream"
+ },
+ "observer": {
+  "product": "icsnpp-s7comm",
+  "vendor": "Zeek"
+ },
+ "agent": {
+  "name": "sensor",
+  "id": "9365937a-c237-4957-be11-392ebe5f0aac",
+  "type": "filebeat",
+  "ephemeral_id": "4405bb10-e04b-4a29-9890-59836dac1403",
+  "version": "8.19.19"
+ },
+ "@timestamp": "2026-10-29T13:39:43.750Z",
+ "ecs": {
+  "version": "8.0.0"
+ },
+ "log": {
+  "file": {
+   "inode": "660545",
+   "path": "/opt/zeek/spool/zeek/cotp.log",
+   "device_id": "64768"
+  },
+  "offset": 0
+ },
+ "host": {
+  "name": "sensor"
+ },
+ "destination": {
+  "port": 102,
+  "ip": "192.168.1.100"
+ },
+ "source": {
+  "port": 57010,
+  "ip": "192.168.1.50"
+ },
+ "event": {
+  "kind": "event",
+  "module": "zeek",
+  "action": "CR Connection Request",
+  "id": "Ck2wWg47NKQx3bSVli",
+  "category": [
+   "network"
+  ],
+  "type": [
+   "connection",
+   "protocol"
+  ],
+  "dataset": "zeek.icsnpp_cotp",
+  "outcome": "success"
+ },
+ "network": {
+  "protocol": "cotp",
+  "transport": "tcp"
+ }
+}
+
+===== K3 | s7comm | source.ip=192.168.1.50 =====
+TALALAT: 4
+@timestamp: 2026-10-29T13:39:43.751Z  event.ingested: None
+kesleltetes (@timestamp - kuldes): 1.1 ms
+osszes talalat @timestamp: 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z, 2026-10-29T13:39:43.751Z
+ELSO _source:
+{
+ "icsnpp": {
+  "s7comm": {
+   "rosctr_code": 1,
+   "is_orig": true,
+   "destination_h": "192.168.1.100",
+   "source_h": "192.168.1.50",
+   "rosctr_name": "Job-Request",
+   "pdu_reference": 256,
+   "function_code": "0xf0",
+   "function_name": "Setup Communication",
+   "destination_p": 102,
+   "source_p": 57010
+  }
+ },
+ "observer": {
+  "product": "icsnpp-s7comm",
+  "vendor": "Zeek"
+ },
+ "input": {
+  "type": "filestream"
+ },
+ "agent": {
+  "name": "sensor",
+  "id": "9365937a-c237-4957-be11-392ebe5f0aac",
+  "ephemeral_id": "4405bb10-e04b-4a29-9890-59836dac1403",
+  "type": "filebeat",
+  "version": "8.19.19"
+ },
+ "@timestamp": "2026-10-29T13:39:43.751Z",
+ "ecs": {
+  "version": "8.0.0"
+ },
+ "log": {
+  "file": {
+   "inode": "660546",
+   "path": "/opt/zeek/spool/zeek/s7comm.log",
+   "device_id": "64768"
+  },
+  "offset": 0
+ },
+ "host": {
+  "name": "sensor"
+ },
+ "destination": {
+  "port": 102,
+  "ip": "192.168.1.100"
+ },
+ "source": {
+  "port": 57010,
+  "ip": "192.168.1.50"
+ },
+ "event": {
+  "kind": "event",
+  "module": "zeek",
+  "action": "Setup Communication",
+  "id": "Ck2wWg47NKQx3bSVli",
+  "category": [
+   "network"
+  ],
+  "type": [
+   "connection",
+   "protocol"
+  ],
+  "dataset": "zeek.icsnpp_s7comm"
+ },
+ "network": {
+  "protocol": "s7comm",
+  "transport": "tcp"
+ }
+}
+
+--- 3. Suricata eve.json alertek a füstteszt ablakában (grep -a; az első, -a nélküli szűrés a bináris bájt miatt hamis 0-t adott) ---
+{"timestamp":"2026-10-29T13:39:03.574428+0000","flow_id":2031768172104233,"in_iface":"enp0s8","event_type":"alert","src_ip":"192.168.1.100","src_port":502,"dest_ip":"192.168.1.50","dest_port":40438,"proto":"TCP","ip_v":4,"pkt_src":"wire/pcap","tx_id":0,"alert":{"action":"allowed","gid":1,"signature_id":2250008,"rev":2,"signature":"SURICATA Modbus Data mismatch","category":"Generic Protocol Command Decode","severity":3},"modbus":{"id":1,"request":{"transaction_id":1,"protocol_id":0,"unit_id":1,"function_raw":3,"function_code":"RdHoldRegs","access_type":"READ | HOLDING","category":"PUBLIC_ASSIGNED","error_flags":"NONE","read":{"address":0,"quantity":1}},"response":{"transaction_id":1,"protocol_id":0,"unit_id":1,"function_raw":3,"function_code":"RdHoldRegs","access_type":"READ | HOLDING","category":"PUBLIC_ASSIGNED","error_flags":"DATA_VALUE","read":{"data":"\u0000\u0000"}}},"app_proto":"modbus","direction":"to_client","flow":{"pkts_toserver":5,"pkts_toclient":4,"bytes_toserver":350,"bytes_toclient":283,"start":"2026-10-29T13:39:03.407521+0000","src_ip":"192.168.1.50","dest_ip":"192.168.1.100","src_port":40438,"dest_port":502}}
+{"timestamp":"2026-10-29T13:39:23.724713+0000","flow_id":959111885283379,"in_iface":"enp0s8","event_type":"alert","src_ip":"192.168.1.100","src_port":502,"dest_ip":"192.168.1.51","dest_port":45377,"proto":"TCP","ip_v":4,"pkt_src":"wire/pcap","tx_id":0,"alert":{"action":"allowed","gid":1,"signature_id":2250008,"rev":2,"signature":"SURICATA Modbus Data mismatch","category":"Generic Protocol Command Decode","severity":3},"modbus":{"id":1,"request":{"transaction_id":1,"protocol_id":0,"unit_id":1,"function_raw":3,"function_code":"RdHoldRegs","access_type":"READ | HOLDING","category":"PUBLIC_ASSIGNED","error_flags":"NONE","read":{"address":0,"quantity":1}},"response":{"transaction_id":1,"protocol_id":0,"unit_id":1,"function_raw":3,"function_code":"RdHoldRegs","access_type":"READ | HOLDING","category":"PUBLIC_ASSIGNED","error_flags":"DATA_VALUE","read":{"data":"\u0000\u0000"}}},"app_proto":"modbus","direction":"to_client","flow":{"pkts_toserver":5,"pkts_toclient":4,"bytes_toserver":350,"bytes_toclient":283,"start":"2026-10-29T13:39:23.616526+0000","src_ip":"192.168.1.51","dest_ip":"192.168.1.100","src_port":45377,"dest_port":502}}
+
+--- alert-hisztogram (dátum, SID, szignatúra) a teljes eve.json-ban ---
+     45 2026-08-20	"signature_id":2250008	"signature":"SURICATA Modbus Data mismatch"
+      1 2026-08-22	"signature_id":2210044	"signature":"SURICATA STREAM Packet with invalid timestamp"
+     10 2026-08-22	"signature_id":2250002	"signature":"SURICATA Modbus unsolicited response"
+   2883 2026-08-22	"signature_id":2250008	"signature":"SURICATA Modbus Data mismatch"
+      1 2026-08-22	"signature_id":2260002	"signature":"SURICATA Applayer Detect protocol only one direction"
+      2 2026-10-29	"signature_id":2250008	"signature":"SURICATA Modbus Data mismatch"
+
+--- 5. Zeek crash report (E-01 bizonyíték) ---
+Útvonal 1: /opt/zeek/spool/tmp/post-terminate-standalone-2026-10-29-13-21-58-3573-crash/.crash-diag.out
+Útvonal 2: /var/mail/root, 1828–1885. sor (zeekctl MailTo = root@localhost, Postfix), Subject: [Zeek] Crash report from zeek
+2329d41efd2546bfaa3ef5343b2d31d7a009439da42971c53cbe6e7dba1faadd  /opt/zeek/spool/tmp/post-terminate-standalone-2026-10-29-13-21-58-3573-crash/.crash-diag.out
+
+No core file found and gdb is not installed.  It is recommended to
+install gdb so that ZeekControl can output a backtrace if Zeek crashes.
+
+Zeek 8.0.9
+Linux 5.15.0-190-generic
+
+Zeek plugins:
+ICSNPP::S7COMM - S7comm, S7comm-plus, and COTP Protocol analyzer (dynamic, version 1.3.0)
+
+==== No reporter.log
+
+==== stderr.log
+listening on enp0s8
+
+
+==== stdout.log
+max memory size             (kbytes, -m) unlimited
+data seg size               (kbytes, -d) unlimited
+virtual memory              (kbytes, -v) unlimited
+core file size              (blocks, -c) unlimited
+
+==== .cmdline
+-i enp0s8 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto
+
+==== .env_vars
+PATH=/opt/zeek/bin:/opt/zeek/share/zeekctl/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+ZEEKPATH=/opt/zeek/spool/installed-scripts-do-not-touch/site::/opt/zeek/spool/installed-scripts-do-not-touch/auto:/opt/zeek/share/zeek:/opt/zeek/share/zeek/policy:/opt/zeek/share/zeek/site:/opt/zeek/share/zeek/builtin-plugins
+CLUSTER_NODE=
+
+==== .status
+RUNNING [run_loop]
+
+==== No prof.log
+
+==== No packet_filter.log
+
+==== No loaded_scripts.log
+--- /var/mail/root 1828-1885. sor (a levél) ---
+0f2cf8086e6c7f89f4ae889e883388ac420d21c2b61fe52b12cceda30efa51f7  -
+From root@sensor.chello.hu  Thu Oct 29 13:21:58 2026
+Return-Path: <root@sensor.chello.hu>
+X-Original-To: root@localhost
+Delivered-To: root@localhost
+Received: by sensor.chello.hu (Postfix, from userid 0)
+	id C2CDB10003E; Thu, 29 Oct 2026 13:21:58 +0000 (UTC)
+From: Zeek <zeek@sensor>
+Subject: [Zeek] Crash report from zeek
+To: root@localhost
+User-Agent: ZeekControl 2.6.0-31
+Message-Id: <20261029132158.C2CDB10003E@sensor.chello.hu>
+Date: Thu, 29 Oct 2026 13:21:58 +0000 (UTC)
+
+This crash report does not include a backtrace.  In order for crash reports
+to be useful when Zeek crashes, a backtrace is needed.
+
+No core file found and gdb is not installed.  It is recommended to
+install gdb so that ZeekControl can output a backtrace if Zeek crashes.
+
+Zeek 8.0.9
+Linux 5.15.0-190-generic
+
+Zeek plugins:
+ICSNPP::S7COMM - S7comm, S7comm-plus, and COTP Protocol analyzer (dynamic, version 1.3.0)
+
+==== No reporter.log
+
+==== stderr.log
+listening on enp0s8
+
+
+==== stdout.log
+max memory size             (kbytes, -m) unlimited
+data seg size               (kbytes, -d) unlimited
+virtual memory              (kbytes, -v) unlimited
+core file size              (blocks, -c) unlimited
+
+==== .cmdline
+-i enp0s8 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto
+
+==== .env_vars
+PATH=/opt/zeek/bin:/opt/zeek/share/zeekctl/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+ZEEKPATH=/opt/zeek/spool/installed-scripts-do-not-touch/site::/opt/zeek/spool/installed-scripts-do-not-touch/auto:/opt/zeek/share/zeek:/opt/zeek/share/zeek/policy:/opt/zeek/share/zeek/site:/opt/zeek/share/zeek/builtin-plugins
+CLUSTER_NODE=
+
+==== .status
+RUNNING [run_loop]
+
+==== No prof.log
+
+==== No packet_filter.log
+
+==== No loaded_scripts.log
+
+--
+[Automatically generated.]
+
+

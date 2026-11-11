@@ -1,0 +1,22 @@
+# M2b-1 alapállapot (baseline), 2026-10-29, csak olvasással gyűjtve. Formátum: <sha256>  <vm>:<útvonal>
+# siem:_ingest/pipeline/* = a 'curl -s localhost:9200/_ingest/pipeline/<név>' válasz bájtjai; sensor:zkg-list-output = 'sudo -n zkg list' kimenete.
+# EQL-szabály forrása: scripts/evaluate_campaign.py:106 (NAIVE_EQL_QUERY), scripts/sprint1_es_metrics.py:87; Kibanában nincs mentett szabály.
+edb386de939a70e516f8355fb4d8bdf1a3390cc96ef4eee40007c1801ca15504  sensor:/opt/zeek/etc/node.cfg
+94960d1905cb7420cda8d68cb147ef10df7644615445b0d693971407b82ec79a  sensor:/opt/zeek/etc/zeekctl.cfg
+14564f9b45ea7156c821d8a70f1ea542d6ac9baba8424731ca4b45d9aae3806e  sensor:/opt/zeek/share/zeek/site/local.zeek
+515695dfdecc01d6b65f2d89bca23378322e0bc8533bce83b2ff90ae3ac45657  sensor:/etc/suricata/suricata.yaml
+b44673b6e0f369e9e0024b76fc0928a6cfbc81ee26db1283216a1d46f735740b  sensor:/var/lib/suricata/rules/suricata.rules
+c91ec88646a86832fd775b78a0aa719640bf1696a62dba06b6536497f9a13f52  sensor:/etc/filebeat/filebeat.yml
+3480aa39a368a002bc8f7d60c4315b223dcf3ce29c861a62b8a5741959f8e9f4  sensor:zkg-list-output
+d74a74b041de795a8c15cb99410eddc73ae11ee9ae2e990aade31406d06a3e10  siem:_ingest/pipeline/icsnpp-cotp-pipeline
+5bf5c2793716b2b0baf227a8a47fb71a75fbc7c9f74b401bc92b5ce4ec12ab4f  siem:_ingest/pipeline/icsnpp-modbus-pipeline
+f7404a49e57c4a1e3a7d3161af32eaec174654e6f91357af8de627c8cd25af0e  siem:_ingest/pipeline/icsnpp-modbus-detailed-pipeline
+7e00327cce31dd906b14558b86682ab82c0f8954780557688b12cee7b1b5e75d  siem:_ingest/pipeline/icsnpp-s7comm-pipeline
+4903dbaf566576478f10b60c40249bcbcbe529e3aaab61d79aceb7778102ab33  plc:/home/ot/OpenPLC_v3/webserver/openplc.db
+2e04b2e3537f6649253da3208a1287162ee9da029cf688a4db417d46bd28076f  plc:/home/ot/OpenPLC_v3/webserver/st_files/blank_program.st
+16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad  redteam:/home/ot/attack_runner.py
+13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084  redteam:/home/ot/benign_generator.py
+9f0543de4340a8d4b0bf8b679f1bea88a07636df1986505fd0a6a80265c0600f  redteam:/home/ot/attack_log.jsonl
+c07c78d81c884e953d2b738d01d15d7175879098b2d8637b6f9dd8dd0bb15902  redteam:/home/ot/benign_log.jsonl
+022acd2f4b799d21be39703e40b65d2d700804c5bf891049ac58f52226a9d0d1  repo:HEAD:scripts/evaluate_campaign.py
+e107fd52cdd0d08c7a3a85deaca0add21955b2406e8dbd93f3636a8b45b3b01a  repo:HEAD:scripts/sprint1_es_metrics.py

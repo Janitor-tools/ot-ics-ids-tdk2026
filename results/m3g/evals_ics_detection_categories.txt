@@ -1,0 +1,132 @@
+# ATT&CK Evaluations ICS (TRITON) – Detection Categories: szó szerinti kivonat, értelmezés nélkül
+# A sorszámok a docs/tdk/related-works/forrasok/ alatti .txt szövegkivonatokra vonatkoznak (HTML → szöveg: script/style törölve, tagek sortörésre, html.unescape, üres sorok és szélső szóközök törölve).
+# Források:
+#  [W2021] wayback-attackevals-ics-triton-detection-categories-20210729150312.txt  (Wayback 20210729150312, https://attackevals.mitre-engenuity.org/ics/triton/detection-categories; HTML sha256 a6c41cd8cc2a…)
+#  [LIVE]  mitre-evals-ics-triton-detection-categories-headless.txt  (headless Chrome 156.0.8078.48, 2026-10-29T18:19Z, https://evals.mitre.org/ics/triton/detection-categories; HTML sha256 497638b119fe…)
+
+## [W2021] Detection Categories
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:67-74
+Detection Categories
+Not Applicable
+Vendor did not have visibility on the system under test. The vendor must state before
+the evaluation what systems they did not deploy a sensor on to enable Not Applicable to
+be in scope for relevant steps.
+Examples
+The vendor product only collects network traffic and is unable to collect
+host-based data natively.
+
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:75-82
+None
+No data is automatically collected, processed, or made available within the capability
+related to the behavior under test. If data is available that is not directly relevant
+to the procedure tested, this will be categorized as “None.”
+Examples
+No data is collected related to the particular action being performed.
+An alert fires at the same time that the red team performs the procedure,
+but it is not related to the technique under test.
+
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:83-92
+Telemetry
+Minimally processed data is collected by the capability showing that event(s) occurred
+specific to the behavior under test. (i.e. showing the procedure/command that was
+executed). Evidence must show definitively that behavior occurred and be related to the
+execution mechanism (did happen vs may have happened). Evidence must be related to what
+caused the behavior. There is no evidence of complex logic or an advanced rule leading
+to the data output, and no labeling occurred other than simple field labeling.
+Examples
+A certain command is seen in traffic sent to the management port of a
+controller.
+
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:93-99
+General
+Processed data specifies that malicious/abnormal event(s) occurred, with relation to the
+behavior under test. No or limited details are provided as to why the action was
+performed (tactic), or details for how the action was performed (technique).
+Examples
+An alert is triggered based on a baseline deviation of a process
+variable, but no information is provided about why the event happened.
+
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:100-110
+Tactic
+Processed data specifies an ATT&CK Tactic or equivalent level of enrichment to the data
+collected by the capability. Gives the analyst information on the potential intent of
+the activity or helps answer the question "why this would be done.”
+Examples
+An alert called “Malicious Discovery” is triggered on a series of
+discovery techniques. The alert has a score indicating the alert is
+likely malicious. The alert does not identify the specific type of
+discovery performed.
+An alert describing that persistence occurred but not specifying how
+persistence was achieved.
+
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:111-118
+Technique
+Processed data specifies an ATT&CK Technique or equivalent level of enrichment to the
+data collected by the capability. Gives the analyst information on how the action was
+performed or helps answer the question "what was done" (i.e. Brute Force I/O).
+Examples
+An alert called “Impair Process Control with Unauthorized Command
+Message” is triggered describing what command message was issued, why it
+is malicious and how it has impaired process control.
+
+## [W2021] Modifier Detection Types
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:119-149
+Modifier Detection Types
+Configuration Change
+The configuration of the capability was changed since the start of the evaluation. This
+may be done to show additional data can be collected and/or processed. The “Configuration Change” modifier may be applied based on various different types of changes:
+Configuration Change is subdivided into:
+UX
+– Change was to the user experience and not to the
+capability's ability to detect behavior. Changes could include display of a
+certain type of data that was already collected but not visible to the user.
+Detection Logic
+– Change was to the capability's ability to
+process information that impacts its ability to detect adversary behavior.
+Data Sources
+– Change was to the capability's ability to
+capture a new type of data that impacts its ability to detect adversary
+behavior.
+Examples
+Data showing that a controller’s program changed state is collected on
+the backend but not displayed to the end user by default. The vendor
+changes a backend setting to allow “Telemetry” on program state changes
+to be displayed in the user interface, so a detection of “Telemetry” and
+“Configuration Change-UX” would be given for the Change Program State
+technique.
+The vendor toggles a setting that would display an additional label of
+“Discovery” when the foo, foo1, and foo2 discovery commands are
+executed. A detection of “Tactic” and “Configuration Change-Detection”
+would be given (as opposed to a detection of “Telemetry” that would have
+been given before the change).
+A rule or detection logic is created and applied retroactively or is
+later retested to show functionality that exists in the capability. This
+would be labeled with a modifier “Configuration Change-Detection”.
+
+--- wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:150-159
+Correlated
+Data is presented as being descendant of events previously identified as
+suspicious/malicious based on an alert or high suspicion activity that was brought to
+the attention of an analyst. Examples of correlation evidence include annotated process
+trees or tags applied to chains of events showing the relationship between the
+suspicious/malicious event and data from the technique under test.
+Examples
+A chain of events is annotated showing the relationship between a new node
+appearing on the network and an alert about unauthorized command messages
+being sent from this node.
+
+## [LIVE] Detection Categories (csak a lenyitható panelek címei; a panelek szövege a DOM-ban üres: <div class="v-expansion-panel-text" style="display: none;"><!----></div>)
+--- mitre-evals-ics-triton-detection-categories-headless.txt:63-68
+Detection Categories
+Not Applicable
+None
+Telemetry
+General
+Tactic
+
+## Különbség [W2021] ↔ [LIVE] (gépi összevetés, értelmezés nélkül)
+- [W2021] kategóriacímek: Not Applicable, None, Telemetry, General, Tactic, Technique (wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:68, :75, :83, :93, :100, :111)
+- [LIVE] kategóriacímek: Not Applicable, None, Telemetry, General, Tactic (mitre-evals-ics-triton-detection-categories-headless.txt:64–68); 'Technique' cím nincs.
+- [W2021] 'Modifier Detection Types' szakasz (wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:119); [LIVE]-ban ilyen cím nincs (grep -c 'Modifier' = 0).
+- A bevezető négy bekezdés és a 'Data Sources' bekezdés szövege: [W2021] wayback-attackevals-ics-triton-detection-categories-20210729150312.txt:42–66 (tördelt sorok), [LIVE] mitre-evals-ics-triton-detection-categories-headless.txt:57–62.
+- Gépi összevetés (python, szóközök normalizálva, a 'Data Sources' címsor elhagyva): [W2021] :42–66 és [LIVE] :57–62 szövege AZONOS (True).

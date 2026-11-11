@@ -1,0 +1,78 @@
+2026-11-01 11:38:23,681 INFO benign_generator elindult (.51-rol), poll=5s idempotent=600s setpoint=3600s. Leallitas: Ctrl+C.
+2026-11-01 11:38:40,984 ERROR No response received after 3 retries, continue with next request
+2026-11-01 11:38:40,984 ERROR poll_loop hiba
+Traceback (most recent call last):
+  File "/home/ot/benign_generator.py", line 101, in poll_loop
+    rr = client.read_holding_registers(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+2026-11-01 11:58:35,824 ERROR Repeating....
+2026-11-01 11:58:35,824 ERROR poll_loop hiba
+Traceback (most recent call last):
+  File "/home/ot/benign_generator.py", line 101, in poll_loop
+    rr = client.read_holding_registers(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+2026-11-01 12:07:12,428 ERROR poll_loop hiba
+Traceback (most recent call last):
+  File "/home/ot/benign_generator.py", line 101, in poll_loop
+    rr = client.read_holding_registers(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+2026-11-01 12:47:43,714 ERROR poll_loop hiba
+Traceback (most recent call last):
+  File "/home/ot/benign_generator.py", line 101, in poll_loop
+    rr = client.read_holding_registers(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+2026-11-01 12:53:43,052 ERROR Connection to (192.168.1.100, 502) failed: [Errno 111] Connection refused
+2026-11-01 12:53:48,061 ERROR Repeating....
+2026-11-01 12:56:08,484 ERROR No response received after 3 retries, continue with next request
+2026-11-01 12:56:08,484 ERROR poll_loop hiba
+Traceback (most recent call last):
+  File "/home/ot/benign_generator.py", line 101, in poll_loop
+    rr = client.read_holding_registers(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+2026-11-01 12:57:37,996 ERROR poll_loop hiba
+Traceback (most recent call last):
+  File "/home/ot/benign_generator.py", line 101, in poll_loop
+    rr = client.read_holding_registers(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 137, in sync_execute
+    response = self.sync_get_response(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 87, in sync_get_response
+    if not (data := self.sync_client.recv(None)):
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/tcp.py", line 259, in recv
+    if (recv_data := self.socket.recv(recv_size)) == b"":
+ConnectionResetError: [Errno 104] Connection reset by peer
+2026-11-01 12:57:43,299 ERROR Connection to (192.168.1.100, 502) failed: [Errno 111] Connection refused
+2026-11-01 12:57:48,300 ERROR Repeating....

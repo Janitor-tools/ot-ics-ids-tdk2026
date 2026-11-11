@@ -1,0 +1,3 @@
+2026-10-31 15:07:28,701 INFO benign_generator elindult (.51-rol), poll=5s idempotent=600s setpoint=3600s. Leallitas: Ctrl+C.
+2026-10-31 15:13:40,328 INFO Leallitasi jel (15) fogadva, szalak leallitasa...
+2026-10-31 15:13:40,328 INFO benign_generator leallt.

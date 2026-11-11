@@ -1,0 +1,4 @@
+kampanyablak (VM-ido, D6; a JSONL-ek ts-ebol, -60s/+60s)
+window_start: 2026-11-01T11:37:28.762393+00:00
+window_end:   2026-11-01T12:58:56.177437+00:00
+laptop_date_u (csak tajekoztato): 2026-11-01T13:00:03Z

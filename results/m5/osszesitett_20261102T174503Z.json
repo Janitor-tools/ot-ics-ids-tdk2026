@@ -1,0 +1,2027 @@
+{
+  "meta": {
+    "generated_at": "2026-11-02T17:45:03.198748+00:00",
+    "prereg": "v1.1",
+    "stats_backend": "scipy",
+    "campaigns": [
+      "campaign_20261101T113823Z_V1_s1",
+      "campaign_20261101T142841Z_V1_s2",
+      "campaign_20261101T162231Z_V1_s3",
+      "campaign_20261101T174612Z_V2_s1"
+    ],
+    "variants": [
+      "V1",
+      "V2"
+    ],
+    "scenario_technique_map": {
+      "A1": "T0836",
+      "A2": "T0888",
+      "A3": "T0846.001",
+      "A4": "T0816",
+      "A5": "T0816",
+      "A6": "T0843",
+      "V2.1": "T0836",
+      "V2.2": "T0893",
+      "V2.3": "T0821",
+      "V2.4": "T0836",
+      "V2.5": "T0836"
+    },
+    "note": "(b)/(c) variansonkent kulon (V1 nem vonodik ossze V2-vel); (d) D13 a V1+V2 egyedi technikain egyutt (prereg 5.3/NYK-8)."
+  },
+  "per_campaign": [
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C1",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 19,
+      "n_known": 19,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 19,
+        "n": 19,
+        "median": 0.9882541441378359,
+        "ci_lo": 0.8776905956800861,
+        "ci_hi": 0.9999744941873743,
+        "mean": 0.975,
+        "prior": "Jeffreys Beta(19.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 19,
+      "n_known": 19,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 19,
+        "n": 19,
+        "median": 0.9882541441378359,
+        "ci_lo": 0.8776905956800861,
+        "ci_hi": 0.9999744941873743,
+        "mean": 0.975,
+        "prior": "Jeffreys Beta(19.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T142841Z_V1_s2",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C1",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 19,
+      "n_known": 19,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 19,
+        "n": 19,
+        "median": 0.9882541441378359,
+        "ci_lo": 0.8776905956800861,
+        "ci_hi": 0.9999744941873743,
+        "mean": 0.975,
+        "prior": "Jeffreys Beta(19.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 19,
+      "n_known": 19,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 19,
+        "n": 19,
+        "median": 0.9882541441378359,
+        "ci_lo": 0.8776905956800861,
+        "ci_hi": 0.9999744941873743,
+        "mean": 0.975,
+        "prior": "Jeffreys Beta(19.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T162231Z_V1_s3",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C1",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.1",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 16,
+      "n_known": 16,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 16,
+        "n": 16,
+        "median": 0.9861013532809598,
+        "ci_lo": 0.8568158620685553,
+        "ci_hi": 0.999969786520022,
+        "mean": 0.9705882352941176,
+        "prior": "Jeffreys Beta(16.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.1",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 16,
+      "n_known": 16,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 16,
+        "n": 16,
+        "median": 0.9861013532809598,
+        "ci_lo": 0.8568158620685553,
+        "ci_hi": 0.999969786520022,
+        "mean": 0.9705882352941176,
+        "prior": "Jeffreys Beta(16.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.2",
+      "technique": "T0893",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.2",
+      "technique": "T0893",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.3",
+      "technique": "T0821",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.3",
+      "technique": "T0821",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.4",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 17,
+      "n_known": 17,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 17,
+        "n": 17,
+        "median": 0.9869015718572521,
+        "ci_lo": 0.8645215621083114,
+        "ci_hi": 0.9999715376222769,
+        "mean": 0.9722222222222222,
+        "prior": "Jeffreys Beta(17.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.4",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 17,
+      "n_known": 17,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 17,
+        "n": 17,
+        "median": 0.9869015718572521,
+        "ci_lo": 0.8645215621083114,
+        "ci_hi": 0.9999715376222769,
+        "mean": 0.9722222222222222,
+        "prior": "Jeffreys Beta(17.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.5",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 18,
+      "n_known": 18,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 18,
+        "n": 18,
+        "median": 0.9876146718873292,
+        "ci_lo": 0.8714417881782404,
+        "ci_hi": 0.9999730968826991,
+        "mean": 0.9736842105263158,
+        "prior": "Jeffreys Beta(18.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T174612Z_V2_s1",
+      "variant": "V2",
+      "scenario": "V2.5",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 18,
+      "n_known": 18,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 18,
+        "n": 18,
+        "median": 0.9876146718873292,
+        "ci_lo": 0.8714417881782404,
+        "ci_hi": 0.9999730968826991,
+        "mean": 0.9736842105263158,
+        "prior": "Jeffreys Beta(18.5,0.5)"
+      }
+    }
+  ],
+  "pooled_by_technique": {
+    "V1": [
+      {
+        "technique": "T0816",
+        "config": "C0",
+        "k_seen": 60,
+        "n_known": 69,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A4",
+          "A5"
+        ],
+        "category_dist": {
+          "Telemetry": 60,
+          "None": 9
+        },
+        "posterior_jeffreys": {
+          "k": 60,
+          "n": 69,
+          "median": 0.8677605420807473,
+          "ci_lo": 0.7754862078539152,
+          "ci_hi": 0.9334542933667094,
+          "mean": 0.8642857142857143,
+          "prior": "Jeffreys Beta(60.5,9.5)"
+        },
+        "posterior_uniform": {
+          "k": 60,
+          "n": 69,
+          "median": 0.8625333125566242,
+          "ci_lo": 0.7699116098309631,
+          "ci_hi": 0.9293095457331302,
+          "mean": 0.8591549295774648,
+          "prior": "Beta(61,10)"
+        }
+      },
+      {
+        "technique": "T0816",
+        "config": "C1",
+        "k_seen": 69,
+        "n_known": 69,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A4",
+          "A5"
+        ],
+        "category_dist": {
+          "Telemetry": 69
+        },
+        "posterior_jeffreys": {
+          "k": 69,
+          "n": 69,
+          "median": 0.9967206739067989,
+          "ci_lo": 0.9643770652647697,
+          "ci_hi": 0.9999929093196104,
+          "mean": 0.9928571428571429,
+          "prior": "Jeffreys Beta(69.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 69,
+          "n": 69,
+          "median": 0.9901467618185567,
+          "ci_lo": 0.9486662028489763,
+          "ci_hi": 0.9996383824281968,
+          "mean": 0.9859154929577465,
+          "prior": "Beta(70,1)"
+        }
+      },
+      {
+        "technique": "T0836",
+        "config": "C0",
+        "k_seen": 58,
+        "n_known": 58,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A1"
+        ],
+        "category_dist": {
+          "Telemetry": 57,
+          "General": 1
+        },
+        "posterior_jeffreys": {
+          "k": 58,
+          "n": 58,
+          "median": 0.9961026223096169,
+          "ci_lo": 0.9577941254988773,
+          "ci_hi": 0.9999915703353595,
+          "mean": 0.9915254237288136,
+          "prior": "Jeffreys Beta(58.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 58,
+          "n": 58,
+          "median": 0.9883204840169131,
+          "ci_lo": 0.9393910990496601,
+          "ci_hi": 0.9995709766672765,
+          "mean": 0.9833333333333333,
+          "prior": "Beta(59,1)"
+        }
+      },
+      {
+        "technique": "T0836",
+        "config": "C1",
+        "k_seen": 58,
+        "n_known": 58,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A1"
+        ],
+        "category_dist": {
+          "Telemetry": 57,
+          "General": 1
+        },
+        "posterior_jeffreys": {
+          "k": 58,
+          "n": 58,
+          "median": 0.9961026223096169,
+          "ci_lo": 0.9577941254988773,
+          "ci_hi": 0.9999915703353595,
+          "mean": 0.9915254237288136,
+          "prior": "Jeffreys Beta(58.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 58,
+          "n": 58,
+          "median": 0.9883204840169131,
+          "ci_lo": 0.9393910990496601,
+          "ci_hi": 0.9995709766672765,
+          "mean": 0.9833333333333333,
+          "prior": "Beta(59,1)"
+        }
+      },
+      {
+        "technique": "T0843",
+        "config": "C0",
+        "k_seen": 0,
+        "n_known": 9,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A6"
+        ],
+        "category_dist": {
+          "None": 9
+        },
+        "posterior_jeffreys": {
+          "k": 0,
+          "n": 9,
+          "median": 0.024281187474235293,
+          "ci_lo": 5.3064053418492834e-05,
+          "ci_hi": 0.23761009863290306,
+          "mean": 0.05,
+          "prior": "Jeffreys Beta(0.5,9.5)"
+        },
+        "posterior_uniform": {
+          "k": 0,
+          "n": 9,
+          "median": 0.06696700846319258,
+          "ci_lo": 0.0025285785444617848,
+          "ci_hi": 0.3084971078187608,
+          "mean": 0.09090909090909091,
+          "prior": "Beta(1,10)"
+        }
+      },
+      {
+        "technique": "T0843",
+        "config": "C1",
+        "k_seen": 0,
+        "n_known": 9,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A6"
+        ],
+        "category_dist": {
+          "None": 9
+        },
+        "posterior_jeffreys": {
+          "k": 0,
+          "n": 9,
+          "median": 0.024281187474235293,
+          "ci_lo": 5.3064053418492834e-05,
+          "ci_hi": 0.23761009863290306,
+          "mean": 0.05,
+          "prior": "Jeffreys Beta(0.5,9.5)"
+        },
+        "posterior_uniform": {
+          "k": 0,
+          "n": 9,
+          "median": 0.06696700846319258,
+          "ci_lo": 0.0025285785444617848,
+          "ci_hi": 0.3084971078187608,
+          "mean": 0.09090909090909091,
+          "prior": "Beta(1,10)"
+        }
+      },
+      {
+        "technique": "T0846.001",
+        "config": "C0",
+        "k_seen": 0,
+        "n_known": 9,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A3"
+        ],
+        "category_dist": {
+          "None": 9
+        },
+        "posterior_jeffreys": {
+          "k": 0,
+          "n": 9,
+          "median": 0.024281187474235293,
+          "ci_lo": 5.3064053418492834e-05,
+          "ci_hi": 0.23761009863290306,
+          "mean": 0.05,
+          "prior": "Jeffreys Beta(0.5,9.5)"
+        },
+        "posterior_uniform": {
+          "k": 0,
+          "n": 9,
+          "median": 0.06696700846319258,
+          "ci_lo": 0.0025285785444617848,
+          "ci_hi": 0.3084971078187608,
+          "mean": 0.09090909090909091,
+          "prior": "Beta(1,10)"
+        }
+      },
+      {
+        "technique": "T0846.001",
+        "config": "C1",
+        "k_seen": 9,
+        "n_known": 9,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A3"
+        ],
+        "category_dist": {
+          "Telemetry": 9
+        },
+        "posterior_jeffreys": {
+          "k": 9,
+          "n": 9,
+          "median": 0.9757188125257648,
+          "ci_lo": 0.7623899013670968,
+          "ci_hi": 0.9999469359465815,
+          "mean": 0.95,
+          "prior": "Jeffreys Beta(9.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 9,
+          "n": 9,
+          "median": 0.9330329915368074,
+          "ci_lo": 0.6915028921812392,
+          "ci_hi": 0.9974714214555382,
+          "mean": 0.9090909090909091,
+          "prior": "Beta(10,1)"
+        }
+      },
+      {
+        "technique": "T0888",
+        "config": "C0",
+        "k_seen": 60,
+        "n_known": 60,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A2"
+        ],
+        "category_dist": {
+          "Telemetry": 60
+        },
+        "posterior_jeffreys": {
+          "k": 60,
+          "n": 60,
+          "median": 0.9962317491707914,
+          "ci_lo": 0.9591660771331015,
+          "ci_hi": 0.9999918501522101,
+          "mean": 0.9918032786885246,
+          "prior": "Jeffreys Beta(60.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 60,
+          "n": 60,
+          "median": 0.9887012472906053,
+          "ci_lo": 0.9413187760677074,
+          "ci_hi": 0.9995850400871603,
+          "mean": 0.9838709677419355,
+          "prior": "Beta(61,1)"
+        }
+      },
+      {
+        "technique": "T0888",
+        "config": "C1",
+        "k_seen": 60,
+        "n_known": 60,
+        "n_na": 0,
+        "k_campaigns": 3,
+        "scenarios": [
+          "A2"
+        ],
+        "category_dist": {
+          "Telemetry": 60
+        },
+        "posterior_jeffreys": {
+          "k": 60,
+          "n": 60,
+          "median": 0.9962317491707914,
+          "ci_lo": 0.9591660771331015,
+          "ci_hi": 0.9999918501522101,
+          "mean": 0.9918032786885246,
+          "prior": "Jeffreys Beta(60.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 60,
+          "n": 60,
+          "median": 0.9887012472906053,
+          "ci_lo": 0.9413187760677074,
+          "ci_hi": 0.9995850400871603,
+          "mean": 0.9838709677419355,
+          "prior": "Beta(61,1)"
+        }
+      }
+    ],
+    "V2": [
+      {
+        "technique": "T0821",
+        "config": "C0",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "V2.3"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      },
+      {
+        "technique": "T0821",
+        "config": "C1",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "V2.3"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      },
+      {
+        "technique": "T0836",
+        "config": "C0",
+        "k_seen": 51,
+        "n_known": 51,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "V2.1",
+          "V2.4",
+          "V2.5"
+        ],
+        "category_dist": {
+          "Telemetry": 51
+        },
+        "posterior_jeffreys": {
+          "k": 51,
+          "n": 51,
+          "median": 0.9955714915726062,
+          "ci_lo": 0.9521697376090908,
+          "ci_hi": 0.9999904189978027,
+          "mean": 0.9903846153846154,
+          "prior": "Jeffreys Beta(51.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 51,
+          "n": 51,
+          "median": 0.9867586942598652,
+          "ci_lo": 0.9315177912966804,
+          "ci_hi": 0.9995132375845079,
+          "mean": 0.9811320754716981,
+          "prior": "Beta(52,1)"
+        }
+      },
+      {
+        "technique": "T0836",
+        "config": "C1",
+        "k_seen": 51,
+        "n_known": 51,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "V2.1",
+          "V2.4",
+          "V2.5"
+        ],
+        "category_dist": {
+          "Telemetry": 51
+        },
+        "posterior_jeffreys": {
+          "k": 51,
+          "n": 51,
+          "median": 0.9955714915726062,
+          "ci_lo": 0.9521697376090908,
+          "ci_hi": 0.9999904189978027,
+          "mean": 0.9903846153846154,
+          "prior": "Jeffreys Beta(51.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 51,
+          "n": 51,
+          "median": 0.9867586942598652,
+          "ci_lo": 0.9315177912966804,
+          "ci_hi": 0.9995132375845079,
+          "mean": 0.9811320754716981,
+          "prior": "Beta(52,1)"
+        }
+      },
+      {
+        "technique": "T0893",
+        "config": "C0",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "V2.2"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      },
+      {
+        "technique": "T0893",
+        "config": "C1",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "V2.2"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      }
+    ]
+  },
+  "fp_pooled": {
+    "V1": {
+      "variant": "V1",
+      "sid": 2250008,
+      "n_campaigns": 3,
+      "fp_count": 1921,
+      "denominator_benign_requests": 1928,
+      "denominator_benign_time_s": 10023.426323,
+      "fp_per_request": 0.9963692946058091,
+      "fp_per_hour": 689.9437155667314
+    },
+    "V2": {
+      "variant": "V2",
+      "sid": 2250008,
+      "n_campaigns": 1,
+      "fp_count": 780,
+      "denominator_benign_requests": 777,
+      "denominator_benign_time_s": 4081.9262879999997,
+      "fp_per_request": 1.0038610038610039,
+      "fp_per_hour": 687.910511332585
+    }
+  },
+  "external_signal": {
+    "rows": [
+      {
+        "technique": "T0816",
+        "ours_c1_seen": true,
+        "ours_k": 69,
+        "ours_n": 69,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0821",
+        "ours_c1_seen": true,
+        "ours_k": 20,
+        "ours_n": 20,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0836",
+        "ours_c1_seen": true,
+        "ours_k": 109,
+        "ours_n": 109,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0843",
+        "ours_c1_seen": false,
+        "ours_k": 0,
+        "ours_n": 9,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0846.001",
+        "ours_c1_seen": true,
+        "ours_k": 9,
+        "ours_n": 9,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0888",
+        "ours_c1_seen": true,
+        "ours_k": 60,
+        "ours_n": 60,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0893",
+        "ours_c1_seen": true,
+        "ours_k": 20,
+        "ours_n": 20,
+        "mitre_network_analytic": true
+      }
+    ],
+    "n_paired": 7,
+    "cohen_kappa_unweighted": 0.0,
+    "p_observed": 0.8571428571428571,
+    "p_expected": 0.8571428571428571,
+    "kappa_note": "degeneralt: egyik ertekelo konstans",
+    "raw_agreement": 0.8571428571428571,
+    "raw_agreement_frac": "6/7",
+    "degeneracy_reason": "a MITRE-oldal konstans (minden technikara IGEN) -> nulla variancia -> a kappa fuggetlen az egyezestol (5.3: 'csak jelzokent'); a nyers egyezesi arany informativabb"
+  },
+  "e39": {
+    "V1": [
+      {
+        "technique": "T0816",
+        "config": "C0",
+        "main": {
+          "k": 60,
+          "n": 69,
+          "posterior_jeffreys": {
+            "k": 60,
+            "n": 69,
+            "median": 0.8677605420807473,
+            "ci_lo": 0.7754862078539152,
+            "ci_hi": 0.9334542933667094,
+            "mean": 0.8642857142857143,
+            "prior": "Jeffreys Beta(60.5,9.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 60,
+          "n": 69,
+          "posterior_jeffreys": {
+            "k": 60,
+            "n": 69,
+            "median": 0.8677605420807473,
+            "ci_lo": 0.7754862078539152,
+            "ci_hi": 0.9334542933667094,
+            "mean": 0.8642857142857143,
+            "prior": "Jeffreys Beta(60.5,9.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0816",
+        "config": "C1",
+        "main": {
+          "k": 69,
+          "n": 69,
+          "posterior_jeffreys": {
+            "k": 69,
+            "n": 69,
+            "median": 0.9967206739067989,
+            "ci_lo": 0.9643770652647697,
+            "ci_hi": 0.9999929093196104,
+            "mean": 0.9928571428571429,
+            "prior": "Jeffreys Beta(69.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 69,
+          "n": 69,
+          "posterior_jeffreys": {
+            "k": 69,
+            "n": 69,
+            "median": 0.9967206739067989,
+            "ci_lo": 0.9643770652647697,
+            "ci_hi": 0.9999929093196104,
+            "mean": 0.9928571428571429,
+            "prior": "Jeffreys Beta(69.5,0.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0836",
+        "config": "C0",
+        "main": {
+          "k": 58,
+          "n": 58,
+          "posterior_jeffreys": {
+            "k": 58,
+            "n": 58,
+            "median": 0.9961026223096169,
+            "ci_lo": 0.9577941254988773,
+            "ci_hi": 0.9999915703353595,
+            "mean": 0.9915254237288136,
+            "prior": "Jeffreys Beta(58.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 55,
+          "n": 55,
+          "posterior_jeffreys": {
+            "k": 55,
+            "n": 55,
+            "median": 0.9958914401552645,
+            "ci_lo": 0.9555542038730933,
+            "ci_hi": 0.9999911126271788,
+            "mean": 0.9910714285714286,
+            "prior": "Jeffreys Beta(55.5,0.5)"
+          }
+        },
+        "changed": true
+      },
+      {
+        "technique": "T0836",
+        "config": "C1",
+        "main": {
+          "k": 58,
+          "n": 58,
+          "posterior_jeffreys": {
+            "k": 58,
+            "n": 58,
+            "median": 0.9961026223096169,
+            "ci_lo": 0.9577941254988773,
+            "ci_hi": 0.9999915703353595,
+            "mean": 0.9915254237288136,
+            "prior": "Jeffreys Beta(58.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 55,
+          "n": 55,
+          "posterior_jeffreys": {
+            "k": 55,
+            "n": 55,
+            "median": 0.9958914401552645,
+            "ci_lo": 0.9555542038730933,
+            "ci_hi": 0.9999911126271788,
+            "mean": 0.9910714285714286,
+            "prior": "Jeffreys Beta(55.5,0.5)"
+          }
+        },
+        "changed": true
+      },
+      {
+        "technique": "T0843",
+        "config": "C0",
+        "main": {
+          "k": 0,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 0,
+            "n": 9,
+            "median": 0.024281187474235293,
+            "ci_lo": 5.3064053418492834e-05,
+            "ci_hi": 0.23761009863290306,
+            "mean": 0.05,
+            "prior": "Jeffreys Beta(0.5,9.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 0,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 0,
+            "n": 9,
+            "median": 0.024281187474235293,
+            "ci_lo": 5.3064053418492834e-05,
+            "ci_hi": 0.23761009863290306,
+            "mean": 0.05,
+            "prior": "Jeffreys Beta(0.5,9.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0843",
+        "config": "C1",
+        "main": {
+          "k": 0,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 0,
+            "n": 9,
+            "median": 0.024281187474235293,
+            "ci_lo": 5.3064053418492834e-05,
+            "ci_hi": 0.23761009863290306,
+            "mean": 0.05,
+            "prior": "Jeffreys Beta(0.5,9.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 0,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 0,
+            "n": 9,
+            "median": 0.024281187474235293,
+            "ci_lo": 5.3064053418492834e-05,
+            "ci_hi": 0.23761009863290306,
+            "mean": 0.05,
+            "prior": "Jeffreys Beta(0.5,9.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0846.001",
+        "config": "C0",
+        "main": {
+          "k": 0,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 0,
+            "n": 9,
+            "median": 0.024281187474235293,
+            "ci_lo": 5.3064053418492834e-05,
+            "ci_hi": 0.23761009863290306,
+            "mean": 0.05,
+            "prior": "Jeffreys Beta(0.5,9.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 0,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 0,
+            "n": 9,
+            "median": 0.024281187474235293,
+            "ci_lo": 5.3064053418492834e-05,
+            "ci_hi": 0.23761009863290306,
+            "mean": 0.05,
+            "prior": "Jeffreys Beta(0.5,9.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0846.001",
+        "config": "C1",
+        "main": {
+          "k": 9,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 9,
+            "n": 9,
+            "median": 0.9757188125257648,
+            "ci_lo": 0.7623899013670968,
+            "ci_hi": 0.9999469359465815,
+            "mean": 0.95,
+            "prior": "Jeffreys Beta(9.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 9,
+          "n": 9,
+          "posterior_jeffreys": {
+            "k": 9,
+            "n": 9,
+            "median": 0.9757188125257648,
+            "ci_lo": 0.7623899013670968,
+            "ci_hi": 0.9999469359465815,
+            "mean": 0.95,
+            "prior": "Jeffreys Beta(9.5,0.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0888",
+        "config": "C0",
+        "main": {
+          "k": 60,
+          "n": 60,
+          "posterior_jeffreys": {
+            "k": 60,
+            "n": 60,
+            "median": 0.9962317491707914,
+            "ci_lo": 0.9591660771331015,
+            "ci_hi": 0.9999918501522101,
+            "mean": 0.9918032786885246,
+            "prior": "Jeffreys Beta(60.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 60,
+          "n": 60,
+          "posterior_jeffreys": {
+            "k": 60,
+            "n": 60,
+            "median": 0.9962317491707914,
+            "ci_lo": 0.9591660771331015,
+            "ci_hi": 0.9999918501522101,
+            "mean": 0.9918032786885246,
+            "prior": "Jeffreys Beta(60.5,0.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0888",
+        "config": "C1",
+        "main": {
+          "k": 60,
+          "n": 60,
+          "posterior_jeffreys": {
+            "k": 60,
+            "n": 60,
+            "median": 0.9962317491707914,
+            "ci_lo": 0.9591660771331015,
+            "ci_hi": 0.9999918501522101,
+            "mean": 0.9918032786885246,
+            "prior": "Jeffreys Beta(60.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 60,
+          "n": 60,
+          "posterior_jeffreys": {
+            "k": 60,
+            "n": 60,
+            "median": 0.9962317491707914,
+            "ci_lo": 0.9591660771331015,
+            "ci_hi": 0.9999918501522101,
+            "mean": 0.9918032786885246,
+            "prior": "Jeffreys Beta(60.5,0.5)"
+          }
+        },
+        "changed": false
+      }
+    ],
+    "V2": [
+      {
+        "technique": "T0821",
+        "config": "C0",
+        "main": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0821",
+        "config": "C1",
+        "main": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0836",
+        "config": "C0",
+        "main": {
+          "k": 51,
+          "n": 51,
+          "posterior_jeffreys": {
+            "k": 51,
+            "n": 51,
+            "median": 0.9955714915726062,
+            "ci_lo": 0.9521697376090908,
+            "ci_hi": 0.9999904189978027,
+            "mean": 0.9903846153846154,
+            "prior": "Jeffreys Beta(51.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 48,
+          "n": 48,
+          "posterior_jeffreys": {
+            "k": 48,
+            "n": 48,
+            "median": 0.9952968006369556,
+            "ci_lo": 0.9492727366475076,
+            "ci_hi": 0.9999898233063804,
+            "mean": 0.9897959183673469,
+            "prior": "Jeffreys Beta(48.5,0.5)"
+          }
+        },
+        "changed": true
+      },
+      {
+        "technique": "T0836",
+        "config": "C1",
+        "main": {
+          "k": 51,
+          "n": 51,
+          "posterior_jeffreys": {
+            "k": 51,
+            "n": 51,
+            "median": 0.9955714915726062,
+            "ci_lo": 0.9521697376090908,
+            "ci_hi": 0.9999904189978027,
+            "mean": 0.9903846153846154,
+            "prior": "Jeffreys Beta(51.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 48,
+          "n": 48,
+          "posterior_jeffreys": {
+            "k": 48,
+            "n": 48,
+            "median": 0.9952968006369556,
+            "ci_lo": 0.9492727366475076,
+            "ci_hi": 0.9999898233063804,
+            "mean": 0.9897959183673469,
+            "prior": "Jeffreys Beta(48.5,0.5)"
+          }
+        },
+        "changed": true
+      },
+      {
+        "technique": "T0893",
+        "config": "C0",
+        "main": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "changed": false
+      },
+      {
+        "technique": "T0893",
+        "config": "C1",
+        "main": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "sensitivity": {
+          "k": 20,
+          "n": 20,
+          "posterior_jeffreys": {
+            "k": 20,
+            "n": 20,
+            "median": 0.9888308308764086,
+            "ci_lo": 0.8833610170951246,
+            "ci_hi": 0.9999757535215408,
+            "mean": 0.9761904761904762,
+            "prior": "Jeffreys Beta(20.5,0.5)"
+          }
+        },
+        "changed": false
+      }
+    ]
+  },
+  "e39_excluded": [
+    "campaign_20261101T113823Z_V1_s1:A1_T0836_011",
+    "campaign_20261101T142841Z_V1_s2:A1_T0836_018",
+    "campaign_20261101T162231Z_V1_s3:A1_T0836_006",
+    "campaign_20261101T174612Z_V2_s1:V21_T0836_006",
+    "campaign_20261101T174612Z_V2_s1:V21_T0836_007",
+    "campaign_20261101T174612Z_V2_s1:V21_T0836_016"
+  ]
+}

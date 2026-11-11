@@ -1,0 +1,144 @@
+{
+  "campaign": {
+    "start": "2026-08-22T13:48:33.811050+00:00",
+    "end": "2026-08-22T16:47:28.943719+00:00",
+    "duration_minutes": 178.9,
+    "planned_duration_minutes": 240,
+    "deviation_note": "A tenyleges kampanyidotartam a benign_generator.py meta-naploja alapjan ~179 perc, nem a tervezett 240 -- lasd Ch.6 'Modszertani eltmresek'. Forensics: journalctl session-31 lezarasa 16:47:28-kor, human-initiated SIGTERM, nem OOM/crash."
+  },
+  "techniques": {
+    "T0836": {
+      "scenario": "A1",
+      "n_effective": 17,
+      "tp": 17,
+      "fn": 0,
+      "recall": 1.0,
+      "recall_ci": [
+        1.0,
+        1.0
+      ],
+      "naive": {
+        "fp_count": 22,
+        "fp_ci": [
+          13.0,
+          32.0
+        ],
+        "precision_ci": [
+          0.3469387755102041,
+          0.5666666666666667
+        ],
+        "f1_ci": [
+          0.5151515151515151,
+          0.7234042553191489
+        ],
+        "precision": 0.4358974358974359
+      },
+      "refined": {
+        "fp_count": 0,
+        "fp_ci": [
+          0.0,
+          0.0
+        ],
+        "precision_ci": [
+          1.0,
+          1.0
+        ],
+        "f1_ci": [
+          1.0,
+          1.0
+        ],
+        "precision": 1.0
+      }
+    },
+    "T0816": {
+      "scenario": "A4+A5 (pooled, Q6)",
+      "n_effective": 23,
+      "tp": 20,
+      "fn": 3,
+      "recall": 0.8695652173913043,
+      "recall_ci_note": "csak A.4 (N=20) resample-elve, A.5 (N=3, garantalt 0) fix konstansként hozzaadva",
+      "recall_ci_a4_only": [
+        1.0,
+        1.0
+      ],
+      "fp_count": 0,
+      "fp_ci": [
+        0.0,
+        0.0
+      ],
+      "precision_ci": [
+        1.0,
+        1.0
+      ],
+      "f1_ci": [
+        1.0,
+        1.0
+      ],
+      "precision": 1.0
+    },
+    "T0888": {
+      "scenario": "A2",
+      "n_effective": 20,
+      "tp": 0,
+      "fn": 20,
+      "recall": 0.0,
+      "recall_ci": [
+        0.0,
+        0.0
+      ],
+      "precision": null,
+      "f1": null,
+      "note": "Nincs aktiv detektalasi szabaly (Q7) -- precision/F1 N/A, nem 0.",
+      "id_correction_note": "Javitva 2026-08-25 (2.4/0.1 tetel): korabban tevesen T0846-kent szerepelt -- a hivatalos MITRE-definicio szerint az A.2 (egyetlen ismert eszkozon vegzett regisztertermkep-enumeracio) T0888 (Remote System Information Discovery), nem T0846. Csak a technika-ID cimke valtozott, a mert ertekek (n_effective, fn) nem."
+    },
+    "T0846": {
+      "scenario": "A3",
+      "n_effective": 3,
+      "tp": 0,
+      "fn": 3,
+      "recall": 0.0,
+      "recall_ci": null,
+      "precision": null,
+      "f1": null,
+      "note": "Nincs aktiv detektalasi szabaly (Q7) -- precision/F1 N/A, nem 0.",
+      "id_correction_note": "Javitva 2026-08-25 (2.4/0.1 tetel): korabban tevesen T0888-kent szerepelt -- a hivatalos MITRE-definicio szerint az A.3 (/24 alhalozati TCP connect-sweep) T0846 (Remote System Discovery), nem T0888. Csak a technika-ID cimke valtozott, a mert ertekek (n_effective, fn) nem."
+    },
+    "T0843": {
+      "scenario": "A6",
+      "n_effective": 3,
+      "tp": 0,
+      "fn": 3,
+      "recall": 0.0,
+      "recall_ci": null,
+      "precision": null,
+      "f1": null,
+      "note": "Nincs aktiv detektalasi szabaly (Q7) -- precision/F1 N/A, nem 0."
+    }
+  },
+  "macro_f1": {
+    "components": {
+      "T0836": 1.0,
+      "T0816": 0.9302325581395349
+    },
+    "t0836_naive_f1_reference": 0.6071428571428571,
+    "value": 0.9651162790697675,
+    "note": "Technikankenti atlag, csak aktiv-szabalyu technikak (T0836 vegso/finomitott szaballyal, T0816) -- Q7 dontes. Javitva 2026-08-25: korabban a T0836 naiv es finomitott valtozata ket kulon tagkent szerepelt (ertek 0.8457918050941307), ami a technika-alapu makro-atlagolas definiciojaval inkonzisztens volt -- lasd t0836_naive_f1_reference a naiv valtozat kulon megorzott ertekeert."
+  },
+  "micro_f1": {
+    "rule_variant": "refined",
+    "tp": 37,
+    "fp": 0,
+    "fn": 29,
+    "precision": 1.0,
+    "recall": 0.5606060606060606,
+    "value": 0.7184466019417475
+  },
+  "macro_recall": {
+    "value": 0.3739130434782608,
+    "ci": [
+      0.6231884057971014,
+      0.6231884057971014
+    ],
+    "note": "Retegzett bootstrap CI (Q8) csak T0836/T0888/T0816-A4 resamplinggel; T0846/T0843/T0816-A5 fix 0 vakfoltkent szamit a pontbecslesbe, de nem a CI-be -- lasd E) szakasz. (T0846/T0888 felcserelve 2026-08-25, 2.4/0.1 tetel.)"
+  }
+}

@@ -1,0 +1,793 @@
+Bemenet: docs/tdk/related-works/forrasok/ics-attack-19.2.json sha256=08b83d2cea6b6d6752468ef0e62e2ab2a53c9443ef72c439ecccb07ab9e89da9
+Bemenet: docs/tdk/related-works/forrasok/ics-attack-20.0.json sha256=c9ca0ce523a1b5e512060a390415e8aefe8f6d32c5f82d7de81264960c1e1183
+
+################ ics-attack-19.2.json ################
+objektumok összesen: 2173
+
+## 1. Objektumtípusonkénti darabszám (összes / revoked=true / x_mitre_deprecated=true)
+attack-pattern                     118  revoked=   9  deprecated=  12
+campaign                             9  revoked=   0  deprecated=   1
+course-of-action                    52  revoked=   0  deprecated=   0
+identity                             1  revoked=   0  deprecated=   0
+intrusion-set                       16  revoked=   2  deprecated=   0
+malware                             30  revoked=   0  deprecated=   7
+marking-definition                   1  revoked=   0  deprecated=   0
+relationship                      1667  revoked=   0  deprecated=   0
+x-mitre-analytic                    97  revoked=   0  deprecated=   0
+x-mitre-asset                       18  revoked=   0  deprecated=   0
+x-mitre-collection                   1  revoked=   0  deprecated=   0
+x-mitre-data-component              36  revoked=   0  deprecated=   0
+x-mitre-data-source                 17  revoked=   0  deprecated=  17
+x-mitre-detection-strategy          97  revoked=   0  deprecated=   0
+x-mitre-matrix                       1  revoked=   0  deprecated=   0
+x-mitre-tactic                      12  revoked=   0  deprecated=   0
+
+## 2. Relationship-típus × (forrástípus → céltípus) (összes / ebből revoked / deprecated)
+attributed-to    campaign                     -> intrusion-set                    5  revoked=  0  deprecated=  0
+detects          x-mitre-detection-strategy   -> attack-pattern                  97  revoked=  0  deprecated=  0
+mitigates        course-of-action             -> attack-pattern                 402  revoked=  0  deprecated=  0
+revoked-by       attack-pattern               -> attack-pattern                   9  revoked=  0  deprecated=  0
+revoked-by       intrusion-set                -> intrusion-set                    2  revoked=  0  deprecated=  0
+subtechnique-of  attack-pattern               -> attack-pattern                  18  revoked=  0  deprecated=  0
+targets          attack-pattern               -> x-mitre-asset                  842  revoked=  0  deprecated=  0
+uses             campaign                     -> attack-pattern                  82  revoked=  0  deprecated=  0
+uses             campaign                     -> malware                          5  revoked=  0  deprecated=  0
+uses             intrusion-set                -> attack-pattern                  20  revoked=  0  deprecated=  0
+uses             intrusion-set                -> malware                         16  revoked=  0  deprecated=  0
+uses             malware                      -> attack-pattern                 169  revoked=  0  deprecated=  0
+
+## 3. Detektálási objektumtípusok jelenléte és 1-1 minta (az id szerint első aktív objektum, nyersen)
+x-mitre-data-component: VAN (36 db)
+{
+  "type": "x-mitre-data-component",
+  "spec_version": "2.1",
+  "id": "x-mitre-data-component--1177a4c5-31c8-400c-8544-9071166afa0e",
+  "created": "2021-10-20T15:05:19.273Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/datacomponents/DC0045",
+      "external_id": "DC0045"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2025-10-21T15:10:28.402Z",
+  "name": "Windows Registry Key Deletion",
+  "description": "The removal of a registry key within the Windows operating system.\n\n*Data Collection Measures:*\n\n- Windows Event Logs\n    - Event ID 4658 - Registry Key Handle Closed: Captures when a handle to a registry key is closed, which may indicate deletion.\n    - Event ID 4660 - Object Deleted: Logs when a registry key is deleted.\n- Sysmon (System Monitor) for Windows\n    - Sysmon Event ID 12 - Registry Key Deleted: Logs when a registry key is removed.\n    - Sysmon Event ID 13 - Registry Value Deleted: Captures removal of specific registry values.\n- Endpoint Detection and Response (EDR) Solutions\n    - Monitor registry deletions for suspicious behavior.",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_deprecated": false,
+  "x_mitre_domains": [
+    "ics-attack",
+    "enterprise-attack"
+  ],
+  "x_mitre_version": "2.0",
+  "x_mitre_attack_spec_version": "3.3.0",
+  "x_mitre_log_sources": [
+    {
+      "name": "Windows Registry",
+      "channel": "None"
+    }
+  ]
+}
+x-mitre-data-source: VAN (17 db)
+{
+  "type": "x-mitre-data-source",
+  "spec_version": "2.1",
+  "id": "x-mitre-data-source--0b4f86ed-f4ab-46a3-8ed1-175be1974da6",
+  "created": "2021-10-20T15:05:19.271Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/datasources/DS0002",
+      "external_id": "DS0002"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2025-10-21T15:10:28.402Z",
+  "name": "User Account",
+  "description": "A profile representing a user, device, service, or application used to authenticate and access resources",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_platforms": [
+    "Containers",
+    "IaaS",
+    "Linux",
+    "SaaS",
+    "Windows",
+    "macOS",
+    "Office Suite",
+    "Identity Provider",
+    "ESXi"
+  ],
+  "x_mitre_deprecated": true,
+  "x_mitre_domains": [
+    "ics-attack",
+    "enterprise-attack"
+  ],
+  "x_mitre_version": "1.2",
+  "x_mitre_attack_spec_version": "3.2.0",
+  "x_mitre_contributors": [
+    "Center for Threat-Informed Defense (CTID)"
+  ],
+  "x_mitre_collection_layers": [
+    "Cloud Control Plane",
+    "Container",
+    "Host"
+  ]
+}
+x-mitre-detection-strategy: VAN (97 db)
+{
+  "type": "x-mitre-detection-strategy",
+  "spec_version": "2.1",
+  "id": "x-mitre-detection-strategy--04bcf663-e6cd-42bf-8864-f4d1ad345263",
+  "created": "2025-10-21T15:10:28.402Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/detectionstrategies/DET0780",
+      "external_id": "DET0780"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2026-05-12T16:34:50.667Z",
+  "name": "Detection of Rootkit",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_deprecated": false,
+  "x_mitre_version": "1.0",
+  "x_mitre_attack_spec_version": "3.3.0",
+  "x_mitre_domains": [
+    "ics-attack"
+  ],
+  "x_mitre_analytic_refs": [
+    "x-mitre-analytic--ec695157-8c3c-439b-9925-459c9d4172f0"
+  ]
+}
+x-mitre-analytic: VAN (97 db)
+{
+  "type": "x-mitre-analytic",
+  "spec_version": "2.1",
+  "id": "x-mitre-analytic--0099659c-6a20-4331-9d47-b1c0c380fd6b",
+  "created": "2025-10-21T15:10:28.402Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/detectionstrategies/DET0749#AN1881",
+      "external_id": "AN1881"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2025-10-21T15:10:28.402Z",
+  "name": "Analytic 1881",
+  "description": "Monitor for unexpected/abnormal access to files that may be malicious collection of local data, such as user files (e.g., .pdf, .docx, .jpg, .dwg   ) or local databases.\nMonitor for newly executed processes that may search local system sources, such as file systems or local databases, to find files of interest and sensitive data.\nMonitor for any suspicious attempts to enable scripts running on a system. If scripts are not commonly used on a system, but enabled, scripts running out of cycle from patching or other administrator functions are suspicious. Scripts should be captured from the file system when possible to determine their actions and intent. Data may also be acquired through Windows system management tools such as [Windows Management Instrumentation](https://attack.mitre.org/techniques/T1047) and [PowerShell](https://attack.mitre.org/techniques/T1059/001).\nMonitor for API calls that may search local system sources, such as file systems or local databases, to find files of interest and sensitive data. \nMonitor executed commands and arguments that may search and collect local system sources, such as file systems or local databases, to find files of interest and sensitive data. Remote access tools with built-in features may interact directly with the Windows API to gather data. Data may also be acquired through Windows system management tools such as [Windows Management Instrumentation](https://attack.mitre.org/techniques/T1047) and [PowerShell](https://attack.mitre.org/techniques/T1059/001).",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_version": "1.0",
+  "x_mitre_attack_spec_version": "3.3.0",
+  "x_mitre_domains": [
+    "ics-attack"
+  ],
+  "x_mitre_platforms": [
+    "None"
+  ],
+  "x_mitre_log_source_references": [
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--235b7491-2d2b-4617-9a52-3c0783680f71",
+      "name": "File",
+      "channel": "None"
+    },
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--3d20385b-24ef-40e1-9f56-f39750379077",
+      "name": "Process",
+      "channel": "None"
+    },
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--9f387817-df83-432a-b56b-a8fb7f71eedd",
+      "name": "Script",
+      "channel": "None"
+    },
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--9bde2f9d-a695-4344-bfac-f2dce13d121e",
+      "name": "Process",
+      "channel": "None"
+    },
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--685f917a-e95e-4ba0-ade1-c7d354dae6e0",
+      "name": "Command",
+      "channel": "None"
+    }
+  ],
+  "x_mitre_deprecated": false
+}
+
+## 4. Kötési mezők (a fájlban talált mezőnevek és értéktípusok)
+x-mitre-data-component: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_log_sources', 'x_mitre_modified_by_ref']
+x-mitre-data-source: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_modified_by_ref']
+x-mitre-detection-strategy: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_analytic_refs', 'x_mitre_modified_by_ref']
+x-mitre-analytic: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_log_source_references', 'x_mitre_modified_by_ref']
+attack-pattern: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_modified_by_ref']
+x-mitre-analytic.x_mitre_log_source_references[] elemkulcsai: {'x_mitre_data_component_ref': 287, 'name': 287, 'channel': 287}
+  ... x_mitre_data_component_ref céltípusai: {'x-mitre-data-component': 287}
+x-mitre-analytic.x_mitre_platforms értékei (repr): {"['None']": 97}
+aktív attack-pattern aktív detektálási stratégia nélkül: 0 []
+x-mitre-detection-strategy.x_mitre_analytic_refs céltípusai: {'x-mitre-analytic': 97}
+x-mitre-data-component.x_mitre_log_sources[] elemkulcsai: {'name': 2556, 'channel': 2556}
+x-mitre-data-component adatforrás-hivatkozó mezői: NINCS
+
+## 5. 'detects' relációk forrástípus szerint
+detects: x-mitre-detection-strategy -> attack-pattern [aktív]: 97
+x-mitre-data-component --detects--> attack-pattern összesen: 0
+
+## 7. Vizsgált ID-k – v19.2
+T0836 | Modify Parameter | aktív | attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722
+   DET DET0776 | Detection of Modify Parameter
+      AN AN1908 [None]
+         DC DC0110 Asset Inventory | name=Asset | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0038 Application Log Content | name=Application Log | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0108 Device Alarm | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+T0846 | Remote System Discovery | aktív | attack-pattern--d5a69cfb-fc2a-46cb-99eb-74b236db5061
+   DET DET0739 | Detection of Remote System Discovery
+      AN AN1872 [None]
+         DC DC0055 File Access | name=File | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0032 Process Creation | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0078 Network Traffic Flow | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+T0846.001 | Port Scan | aktív | attack-pattern--5d24bb1d-4487-4923-ae3a-8e679092ac7a
+   DET DET0907 | Detection of Port Scan
+      AN AN2050 [None]
+         DC DC0078 Network Traffic Flow | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0085 Network Traffic Content | name=Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0032 Process Creation | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0082 Network Connection Creation | name=Network | channel=None | network_dc_FELTETELEZES=IGEN
+T0888 | Remote System Information Discovery | aktív | attack-pattern--2fedbe69-581f-447d-8a78-32ee7db939a9
+   DET DET0787 | Detection of Remote System Information Discovery
+      AN AN1919 [None]
+         DC DC0078 Network Traffic Flow | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0055 File Access | name=File | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0032 Process Creation | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+T0816 | Device Restart/Shutdown | aktív | attack-pattern--25dfc8ad-bd73-4dfd-84a9-3c3d383f76e9
+   DET DET0801 | Detection of Device Restart/Shutdown
+      AN AN1933 [None]
+         DC DC0078 Network Traffic Flow | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0038 Application Log Content | name=Application Log | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0108 Device Alarm | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+T0843 | Program Download | aktív | attack-pattern--be69c571-d746-4b1f-bdd0-c0c9817e9068
+   DET DET0752 | Detection of Program Download
+      AN AN1884 [None]
+         DC DC0108 Device Alarm | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0110 Asset Inventory | name=Asset | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0038 Application Log Content | name=Application Log | channel=None | network_dc_FELTETELEZES=NEM
+T0843.001 | Download All | aktív | attack-pattern--77015a55-eef8-4f71-a071-b152f82ec1ef
+   DET DET0913 | Detection of Program Download All
+      AN AN2056 [None]
+         DC DC0108 Device Alarm | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0110 Asset Inventory | name=Asset | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0038 Application Log Content | name=Application Log | channel=None | network_dc_FELTETELEZES=NEM
+T1692.001 | Command Message | aktív | attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265
+   DET DET0794 | Detection of Unauthorized Command Message
+      AN AN1926 [None]
+         DC DC0107 Process History/Live Data | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0038 Application Log Content | name=Application Log | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0078 Network Traffic Flow | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0109 Process/Event Alarm | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+T0893 | Data from Local System | aktív | attack-pattern--fa3aa267-da22-4bdd-961f-03223322a8d5
+   DET DET0749 | Detection of Data from Local System
+      AN AN1881 [None]
+         DC DC0055 File Access | name=File | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0032 Process Creation | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0029 Script Execution | name=Script | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0021 OS API Execution | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0064 Command Execution | name=Command | channel=None | network_dc_FELTETELEZES=NEM
+T0821 | Modify Controller Tasking | aktív | attack-pattern--09a61657-46e1-439e-b3ed-3e4556a78243
+   DET DET0741 | Detection of Modify Controller Tasking
+      AN AN1874 [None]
+         DC DC0038 Application Log Content | name=Application Log | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0108 Device Alarm | name=Operational Databases | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0111 Software | name=Asset | channel=None | network_dc_FELTETELEZES=NEM
+T0849 | Masquerading | aktív | attack-pattern--ba203963-3182-41ac-af14-7e7ebc83cd61
+   DET DET0725 | Detection of Masquerading
+      AN AN1858 [None]
+         DC DC0060 Service Creation | name=Service | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0061 File Modification | name=File | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0034 Process Metadata | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0064 Command Execution | name=Command | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0012 Scheduled Job Modification | name=Scheduled Job | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0065 Service Modification | name=Service | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0059 File Metadata | name=File | channel=None | network_dc_FELTETELEZES=NEM
+         DC DC0001 Scheduled Job Creation | name=Scheduled Job | channel=None | network_dc_FELTETELEZES=NEM
+T0834 | Native API | aktív | attack-pattern--b52870cc-83f3-473c-b895-72d91751030b
+   DET DET0753 | Detection of Native API
+      AN AN1885 [None]
+         DC DC0021 OS API Execution | name=Process | channel=None | network_dc_FELTETELEZES=NEM
+T1694 | Insecure Credentials | aktív | attack-pattern--3e9b182e-e493-49e1-9a9b-bd0dfcd34a7c
+   DET DET0905 | Detection of Insecure Credentials
+      AN AN2048 [None]
+         DC DC0085 Network Traffic Content | name=Network Traffic | channel=None | network_dc_FELTETELEZES=IGEN
+         DC DC0067 Logon Session Creation | name=Logon Session | channel=None | network_dc_FELTETELEZES=NEM
+T0855 | Unauthorized Command Message | revoked | attack-pattern--40b300ba-f553-48bf-862e-9471b220d455
+   revoked-by -> T1692.001 Command Message attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265
+
+## 8. network_dc_FELTETELEZES – v19.2
+network_dc_FELTETELEZES = IGEN, ha az x-mitre-data-component 'name' mezője kis- és nagybetű-érzéketlenül tartalmazza a következők egyikét: 'network', 'traffic', 'flow', 'connection'; különben NEM. Név alapú heurisztika (FELTÉTELEZÉS), nem a MITRE besorolása.
+IGEN-re besorolt adatkomponensek (4 / 36):
+   DC0078 | Network Traffic Flow
+   DC0082 | Network Connection Creation
+   DC0085 | Network Traffic Content
+   DC0102 | Network Share Access
+NEM-re besorolt adatkomponensek:
+   DC0001 | Scheduled Job Creation
+   DC0002 | User Account Authentication
+   DC0004 | Firmware Modification
+   DC0005 | Scheduled Job Metadata
+   DC0012 | Scheduled Job Modification
+   DC0016 | Module Load
+   DC0021 | OS API Execution
+   DC0029 | Script Execution
+   DC0032 | Process Creation
+   DC0033 | Process Termination
+   DC0034 | Process Metadata
+   DC0038 | Application Log Content
+   DC0039 | File Creation
+   DC0040 | File Deletion
+   DC0041 | Service Metadata
+   DC0042 | Drive Creation
+   DC0045 | Windows Registry Key Deletion
+   DC0046 | Drive Modification
+   DC0055 | File Access
+   DC0059 | File Metadata
+   DC0060 | Service Creation
+   DC0061 | File Modification
+   DC0063 | Windows Registry Key Modification
+   DC0064 | Command Execution
+   DC0065 | Service Modification
+   DC0067 | Logon Session Creation
+   DC0088 | Logon Session Metadata
+   DC0107 | Process History/Live Data
+   DC0108 | Device Alarm
+   DC0109 | Process/Event Alarm
+   DC0110 | Asset Inventory
+   DC0111 | Software
+
+################ ics-attack-20.0.json ################
+objektumok összesen: 2566
+
+## 1. Objektumtípusonkénti darabszám (összes / revoked=true / x_mitre_deprecated=true)
+attack-pattern                     127  revoked=   9  deprecated=  14
+campaign                            11  revoked=   0  deprecated=   1
+course-of-action                    53  revoked=   0  deprecated=   0
+identity                             1  revoked=   0  deprecated=   0
+intrusion-set                       16  revoked=   2  deprecated=   0
+malware                             32  revoked=   0  deprecated=   7
+marking-definition                   1  revoked=   0  deprecated=   0
+relationship                      1832  revoked=   0  deprecated=   0
+x-mitre-analytic                   302  revoked=   0  deprecated=   0
+x-mitre-asset                       18  revoked=   0  deprecated=   0
+x-mitre-collection                   1  revoked=   0  deprecated=   0
+x-mitre-data-component              36  revoked=   0  deprecated=   0
+x-mitre-data-source                 17  revoked=   0  deprecated=  17
+x-mitre-detection-strategy         106  revoked=   0  deprecated=   0
+x-mitre-matrix                       1  revoked=   0  deprecated=   0
+x-mitre-tactic                      12  revoked=   0  deprecated=   0
+
+## 2. Relationship-típus × (forrástípus → céltípus) (összes / ebből revoked / deprecated)
+attributed-to    campaign                     -> intrusion-set                    5  revoked=  0  deprecated=  0
+detects          x-mitre-detection-strategy   -> attack-pattern                 104  revoked=  0  deprecated=  0
+mitigates        course-of-action             -> attack-pattern                 424  revoked=  0  deprecated=  0
+revoked-by       attack-pattern               -> attack-pattern                   9  revoked=  0  deprecated=  0
+revoked-by       intrusion-set                -> intrusion-set                    2  revoked=  0  deprecated=  0
+subtechnique-of  attack-pattern               -> attack-pattern                  26  revoked=  0  deprecated=  0
+targets          attack-pattern               -> x-mitre-asset                  933  revoked=  0  deprecated=  0
+uses             campaign                     -> attack-pattern                  94  revoked=  0  deprecated=  0
+uses             campaign                     -> malware                          6  revoked=  0  deprecated=  0
+uses             intrusion-set                -> attack-pattern                  39  revoked=  0  deprecated=  0
+uses             intrusion-set                -> malware                         16  revoked=  0  deprecated=  0
+uses             malware                      -> attack-pattern                 174  revoked=  0  deprecated=  0
+
+## 3. Detektálási objektumtípusok jelenléte és 1-1 minta (az id szerint első aktív objektum, nyersen)
+x-mitre-data-component: VAN (36 db)
+{
+  "type": "x-mitre-data-component",
+  "spec_version": "2.1",
+  "id": "x-mitre-data-component--1177a4c5-31c8-400c-8544-9071166afa0e",
+  "created": "2021-10-20T15:05:19.273Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/datacomponents/DC0045",
+      "external_id": "DC0045"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2025-10-21T15:10:28.402Z",
+  "name": "Windows Registry Key Deletion",
+  "description": "The removal of a registry key within the Windows operating system.\n\n*Data Collection Measures:*\n\n- Windows Event Logs\n    - Event ID 4658 - Registry Key Handle Closed: Captures when a handle to a registry key is closed, which may indicate deletion.\n    - Event ID 4660 - Object Deleted: Logs when a registry key is deleted.\n- Sysmon (System Monitor) for Windows\n    - Sysmon Event ID 12 - Registry Key Deleted: Logs when a registry key is removed.\n    - Sysmon Event ID 13 - Registry Value Deleted: Captures removal of specific registry values.\n- Endpoint Detection and Response (EDR) Solutions\n    - Monitor registry deletions for suspicious behavior.",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_deprecated": false,
+  "x_mitre_domains": [
+    "ics-attack",
+    "enterprise-attack"
+  ],
+  "x_mitre_version": "2.0",
+  "x_mitre_attack_spec_version": "3.3.0",
+  "x_mitre_log_sources": [
+    {
+      "name": "Windows Registry",
+      "channel": "None"
+    }
+  ]
+}
+x-mitre-data-source: VAN (17 db)
+{
+  "type": "x-mitre-data-source",
+  "spec_version": "2.1",
+  "id": "x-mitre-data-source--0b4f86ed-f4ab-46a3-8ed1-175be1974da6",
+  "created": "2021-10-20T15:05:19.271Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/datasources/DS0002",
+      "external_id": "DS0002"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2025-10-21T15:10:28.402Z",
+  "name": "User Account",
+  "description": "A profile representing a user, device, service, or application used to authenticate and access resources",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_platforms": [
+    "Containers",
+    "IaaS",
+    "Linux",
+    "SaaS",
+    "Windows",
+    "macOS",
+    "Office Suite",
+    "Identity Provider",
+    "ESXi"
+  ],
+  "x_mitre_deprecated": true,
+  "x_mitre_domains": [
+    "ics-attack",
+    "enterprise-attack"
+  ],
+  "x_mitre_version": "1.2",
+  "x_mitre_attack_spec_version": "3.2.0",
+  "x_mitre_contributors": [
+    "Center for Threat-Informed Defense (CTID)"
+  ],
+  "x_mitre_collection_layers": [
+    "Cloud Control Plane",
+    "Container",
+    "Host"
+  ]
+}
+x-mitre-detection-strategy: VAN (106 db)
+{
+  "type": "x-mitre-detection-strategy",
+  "spec_version": "2.1",
+  "id": "x-mitre-detection-strategy--02744e21-5d1c-4290-820f-d355fc044f50",
+  "created": "2026-09-25T20:00:54.346Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/detectionstrategies/DET0931",
+      "external_id": "DET0931"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2026-09-25T20:00:54.346Z",
+  "name": "Behavioral Detection of Unix Shell Execution in ICS",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_deprecated": false,
+  "x_mitre_version": "1.0",
+  "x_mitre_attack_spec_version": "3.3.0",
+  "x_mitre_domains": [
+    "ics-attack"
+  ],
+  "x_mitre_analytic_refs": [
+    "x-mitre-analytic--a5255607-9d66-473a-ac88-8b4d0f2527f3",
+    "x-mitre-analytic--a5361f96-a1da-426b-9211-33f29d7d217a",
+    "x-mitre-analytic--50e94b5a-3b2b-450d-a33c-c6b0d72f7b50"
+  ]
+}
+x-mitre-analytic: VAN (302 db)
+{
+  "type": "x-mitre-analytic",
+  "spec_version": "2.1",
+  "id": "x-mitre-analytic--0099659c-6a20-4331-9d47-b1c0c380fd6b",
+  "created": "2025-10-21T15:10:28.402Z",
+  "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "revoked": false,
+  "external_references": [
+    {
+      "source_name": "mitre-attack",
+      "url": "https://attack.mitre.org/detectionstrategies/DET0749#AN1881",
+      "external_id": "AN1881"
+    }
+  ],
+  "object_marking_refs": [
+    "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+  ],
+  "modified": "2026-10-13T17:47:43.395Z",
+  "name": "Analytic 1881",
+  "description": "Monitor Windows Security Event ID 4663 on explicitly audited ICS data paths and correlate repeated ReadData/ListDirectory access across multiple sensitive files or directories by an account/process outside the approved engineering, backup, or application baseline. This requires Object Access auditing and SACLs on the monitored paths; Sysmon does not provide generic file-read telemetry. Alert when the bulk-read pattern occurs outside an approved backup/export window or is followed by staging, compression, or network transfer.",
+  "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+  "x_mitre_deprecated": false,
+  "x_mitre_version": "1.0",
+  "x_mitre_attack_spec_version": "3.3.0",
+  "x_mitre_domains": [
+    "ics-attack"
+  ],
+  "x_mitre_platforms": [
+    "Windows"
+  ],
+  "x_mitre_log_source_references": [
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--235b7491-2d2b-4617-9a52-3c0783680f71",
+      "name": "WinEventLog:Sysmon",
+      "channel": "Sequential file reads across multiple Industrial Control Systems (ICS) data paths by image not in authorized ICS applications, exceeding bulk access threshold within a short window"
+    },
+    {
+      "x_mitre_data_component_ref": "x-mitre-data-component--3d20385b-24ef-40e1-9f56-f39750379077",
+      "name": "WinEventLog:Sysmon",
+      "channel": "EventCode=1 of archive utility immediately following bulk file access pattern from same parent process tree"
+    }
+  ],
+  "x_mitre_mutable_elements": [
+    {
+      "field": "AuthorizedICSApplications",
+      "description": "Allowlist of processes expected to perform legitimate bulk reads of ICS data."
+    },
+    {
+      "field": "BulkAccessThreshold",
+      "description": "Number of distinct files read within the detection window that constitutes bulk collection."
+    },
+    {
+      "field": "ICSDataPaths",
+      "description": "File system paths containing ICS configuration, project, and sensitive operational data."
+    }
+  ]
+}
+
+## 4. Kötési mezők (a fájlban talált mezőnevek és értéktípusok)
+x-mitre-data-component: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_log_sources', 'x_mitre_modified_by_ref']
+x-mitre-data-source: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_modified_by_ref']
+x-mitre-detection-strategy: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_analytic_refs', 'x_mitre_modified_by_ref']
+x-mitre-analytic: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_log_source_references', 'x_mitre_modified_by_ref']
+attack-pattern: hivatkozó/kötő mezők = ['created_by_ref', 'external_references', 'object_marking_refs', 'x_mitre_modified_by_ref']
+x-mitre-analytic.x_mitre_log_source_references[] elemkulcsai: {'x_mitre_data_component_ref': 443, 'name': 443, 'channel': 443}
+  ... x_mitre_data_component_ref céltípusai: {'x-mitre-data-component': 431, 'FELOLDATLAN': 12}
+  FELOLDATLAN: AN1855 -> x-mitre-data-component--1887a270-576a-4049-84de-ef746b2572d6 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN1899 -> x-mitre-data-component--1887a270-576a-4049-84de-ef746b2572d6 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN1932 -> x-mitre-data-component--3551476e-14f5-4e48-a518-e82135329e03 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN2154 -> x-mitre-data-component--1887a270-576a-4049-84de-ef746b2572d6 | name=auditd:SYSCALL
+  FELOLDATLAN: AN2167 -> x-mitre-data-component--3551476e-14f5-4e48-a518-e82135329e03 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN2261 -> x-mitre-data-component--3551476e-14f5-4e48-a518-e82135329e03 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN2264 -> x-mitre-data-component--d2ff4b56-8351-4ed8-b0fb-d8605366005f | name=WinEventLog:Security
+  FELOLDATLAN: AN2266 -> x-mitre-data-component--d2ff4b56-8351-4ed8-b0fb-d8605366005f | name=WinEventLog:Security
+  FELOLDATLAN: AN2267 -> x-mitre-data-component--746f095a-f84c-4ccc-90a5-c7caa5c100a2 | name=WinEventLog:Security
+  FELOLDATLAN: AN2269 -> x-mitre-data-component--3551476e-14f5-4e48-a518-e82135329e03 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN2272 -> x-mitre-data-component--3551476e-14f5-4e48-a518-e82135329e03 | name=WinEventLog:Sysmon
+  FELOLDATLAN: AN2279 -> x-mitre-data-component--1887a270-576a-4049-84de-ef746b2572d6 | name=WinEventLog:Sysmon
+x-mitre-analytic.x_mitre_platforms értékei (repr): {"['Windows']": 77, "['Embedded']": 83, "['None']": 14, "['Network Devices']": 53, "['Linux']": 75}
+aktív attack-pattern aktív detektálási stratégia nélkül: 0 []
+x-mitre-detection-strategy.x_mitre_analytic_refs céltípusai: {'x-mitre-analytic': 302}
+x-mitre-data-component.x_mitre_log_sources[] elemkulcsai: {'name': 3132, 'channel': 3132}
+x-mitre-data-component adatforrás-hivatkozó mezői: NINCS
+
+## 5. 'detects' relációk forrástípus szerint
+detects: x-mitre-detection-strategy -> attack-pattern [aktív]: 104
+x-mitre-data-component --detects--> attack-pattern összesen: 0
+
+## 7. Vizsgált ID-k – v20.0
+T0836 | Modify Parameter | aktív | attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722
+   DET DET0776 | Detection of Modify Parameter
+      AN AN1908 [Embedded]
+         DC DC0107 Process History/Live Data | name=operationaldb:ProcessHistory | channel=tag value deviates from rolling baseline mean by more than parameter drift threshold percent within time window following a flagged write | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=write function code (FC 6/16) to setpoint address range with value outside baseline value range, or from source not in approved write sources | network_dc_FELTETELEZES=IGEN
+         DC DC0038 Application Log Content | name=scada:applog | channel=parameter write logged without corresponding operator_id in the Human-Machine Interface (HMI) audit trail | network_dc_FELTETELEZES=NEM
+      AN AN2145 [Linux]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=decoded ICS protocol write/setpoint operation to a control/output address from a client identity or source not in the approved control-application baseline | network_dc_FELTETELEZES=IGEN
+      AN AN2209 [Windows]
+         DC DC0038 Application Log Content | name=opc:applog | channel=write to setpoint tag from client not in approved Open Platform Communications (OPC) clients with value outside baseline value range | network_dc_FELTETELEZES=NEM
+T0846 | Remote System Discovery | aktív | attack-pattern--d5a69cfb-fc2a-46cb-99eb-74b236db5061
+   DET DET0739 | Detection of Remote System Discovery
+      AN AN1872 [Windows]
+         DC DC0032 Process Creation | name=WinEventLog:Sysmon | channel=EventCode=1 of network discovery tool (nmap, PLCScan) from process not in authorized network tools list | network_dc_FELTETELEZES=NEM
+      AN AN2132 [Linux]
+         DC DC0032 Process Creation | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): execve of network discovery tool (nmap, arp-scan, PLCScan) by User Identifier (UID) not in authorized net admin UIDs | network_dc_FELTETELEZES=NEM
+      AN AN2171 [Embedded]
+         DC DC0078 Network Traffic Flow | name=netflow:ipfix | channel=IPFIX/NetFlow flow record (src/dst IP, src/dst port, protocol, packets/bytes/time): source generates flows to every IP in device subnet in sequential order within discovery time window | network_dc_FELTETELEZES=IGEN
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=EtherNet/IP ListIdentity broadcast or sequential Industrial Control System (ICS) protocol connection attempts across Internet Protocol (IP) range from source not in approved Supervisory Control and Data Acqusition (SCADA) servers | network_dc_FELTETELEZES=IGEN
+      AN AN2172 [Network Devices]
+         DC DC0078 Network Traffic Flow | name=netflow:ipfix | channel=IPFIX/NetFlow flow record (src/dst IP, src/dst port, protocol, packets/bytes/time): Internet Control Message Protocol (ICMP) echo requests or Address Resolution Protocol (ARP) broadcasts to all Internet Protocol (IP) addresses in subnet sequentially from single source within discovery time window | network_dc_FELTETELEZES=IGEN
+T0846.001 | Port Scan | aktív | attack-pattern--5d24bb1d-4487-4923-ae3a-8e679092ac7a
+   DET DET0907 | Detection of Port Scan
+      AN AN2050 [Windows]
+         DC DC0032 Process Creation | name=WinEventLog:Sysmon | channel=EventCode=1 of port scanning utility with arguments targeting Industrial Control Systems (ICS) protocol port ranges | network_dc_FELTETELEZES=NEM
+      AN AN2161 [Linux]
+         DC DC0032 Process Creation | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): execve of nmap/masscan with arguments targeting Industrial Control Systems (ICS) protocol port ranges | network_dc_FELTETELEZES=NEM
+      AN AN2181 [Network Devices]
+         DC DC0078 Network Traffic Flow | name=netflow:ipfix | channel=IPFIX/NetFlow flow record (src/dst IP, src/dst port, protocol, packets/bytes/time): source generates short-lived flows to single dst across multiple Industrial Control Systems (ICS) protocol ports (502,102,44818,20000,4840) within port scan time window, source not in approved Supervisory Control and Data Acquisition (SCADA) servers | network_dc_FELTETELEZES=IGEN
+      AN AN2226 [Embedded]
+         DC DC0082 Network Connection Creation | name=NSM:Connections | channel=rapid sequential connection attempts to same device Internet Protocol (IP) address across multiple Industrial Control System (ICS) protocol ports from source not in approved Supervisory Control and Data Acquisition (SCADA) servers | network_dc_FELTETELEZES=IGEN
+T0888 | Remote System Information Discovery | aktív | attack-pattern--2fedbe69-581f-447d-8a78-32ee7db939a9
+   DET DET0787 | Detection of Remote System Information Discovery
+      AN AN1919 [Windows]
+         DC DC0032 Process Creation | name=WinEventLog:Sysmon | channel=EventCode=1 remote-management command (for example wmic /node, winrs, or PowerShell/CIM with -ComputerName) includes a remote target and queries system identity/inventory outside the authorized management baseline | network_dc_FELTETELEZES=NEM
+      AN AN2148 [Linux]
+         DC DC0032 Process Creation | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): syscall=execve; SSH/SNMP/remote-management command includes a remote target host and queries system identity/inventory from an account outside the authorized management set | network_dc_FELTETELEZES=NEM
+      AN AN2186 [Network Devices]
+         DC DC0078 Network Traffic Flow | name=networkdevice:snmp | channel=Simple Network Management Protocol (SNMP) GET to system info OID from source not in approved Network Management System (NMS) Classless Inter-Domain Routing (CIDR) subnet | network_dc_FELTETELEZES=IGEN
+      AN AN2249 [Embedded]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=SZL module inventory, Identity Object, or Device Attributes query from source not in approved Supervisory Control and Data Acquisition (SCADA) servers | network_dc_FELTETELEZES=IGEN
+T0816 | Device Restart/Shutdown | aktív | attack-pattern--25dfc8ad-bd73-4dfd-84a9-3c3d383f76e9
+   DET DET0801 | Detection of Device Restart/Shutdown
+      AN AN1933 [Embedded]
+         DC DC0108 Device Alarm | name=operationaldb:AlarmEvent | channel=more than one device generates restart/offline alarm within bulk restart time window without open maintenance ticket | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=restart/reset service from source not in engineering workstation list outside change control window | network_dc_FELTETELEZES=IGEN
+         DC DC0078 Network Traffic Flow | name=NSM:Content | channel=non-standard or malformed packet to device-specific diagnostic port immediately preceding a device-offline alarm | network_dc_FELTETELEZES=IGEN
+      AN AN2157 [Linux]
+         DC DC0032 Process Creation | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): syscall=execve; device restart/shutdown command invoked outside the approved change-control window by an unauthorized UID | network_dc_FELTETELEZES=NEM
+      AN AN2187 [Network Devices]
+         DC DC0038 Application Log Content | name=networkdevice:snmp | channel=Simple Network Management Protocol (SNMP) SET to power Management Information Base (MIB) restart Object Identifier (OID) or Command Line Interface (CLI) reload command from source not in approved Network Management System (NMS) Classless Inter-Domain Routing (CIDR) subnet | network_dc_FELTETELEZES=NEM
+      AN AN2260 [Windows]
+         DC DC0038 Application Log Content | name=engineeringworkstation:ApplicationLog | channel=device restart command initiated outside change control window by account not in approved engineer list | network_dc_FELTETELEZES=NEM
+T0843 | Program Download | aktív | attack-pattern--be69c571-d746-4b1f-bdd0-c0c9817e9068
+   DET DET0752 | Detection of Program Download
+      AN AN1884 [Embedded]
+         DC DC0110 Asset Inventory | name=assetinventory:ProgramHash | channel=post-transfer program hash does not match last authorized program baseline | network_dc_FELTETELEZES=NEM
+         DC DC0108 Device Alarm | name=operationaldb:AlarmEvent | channel=device_ip transitions to PROGRAM/STOP mode without operator_ack and without corresponding open change ticket reference | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=S7comm Download Block / Common Industrial Protocol (CIP) Download Program / Distributed Network Protocol (DNP3) program file transfer to device_ip from source not in engineering workstation list within mode change to download window of mode-change event | network_dc_FELTETELEZES=IGEN
+         DC DC0038 Application Log Content | name=engineeringworkstation:ApplicationLog | channel=program download session logged without corresponding change ticket reference | network_dc_FELTETELEZES=NEM
+T0843.001 | Download All | aktív | attack-pattern--77015a55-eef8-4f71-a071-b152f82ec1ef
+   DET DET0913 | Detection of Program Download All
+      AN AN2056 [Embedded]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=S7comm Upload ALL or Common Industrial Protocol (CIP) full program upload from source not in engineering workstation list, bytes_recv exceeding full upload size threshold | network_dc_FELTETELEZES=IGEN
+         DC DC0038 Application Log Content | name=engineeringworkstation:ApplicationLog | channel=full upload session outside backup window schedule without documented backup purpose | network_dc_FELTETELEZES=NEM
+T1692.001 | Command Message | aktív | attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265
+   DET DET0794 | Detection of Unauthorized Command Message
+      AN AN1926 [Windows]
+         DC DC0038 Application Log Content | name=opc:applog | channel=command call to field device output tag from process not matching recognized Supervisory Control and Data Acquisition (SCADA)/Distributed Control System (DCS) control application | network_dc_FELTETELEZES=NEM
+      AN AN2153 [Linux]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=decoded ICS protocol write/setpoint operation to a control/output address from a client identity or source not in the approved control-application baseline | network_dc_FELTETELEZES=IGEN
+      AN AN2212 [Embedded]
+         DC DC0109 Process/Event Alarm | name=operationaldb:AlarmEvent | channel=process state change recorded without preceding operator_ack or scheduled switching order reference | network_dc_FELTETELEZES=NEM
+         DC DC0107 Process History/Live Data | name=operationaldb:ProcessHistory | channel=multiple safety-critical outputs toggle within rapid toggle window, pattern consistent with scripted issuance | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=write/operate command targeting safety-critical output addresses from source not in approved Supervisory Control and Data Acquisition (SCADA) servers | network_dc_FELTETELEZES=IGEN
+T0893 | Data from Local System | aktív | attack-pattern--fa3aa267-da22-4bdd-961f-03223322a8d5
+   DET DET0749 | Detection of Data from Local System
+      AN AN1881 [Windows]
+         DC DC0055 File Access | name=WinEventLog:Sysmon | channel=Sequential file reads across multiple Industrial Control Systems (ICS) data paths by image not in authorized ICS applications, exceeding bulk access threshold within a short window | network_dc_FELTETELEZES=NEM
+         DC DC0032 Process Creation | name=WinEventLog:Sysmon | channel=EventCode=1 of archive utility immediately following bulk file access pattern from same parent process tree | network_dc_FELTETELEZES=NEM
+      AN AN2137 [Linux]
+         DC DC0064 Command Execution | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): sequential reads across ICS data paths by uid not in authorized data access UIDs, followed by tar/zip invocation within a short window | network_dc_FELTETELEZES=NEM
+      AN AN2174 [Network Devices]
+         DC DC0078 Network Traffic Flow | name=netflow:ipfix | channel=IPFIX/NetFlow flow record (src/dst IP, src/dst port, protocol, packets/bytes/time): sustained high-byte-count flow from Industrial Control Systems (ICS) server Internet Protocol (IP) address to destination outside ICS zone following bulk read activity | network_dc_FELTETELEZES=IGEN
+      AN AN2244 [Embedded]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=bulk read of configuration/data dictionary objects from source with no prior session history with this device | network_dc_FELTETELEZES=IGEN
+T0821 | Modify Controller Tasking | aktív | attack-pattern--09a61657-46e1-439e-b3ed-3e4556a78243
+   DET DET0741 | Detection of Modify Controller Tasking
+      AN AN1874 [Embedded]
+         DC DC0111 Software | name=assetinventory:ProgramDiff | channel=current task-to-block assignment table differs from last known-good baseline without corresponding change ticket | network_dc_FELTETELEZES=NEM
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=task/organization-block modification service from source not in engineering workstation list outside change control window | network_dc_FELTETELEZES=IGEN
+         DC DC0108 Device Alarm | name=device:VendorLog | channel=measured scan cycle time or interrupt response latency deviates from baseline cycle time by more than cycle timing deviation threshold following a task configuration change | network_dc_FELTETELEZES=NEM
+T0849 | Masquerading | aktív | attack-pattern--ba203963-3182-41ac-af14-7e7ebc83cd61
+   DET DET0725 | Detection of Masquerading
+      AN AN1858 [Windows]
+         DC DC0001 Scheduled Job Creation | name=WinEventLog:Security | channel=Windows Security Event ID 4698/4702: EventCode=4698 referencing Industrial Control Systems (ICS) vendor binary name from unauthorized process | network_dc_FELTETELEZES=NEM
+         DC DC0059 File Metadata | name=WinEventLog:Sysmon | channel=EventCode=11 matching Industrial Control Systems (ICS) vendor binary name in a path outside vendor install paths | network_dc_FELTETELEZES=NEM
+         DC DC0034 Process Metadata | name=WinEventLog:Sysmon | channel=EventCode=1 where image filename matches Industrial Control Systems (ICS) vendor process names but hash not in vendor hash baseline or current directory outside vendor install paths | network_dc_FELTETELEZES=NEM
+         DC DC0060 Service Creation | name=WinEventLog:System | channel=EventCode=7045 where ServiceName/ImagePath references Industrial Control Systems (ICS) vendor application with hash/path mismatch | network_dc_FELTETELEZES=NEM
+      AN AN2123 [Linux]
+         DC DC0034 Process Metadata | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): execve where exe basename matches Industrial Control Systems (ICS) daemon names but path outside vendor install paths | network_dc_FELTETELEZES=NEM
+         DC DC0059 File Metadata | name=linux:pkgintegrity | channel=rpm -V/dpkg --verify checksum mismatch for installed Industrial Control Systems (ICS) package binary | network_dc_FELTETELEZES=NEM
+      AN AN2231 [Embedded]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=GetIdentity/Identity Object response vendor/product string does not match enrolled asset inventory for device_ip | network_dc_FELTETELEZES=IGEN
+      AN AN2287 [Network Devices]
+         DC DC0085 Network Traffic Content | name=otids:ProtocolDecoder | channel=Protocol decoder/IDS transaction/signature: exploit-relevant request against ICS remote service from unexpected source, correlated with subsequent endpoint/device anomaly | network_dc_FELTETELEZES=IGEN
+T0834 | Native API | aktív | attack-pattern--b52870cc-83f3-473c-b895-72d91751030b
+   DET DET0753 | Detection of Native API
+      AN AN1885 [Windows]
+         DC DC0021 OS API Execution | name=edr:Syscall | channel=DeviceIoControl or raw socket creation to Industrial Control Systems (ICS) protocol port from process not in authorized ICS applications, bypassing documented vendor Software Development Kit (SDK) call pattern | network_dc_FELTETELEZES=NEM
+      AN AN2138 [Linux]
+         DC DC0021 OS API Execution | name=auditd:SYSCALL | channel=Linux Audit SYSCALL/EXECVE/SOCKADDR records (configured audit rule): ioctl or mmap syscall against Industrial Control Systems (ICS) hardware device file from process not in authorized ICS applications | network_dc_FELTETELEZES=NEM
+      AN AN2183 [Network Devices]
+         DC DC0085 Network Traffic Content | name=otids:ProtocolDecoder | channel=SNMP request/response decoder: OID, operation type, source/destination; flag access to undocumented/vendor-internal OIDs from non-approved NMS sources | network_dc_FELTETELEZES=IGEN
+      AN AN2246 [Embedded]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=reserved or vendor-specific function code accessing device registers directly from source not in engineering workstation list | network_dc_FELTETELEZES=IGEN
+T1694 | Insecure Credentials | aktív | attack-pattern--3e9b182e-e493-49e1-9a9b-bd0dfcd34a7c
+   DET DET0905 | Detection of Insecure Credentials
+      AN AN2048 [Windows]
+         DC DC0067 Logon Session Creation | name=WinEventLog:Security | channel=Windows Security Event ID 4624/4625: EventCode=4624 for account matching default or hardcoded credential patterns from source not in approved host list | network_dc_FELTETELEZES=NEM
+      AN AN2203 [Network Devices]
+         DC DC0002 User Account Authentication | name=networkdevice:syslog | channel=Device authentication/audit log: successful authentication using a default/hardcoded/prohibited account from a non-approved management source | network_dc_FELTETELEZES=NEM
+      AN AN2219 [Embedded]
+         DC DC0085 Network Traffic Content | name=NSM:Content | channel=authentication success using credential matching default vendor credential list or known hardcoded credential patterns from source not in engineering workstation list | network_dc_FELTETELEZES=IGEN
+      AN AN2258 [Linux]
+         DC DC0067 Logon Session Creation | name=syslog:auth | channel=sshd Accepted for username matching default or hardcoded credential patterns from source not in approved admin Classless Inter-Domain Routing (CIDR) subnet | network_dc_FELTETELEZES=NEM
+
+## 8. network_dc_FELTETELEZES – v20.0
+network_dc_FELTETELEZES = IGEN, ha az x-mitre-data-component 'name' mezője kis- és nagybetű-érzéketlenül tartalmazza a következők egyikét: 'network', 'traffic', 'flow', 'connection'; különben NEM. Név alapú heurisztika (FELTÉTELEZÉS), nem a MITRE besorolása.
+IGEN-re besorolt adatkomponensek (4 / 36):
+   DC0078 | Network Traffic Flow
+   DC0082 | Network Connection Creation
+   DC0085 | Network Traffic Content
+   DC0102 | Network Share Access
+NEM-re besorolt adatkomponensek:
+   DC0001 | Scheduled Job Creation
+   DC0002 | User Account Authentication
+   DC0004 | Firmware Modification
+   DC0005 | Scheduled Job Metadata
+   DC0012 | Scheduled Job Modification
+   DC0016 | Module Load
+   DC0021 | OS API Execution
+   DC0029 | Script Execution
+   DC0032 | Process Creation
+   DC0033 | Process Termination
+   DC0034 | Process Metadata
+   DC0038 | Application Log Content
+   DC0039 | File Creation
+   DC0040 | File Deletion
+   DC0041 | Service Metadata
+   DC0042 | Drive Creation
+   DC0045 | Windows Registry Key Deletion
+   DC0046 | Drive Modification
+   DC0055 | File Access
+   DC0059 | File Metadata
+   DC0060 | Service Creation
+   DC0061 | File Modification
+   DC0063 | Windows Registry Key Modification
+   DC0064 | Command Execution
+   DC0065 | Service Modification
+   DC0067 | Logon Session Creation
+   DC0088 | Logon Session Metadata
+   DC0107 | Process History/Live Data
+   DC0108 | Device Alarm
+   DC0109 | Process/Event Alarm
+   DC0110 | Asset Inventory
+   DC0111 | Software
+
+################ v19.2 → v20.0 különbség (detektálási szerkezet) ################
+x-mitre-data-component: db 36 → 36; új mezők: -; eltűnt mezők: -
+x-mitre-data-source: db 17 → 17; új mezők: -; eltűnt mezők: -
+x-mitre-detection-strategy: db 97 → 106; új mezők: -; eltűnt mezők: -
+x-mitre-analytic: db 97 → 302; új mezők: ['x_mitre_mutable_elements']; eltűnt mezők: -
+attack-pattern: db 118 → 127; új mezők: -; eltűnt mezők: -
+relationship: db 1667 → 1832; új mezők: -; eltűnt mezők: -
+x-mitre-detection-strategy: csak v19.2-ben 0, csak v20.0-ban 9, közös 97
+x-mitre-analytic: csak v19.2-ben 0, csak v20.0-ban 205, közös 97
+x-mitre-data-component: csak v19.2-ben 0, csak v20.0-ban 0, közös 36
+v20.0 x-mitre-analytic.x_mitre_mutable_elements[] elemkulcsai: {'field': 829, 'description': 829}
+
+CSV-sorok (aktív attack-pattern): v19.2=97, v20.0=104

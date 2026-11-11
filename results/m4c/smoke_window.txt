@@ -1,0 +1,3 @@
+smoke kizart ablak (VM-ido, D12)
+start_ts(min)-1s: 2026-10-31T14:32:18.807936+00:00
+end_ts(max)+5s:  2026-10-31T14:39:34.671898+00:00

@@ -1,0 +1,3 @@
+{"kind": "init_baseline", "campaign": "SMOKE", "seed": 0, "register": 0, "value": 1009, "source_ip": "192.168.1.51", "performed": true, "ts": "2026-10-31T14:32:09.801974+00:00"}
+{"kind": "restore_plc", "campaign": "SMOKE", "seed": 0, "episode_id": "A4_T0816_001", "login_status": 302, "start_status": 302, "performed": true, "verified_listener": true, "web_base": "http://192.168.56.20:8080", "ts": "2026-10-31T14:36:18.765407+00:00"}
+{"kind": "restore_plc", "campaign": "SMOKE", "seed": 0, "episode_id": "A5_T0816_001", "login_status": 302, "start_status": 302, "performed": true, "verified_listener": true, "web_base": "http://192.168.56.20:8080", "ts": "2026-10-31T14:37:33.394811+00:00"}

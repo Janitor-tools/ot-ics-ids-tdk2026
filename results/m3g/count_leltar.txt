@@ -1,0 +1,17 @@
+táblázatsorok: 110; 12 oszlopos: 110; nem 12 oszlopos: nincs
+sorszámok: 1–110; hiányzó: nincs; ismétlődő: nincs
+Összes egyedi mű: 110
+ebből lektorált: 30
+csak Hadmérnökben: 23
+csak Informaticsban: 1
+csak references.bib-ben: 26
+mindháromban: 4
+Informatics ∩ references.bib, Hadmérnök nélkül: 15
+Hadmérnök ∩ references.bib, Informatics nélkül: 0
+Hadmérnök ∩ Informatics, references.bib nélkül: 0
+egyik bemenetben sem (M3-F/M3-G elsődleges forrás): 41
+Hadmérnök összesen: 27
+Informatics összesen: 20
+references.bib összesen: 45
+átnézve = NEM: 110
+partíció: 23 + 1 + 26 + 4 + 15 + 0 + 0 + 41 = 110 (összes: 110)

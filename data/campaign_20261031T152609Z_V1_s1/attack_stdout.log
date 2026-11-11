@@ -1,0 +1,127 @@
+2026-10-31 15:26:15,249 INFO GATES_PRECONFIRMED=1 -- a blokkolo megerosites atugorva.
+2026-10-31 15:26:46,302 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:26:46,303 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:26:46,304 INFO Negotiated PDU length: 480
+2026-10-31 15:26:46,304 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:26:46,304 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:26:46,304 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:26:46,304 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:26:46,304 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:28:28,375 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:28:28,376 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:28:28,377 INFO Negotiated PDU length: 480
+2026-10-31 15:28:28,377 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:28:28,377 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:28:28,377 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:28:28,377 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:28:28,377 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:31:36,100 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:31:36,101 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:31:36,101 INFO Negotiated PDU length: 480
+2026-10-31 15:31:36,101 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:31:36,101 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:31:36,101 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:31:36,101 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:31:36,102 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:33:47,227 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:33:47,228 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:33:47,229 INFO Negotiated PDU length: 480
+2026-10-31 15:33:47,229 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:33:47,229 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:33:47,230 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:33:47,230 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:33:47,230 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:35:26,704 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:35:26,705 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:35:26,706 INFO Negotiated PDU length: 480
+2026-10-31 15:35:26,706 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:35:26,706 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:35:26,706 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:35:26,706 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:35:26,706 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:37:09,263 ERROR No response received after 3 retries, continue with next request
+Menetrend naplozva (/home/ot/results/campaigns/campaign_20261031T152609Z_V1_s1/attack_schedule.jsonl), 66 epizod, seed=1, campaign=V1.
+A tamadasi kampany elott igazolando: a Negy Kapu zold es a D9 kezdoallapot be van allitva (az ablakon kivul). Ezt a script a GATES_PRECONFIRMED=1 eseten nem kerdezi ujra.
+D9 init: register=0 value=1009 performed=True ts=2026-10-31T15:26:15.334629+00:00
+
+[1/66]
+
+=== A4_T0816_019 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 1, 'episode_id': 'A4_T0816_019', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-10-31T15:27:21.458884+00:00'}
+  Szunet: 35.9 mp
+
+[2/66]
+
+=== A4_T0816_015 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 1, 'episode_id': 'A4_T0816_015', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-10-31T15:29:03.520055+00:00'}
+  Szunet: 30.1 mp
+
+[3/66]
+
+=== A2_T0888_007 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 20.6 mp
+
+[4/66]
+
+=== A2_T0888_001 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 20.5 mp
+
+[5/66]
+
+=== A1_T0836_016 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-10-31T15:30:51.614209+00:00'}
+  Szunet: 34.4 mp
+
+[6/66]
+
+=== A6_T0843_001 (A6 / T0843) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=blocked  reset_after=None
+  Szunet: 60.0 mp
+
+[7/66]
+
+=== A2_T0888_010 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 29.9 mp
+
+[8/66]
+
+=== A4_T0816_010 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 1, 'episode_id': 'A4_T0816_010', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-10-31T15:34:22.275350+00:00'}
+  Szunet: 33.4 mp
+
+[9/66]
+
+=== A4_T0816_002 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 1, 'episode_id': 'A4_T0816_002', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-10-31T15:36:01.715708+00:00'}
+  Szunet: 37.2 mp
+
+[10/66]
+
+=== A1_T0836_004 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+Traceback (most recent call last):
+  File "/home/ot/attack_runner.py", line 984, in <module>
+    main()
+  File "/home/ot/attack_runner.py", line 968, in main
+    run_episode(ep, args.seed, args.campaign)
+  File "/home/ot/attack_runner.py", line 809, in run_episode
+    client.write_register(address=REGISTER_ADDRESS, value=BASELINE_VALUE, device_id=DEVICE_ID)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 216, in write_register
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request

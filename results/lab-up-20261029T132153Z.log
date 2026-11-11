@@ -1,0 +1,40 @@
+[2026-10-29T13:21:53Z] lab_up.sh indul (dry-run=0), repo=/c/Users/szaba/projects/ot-tdk
+[2026-10-29T13:21:53Z] git HEAD: 4391e0c2074894c5156ff32cf6ce11e5388e0e70
+[2026-10-29T13:21:53Z] git status --porcelain:
+(tiszta)
+[2026-10-29T13:21:53Z] lab_up.sh sha256: 8c9322d17728bde75a15647d91f214d1f9555349895ba9bd659a3fcac9af1c4d
+[2026-10-29T13:21:53Z] futtato: <USER>@<LAB_HOST>
+[2026-10-29T13:21:53Z] >>> L0 (chrony) kezdete
+[2026-10-29T13:21:58Z] <<< L0 (chrony) vege
+[2026-10-29T13:21:58Z] >>> L0b (apt-idozitok) kezdete
+[2026-10-29T13:21:59Z] siem: disabled disabled
+[2026-10-29T13:22:00Z] sensor: disabled disabled
+[2026-10-29T13:22:00Z] plc: disabled disabled
+[2026-10-29T13:22:01Z] redteam: disabled disabled
+[2026-10-29T13:22:01Z] <<< L0b (apt-idozitok) vege
+[2026-10-29T13:22:01Z] >>> L1 (Sensor: Zeek) kezdete
+[2026-10-29T13:22:02Z] zeekctl start (augusztusi eljaras; NEM deploy, NEM install)
+starting zeek ...
+creating crash report for previously crashed nodes: zeek
+3749 /opt/zeek/bin/zeek -i enp0s8 -U .status -p zeekctl -p zeekctl-live -p standalone -p local -p zeek local.zeek zeekctl zeekctl/standalone zeekctl/auto
+[2026-10-29T13:22:06Z] <<< L1 (Sensor: Zeek) vege
+[2026-10-29T13:22:06Z] >>> L1b (Sensor: Zeek allapot, csak olvasas) kezdete
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   3749   29 Oct 13:21:58
+[2026-10-29T13:22:08Z] capture_loss utolso sor: (nincs capture_loss.log)
+[2026-10-29T13:22:08Z] <<< L1b (Sensor: Zeek allapot, csak olvasas) vege
+[2026-10-29T13:22:08Z] >>> L2 (Target-PLC: OpenPLC RUN) kezdete
+OpenPLC felhasznalo: OpenPLC jelszo: 
+login: 200 
+start_plc: 302 http://127.0.0.1:8080/login
+nincs bejelentkezve (hibas hitelesito adat?)
+[2026-10-29T13:22:28Z] HIBA (L2): a web-API hivas sikertelen
+[2026-10-29T13:22:28Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | Normal, forras SIEM: siem sensor plc redteam | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L0b  | mind disabled                      | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L1   | nem running                        | zeekctl start                  | running + pgrep ok                 | OK      |
+| L1b  | -                                  | nincs (csak olvasas)           | lasd naplo                         | OK      |
+| L2   | :502/:102 nem figyel               | login + /start_plc             | a web-API hivas sikertelen         | HIBA    |
+[2026-10-29T13:22:28Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261029T132153Z.log

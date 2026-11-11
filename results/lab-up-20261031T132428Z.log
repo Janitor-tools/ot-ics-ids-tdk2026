@@ -1,0 +1,45 @@
+[2026-10-31T13:24:29Z] lab_up.sh indul (dry-run=0), repo=/c/Users/szaba/projects/ot-tdk
+[2026-10-31T13:24:29Z] git HEAD: d4517ec7926b837681ec649ef15779b555445363
+[2026-10-31T13:24:29Z] git status --porcelain:
+?? docs/tdk/M3-protokoll-VAZLAT.md
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-Zeek-heatmap.json
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-Zeek-mappings-enterprise.json
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-sensor-comparison-heatmap.json
+?? docs/tdk/related-works/forrasok/ics-attack-19.2.json
+?? docs/tdk/related-works/forrasok/ics-attack-20.0.json
+[2026-10-31T13:24:29Z] lab_up.sh sha256: 8c9322d17728bde75a15647d91f214d1f9555349895ba9bd659a3fcac9af1c4d
+[2026-10-31T13:24:29Z] futtato: <USER>@<LAB_HOST>
+[2026-10-31T13:24:29Z] >>> L0 (chrony) kezdete
+[2026-10-31T13:24:36Z] <<< L0 (chrony) vege
+[2026-10-31T13:24:36Z] >>> L0b (apt-idozitok) kezdete
+[2026-10-31T13:24:37Z] siem: disabled disabled
+[2026-10-31T13:24:37Z] sensor: disabled disabled
+[2026-10-31T13:24:40Z] plc: disabled disabled
+[2026-10-31T13:24:40Z] redteam: disabled disabled
+[2026-10-31T13:24:40Z] <<< L0b (apt-idozitok) vege
+[2026-10-31T13:24:40Z] >>> L1 (Sensor: Zeek) kezdete
+[2026-10-31T13:24:41Z] <<< L1 (Sensor: Zeek) vege
+[2026-10-31T13:24:41Z] >>> L1b (Sensor: Zeek allapot, csak olvasas) kezdete
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   3749   29 Oct 13:21:58
+[2026-10-31T13:24:43Z] capture_loss utolso sor: {"ts":1793435369.193711,"ts_delta":123629.2938079834,"peer":"zeek","gaps":0,"acks":0,"percent_lost":0.0}
+[2026-10-31T13:24:43Z] <<< L1b (Sensor: Zeek allapot, csak olvasas) vege
+[2026-10-31T13:24:43Z] >>> L2 (Target-PLC: OpenPLC RUN) kezdete
+[2026-10-31T13:24:45Z] <<< L2 (Target-PLC: OpenPLC RUN) vege
+[2026-10-31T13:24:45Z] >>> L3 (Red-Team: .51 alias) kezdete
+[2026-10-31T13:24:46Z] <<< L3 (Red-Team: .51 alias) vege
+[2026-10-31T13:24:46Z] >>> L4 (Red-Team szkriptek == HEAD) kezdete
+[2026-10-31T13:24:47Z] attack_runner.py: HEAD=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9 VM=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9
+[2026-10-31T13:24:47Z] benign_generator.py: HEAD=13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084 VM=13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084
+[2026-10-31T13:24:47Z] <<< L4 (Red-Team szkriptek == HEAD) vege
+[2026-10-31T13:24:47Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | Normal, forras SIEM: siem sensor plc redteam | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L0b  | mind disabled                      | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L1   | running                            | kihagyva                       | running                            | OK      |
+| L1b  | -                                  | nincs (csak olvasas)           | lasd naplo                         | OK      |
+| L2   | :502 es :102 figyel                | kihagyva                       | :502 es :102 figyel                | OK      |
+| L3   | .50 es .51 jelen                   | kihagyva                       | .50 es .51 jelen                   | OK      |
+| L4   | egyezik                            | nincs                          | egyezik                            | OK      |
+[2026-10-31T13:24:47Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261031T132428Z.log

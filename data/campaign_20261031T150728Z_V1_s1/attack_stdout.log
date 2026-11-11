@@ -1,0 +1,27 @@
+2026-10-31 15:07:28,679 INFO GATES_PRECONFIRMED=1 -- a blokkolo megerosites atugorva.
+2026-10-31 15:08:00,149 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:08:00,150 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:08:00,150 INFO Negotiated PDU length: 480
+2026-10-31 15:08:00,150 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:08:00,150 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:08:00,150 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:08:00,150 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:08:00,150 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:09:42,276 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:09:42,277 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:09:42,278 INFO Negotiated PDU length: 480
+2026-10-31 15:09:42,278 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:09:42,278 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:09:42,279 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:09:42,279 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:09:42,279 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:11:40,082 ERROR No response received after 3 retries, continue with next request
+2026-10-31 15:11:52,147 ERROR Repeating....
+2026-10-31 15:13:37,348 INFO S7Client initialized (pure Python implementation)
+2026-10-31 15:13:37,349 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-10-31 15:13:37,350 INFO Negotiated PDU length: 480
+2026-10-31 15:13:37,350 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-10-31 15:13:37,350 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-10-31 15:13:37,351 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:13:37,351 INFO Disconnected from 192.168.1.100:102
+2026-10-31 15:13:37,351 INFO Disconnected from 192.168.1.100:102

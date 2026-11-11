@@ -1,0 +1,93 @@
+{
+  "campaign_id": "campaign_20261031T150728Z_V1_s1",
+  "git_head": "507cee8b99a02e305bc275086dc65b2df6d7fc02",
+  "window_vm_time": {
+    "start_vm": "2026-10-31T15:06:28.745389+00:00",
+    "end_vm": "2026-10-31T15:14:37.351243+00:00"
+  },
+  "laptop_date_u_info_only": "2026-10-31T15:14:51Z",
+  "excluded_windows": [
+    {
+      "kind": "init_baseline",
+      "episode_id": null,
+      "ts": "2026-10-31T15:07:28.745389+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A4_T0816_019",
+      "ts": "2026-10-31T15:08:35.386509+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A4_T0816_015",
+      "ts": "2026-10-31T15:10:17.208901+00:00"
+    }
+  ],
+  "scripts": {
+    "attack_runner.py": {
+      "git_commit": "507cee8b99a02e305bc275086dc65b2df6d7fc02",
+      "sha256": "7f200d99cb14681753c8d3fde37eba4f1a95086b9daf2d0d739053854e2bc6fc"
+    },
+    "benign_generator.py": {
+      "git_commit": "507cee8b99a02e305bc275086dc65b2df6d7fc02",
+      "sha256": "13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084"
+    },
+    "run_campaign.sh": {
+      "git_commit": "507cee8b99a02e305bc275086dc65b2df6d7fc02",
+      "sha256": "30254dc7cf35e5facd912797ff6f6aad0a3e4713a6c6ee9395de8c17873d9f96"
+    },
+    "evaluate_campaign.py": {
+      "git_commit": "507cee8b99a02e305bc275086dc65b2df6d7fc02",
+      "sha256": "022acd2f4b799d21be39703e40b65d2d700804c5bf891049ac58f52226a9d0d1"
+    }
+  },
+  "files": {
+    "attack_control.jsonl": {
+      "sha256": "614459194cc1533da1bfae028a08dabf396b574a781f61b32f89bf9c3611984d",
+      "bytes": 683
+    },
+    "attack_log.jsonl": {
+      "sha256": "ab603b2cc7d3a98998a4252d564f2b452d568443833b528af6f59dd4a5a2b776",
+      "bytes": 5686
+    },
+    "attack_schedule.jsonl": {
+      "sha256": "307029dab18c2265309c796b1af1a40c965e1b909dbbfd6d86d8790f72a8d150",
+      "bytes": 14598
+    },
+    "attack_stdout.log": {
+      "sha256": "e1730a0c472813fec0045e3fe71a6ef202e2b3af6b8c8150d802c33e7eab89a0",
+      "bytes": 1926
+    },
+    "benign_log.jsonl": {
+      "sha256": "5d2b84c5dfe61ed0249d5e56690b7a16065a632c91080e344a2bd731f1d2c3a8",
+      "bytes": 6794
+    },
+    "benign_stdout.log": {
+      "sha256": "143696acc9d53afb991528b837a097aa263cc31d667e02b8e318052484d87bef",
+      "bytes": 258
+    },
+    "capture.pcap": {
+      "sha256": "72b331d6e57b406aeee2d1c17f7ba311e07964bb4b3196680c6336d0a8de7689",
+      "bytes": 74813
+    },
+    "capture_loss.log": {
+      "sha256": "ac8153b466b01833b669430791e95904c709d6665056d9a2df9441aae2dd98fd",
+      "bytes": 106
+    },
+    "eve_slice.json": {
+      "sha256": "935afb5cfc8245b3d7a0a080bd391d95b5f851d07c81b05ac08f50790c72c211",
+      "bytes": 757264
+    },
+    "window.txt": {
+      "sha256": "bb491950ebe514a66a39bb16941494a7b8f199f794d08496137a0c5512d10674",
+      "bytes": 206
+    }
+  },
+  "generated_at": "2026-10-31T15:14:51.625629+00:00",
+  "status": "ABORTED",
+  "abort_reason": "A benign.pid rossz cwd-be irodott (run_campaign.sh benign-subshell cd/& parse-hiba); a run_campaign.sh lekerdezese Ctrl+C-vel megszakadt, a kampany kozben lett megszakitva (attack 6 epizod). A benign TENYLEGESEN futott (.51, benign_log.jsonl 74 sor). Reszleges, NEM mérési adat (E-29).",
+  "excluded_window_d12": {
+    "start_vm": "2026-10-31T15:06:28.745389+00:00",
+    "end_vm": "2026-10-31T15:14:37.351243+00:00"
+  }
+}

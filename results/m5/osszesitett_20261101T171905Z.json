@@ -1,0 +1,640 @@
+{
+  "meta": {
+    "generated_at": "2026-11-01T17:19:05.070038+00:00",
+    "prereg": "v1.1",
+    "stats_backend": "scipy",
+    "campaigns": [
+      "campaign_20261101T113823Z_V1_s1"
+    ],
+    "variants": [
+      "V1"
+    ],
+    "scenario_technique_map": {
+      "A1": "T0836",
+      "A2": "T0888",
+      "A3": "T0846.001",
+      "A4": "T0816",
+      "A5": "T0816",
+      "A6": "T0843",
+      "V2.1": "T0836",
+      "V2.2": "T0893",
+      "V2.3": "T0821",
+      "V2.4": "T0836",
+      "V2.5": "T0836"
+    },
+    "note": "(b)/(c) variansonkent kulon (V1 nem vonodik ossze V2-vel); (d) D13 a V1+V2 egyedi technikain egyutt (prereg 5.3/NYK-8)."
+  },
+  "per_campaign": [
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A1",
+      "technique": "T0836",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A2",
+      "technique": "T0888",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A3",
+      "technique": "T0846.001",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A4",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 20,
+      "n_known": 20,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 20,
+        "n": 20,
+        "median": 0.9888308308764086,
+        "ci_lo": 0.8833610170951246,
+        "ci_hi": 0.9999757535215408,
+        "mean": 0.9761904761904762,
+        "prior": "Jeffreys Beta(20.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A5",
+      "technique": "T0816",
+      "config": "C1",
+      "k_seen": 3,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 3,
+        "n": 3,
+        "median": 0.9326217269725904,
+        "ci_lo": 0.46441675695704965,
+        "ci_hi": 0.9998493639745635,
+        "mean": 0.875,
+        "prior": "Jeffreys Beta(3.5,0.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C0",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    },
+    {
+      "campaign_id": "campaign_20261101T113823Z_V1_s1",
+      "variant": "V1",
+      "scenario": "A6",
+      "technique": "T0843",
+      "config": "C1",
+      "k_seen": 0,
+      "n_known": 3,
+      "n_na": 0,
+      "posterior_jeffreys": {
+        "k": 0,
+        "n": 3,
+        "median": 0.06737827302740962,
+        "ci_lo": 0.00015063602543656846,
+        "ci_hi": 0.5355832430429502,
+        "mean": 0.125,
+        "prior": "Jeffreys Beta(0.5,3.5)"
+      }
+    }
+  ],
+  "pooled_by_technique": {
+    "V1": [
+      {
+        "technique": "T0816",
+        "config": "C0",
+        "k_seen": 20,
+        "n_known": 23,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A4",
+          "A5"
+        ],
+        "category_dist": {
+          "Telemetry": 20,
+          "None": 3
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 23,
+          "median": 0.8640471935625346,
+          "ci_lo": 0.6913376337795837,
+          "ci_hi": 0.9618532446196673,
+          "mean": 0.8541666666666666,
+          "prior": "Jeffreys Beta(20.5,3.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 23,
+          "median": 0.8491211192349385,
+          "ci_lo": 0.6763886418111671,
+          "ci_hi": 0.9526463733927428,
+          "mean": 0.84,
+          "prior": "Beta(21,4)"
+        }
+      },
+      {
+        "technique": "T0816",
+        "config": "C1",
+        "k_seen": 23,
+        "n_known": 23,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A4",
+          "A5"
+        ],
+        "category_dist": {
+          "Telemetry": 23
+        },
+        "posterior_jeffreys": {
+          "k": 23,
+          "n": 23,
+          "median": 0.9902647693256403,
+          "ci_lo": 0.8976061719083921,
+          "ci_hi": 0.9999788816779827,
+          "mean": 0.9791666666666666,
+          "prior": "Jeffreys Beta(23.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 23,
+          "n": 23,
+          "median": 0.9715319411536059,
+          "ci_lo": 0.8575264022774743,
+          "ci_hi": 0.9989456475545303,
+          "mean": 0.96,
+          "prior": "Beta(24,1)"
+        }
+      },
+      {
+        "technique": "T0836",
+        "config": "C0",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A1"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      },
+      {
+        "technique": "T0836",
+        "config": "C1",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A1"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      },
+      {
+        "technique": "T0843",
+        "config": "C0",
+        "k_seen": 0,
+        "n_known": 3,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A6"
+        ],
+        "category_dist": {
+          "None": 3
+        },
+        "posterior_jeffreys": {
+          "k": 0,
+          "n": 3,
+          "median": 0.06737827302740962,
+          "ci_lo": 0.00015063602543656846,
+          "ci_hi": 0.5355832430429502,
+          "mean": 0.125,
+          "prior": "Jeffreys Beta(0.5,3.5)"
+        },
+        "posterior_uniform": {
+          "k": 0,
+          "n": 3,
+          "median": 0.15910358474628544,
+          "ci_lo": 0.006309463209709865,
+          "ci_hi": 0.6023646356164746,
+          "mean": 0.2,
+          "prior": "Beta(1,4)"
+        }
+      },
+      {
+        "technique": "T0843",
+        "config": "C1",
+        "k_seen": 0,
+        "n_known": 3,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A6"
+        ],
+        "category_dist": {
+          "None": 3
+        },
+        "posterior_jeffreys": {
+          "k": 0,
+          "n": 3,
+          "median": 0.06737827302740962,
+          "ci_lo": 0.00015063602543656846,
+          "ci_hi": 0.5355832430429502,
+          "mean": 0.125,
+          "prior": "Jeffreys Beta(0.5,3.5)"
+        },
+        "posterior_uniform": {
+          "k": 0,
+          "n": 3,
+          "median": 0.15910358474628544,
+          "ci_lo": 0.006309463209709865,
+          "ci_hi": 0.6023646356164746,
+          "mean": 0.2,
+          "prior": "Beta(1,4)"
+        }
+      },
+      {
+        "technique": "T0846.001",
+        "config": "C0",
+        "k_seen": 0,
+        "n_known": 3,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A3"
+        ],
+        "category_dist": {
+          "None": 3
+        },
+        "posterior_jeffreys": {
+          "k": 0,
+          "n": 3,
+          "median": 0.06737827302740962,
+          "ci_lo": 0.00015063602543656846,
+          "ci_hi": 0.5355832430429502,
+          "mean": 0.125,
+          "prior": "Jeffreys Beta(0.5,3.5)"
+        },
+        "posterior_uniform": {
+          "k": 0,
+          "n": 3,
+          "median": 0.15910358474628544,
+          "ci_lo": 0.006309463209709865,
+          "ci_hi": 0.6023646356164746,
+          "mean": 0.2,
+          "prior": "Beta(1,4)"
+        }
+      },
+      {
+        "technique": "T0846.001",
+        "config": "C1",
+        "k_seen": 3,
+        "n_known": 3,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A3"
+        ],
+        "category_dist": {
+          "Telemetry": 3
+        },
+        "posterior_jeffreys": {
+          "k": 3,
+          "n": 3,
+          "median": 0.9326217269725904,
+          "ci_lo": 0.46441675695704965,
+          "ci_hi": 0.9998493639745635,
+          "mean": 0.875,
+          "prior": "Jeffreys Beta(3.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 3,
+          "n": 3,
+          "median": 0.8408964152537145,
+          "ci_lo": 0.3976353643835253,
+          "ci_hi": 0.9936905367902902,
+          "mean": 0.8,
+          "prior": "Beta(4,1)"
+        }
+      },
+      {
+        "technique": "T0888",
+        "config": "C0",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A2"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      },
+      {
+        "technique": "T0888",
+        "config": "C1",
+        "k_seen": 20,
+        "n_known": 20,
+        "n_na": 0,
+        "k_campaigns": 1,
+        "scenarios": [
+          "A2"
+        ],
+        "category_dist": {
+          "Telemetry": 20
+        },
+        "posterior_jeffreys": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9888308308764086,
+          "ci_lo": 0.8833610170951246,
+          "ci_hi": 0.9999757535215408,
+          "mean": 0.9761904761904762,
+          "prior": "Jeffreys Beta(20.5,0.5)"
+        },
+        "posterior_uniform": {
+          "k": 20,
+          "n": 20,
+          "median": 0.9675317785238916,
+          "ci_lo": 0.8389023847809204,
+          "ci_hi": 0.9987951165516364,
+          "mean": 0.9545454545454546,
+          "prior": "Beta(21,1)"
+        }
+      }
+    ]
+  },
+  "fp_pooled": {
+    "V1": {
+      "variant": "V1",
+      "sid": 2250008,
+      "n_campaigns": 1,
+      "fp_count": 547,
+      "denominator_benign_requests": 563,
+      "denominator_benign_time_s": 2954.3075899999994,
+      "fp_per_request": 0.9715808170515098,
+      "fp_per_hour": 666.5521243168862
+    }
+  },
+  "external_signal": {
+    "rows": [
+      {
+        "technique": "T0816",
+        "ours_c1_seen": true,
+        "ours_k": 23,
+        "ours_n": 23,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0836",
+        "ours_c1_seen": true,
+        "ours_k": 20,
+        "ours_n": 20,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0843",
+        "ours_c1_seen": false,
+        "ours_k": 0,
+        "ours_n": 3,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0846.001",
+        "ours_c1_seen": true,
+        "ours_k": 3,
+        "ours_n": 3,
+        "mitre_network_analytic": true
+      },
+      {
+        "technique": "T0888",
+        "ours_c1_seen": true,
+        "ours_k": 20,
+        "ours_n": 20,
+        "mitre_network_analytic": true
+      }
+    ],
+    "n_paired": 5,
+    "cohen_kappa_unweighted": 0.0,
+    "raw_agreement": 0.8,
+    "raw_agreement_frac": "4/5",
+    "degeneracy_reason": "a MITRE-oldal konstans (minden technikara IGEN) -> nulla variancia -> a kappa fuggetlen az egyezestol (5.3: 'csak jelzokent'); a nyers egyezesi arany informativabb"
+  }
+}

@@ -1,0 +1,124 @@
+# M3-G(h) M2c K3 – Zeek-rekordok a Sensoron (csak olvasás)
+# futtató gép: <LAB_HOST>; UTC: 2026-10-29T19:09:07Z; ssh alias: sensor
+# K3 (results/lab-health-2026-10-29.txt:1067, :1073): src=192.168.1.50, dst=192.168.1.100:102,
+#   küldés 2026-10-29T13:39:43.749938Z – 13:39:43.752743Z; ablak ±60 s: [13:38:43.749938Z, 13:40:43.752743Z] = epoch [1793281123.749938, 1793281243.752743]
+# A naplók JSON-formátumúak (nincs #fields fejléc). Távoli szűrés: grep a forrás-, cél-IP-re és a 102-es portra;
+# helyi szűrés: ts ∈ [1793281123.749938, 1793281243.752743] (python -I). A helyi szűrő kódja a fájl végén.
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'ls -la /opt/zeek/logs/'
+total 36
+drwxrws---  7 root zeek  4096 Oct 29 14:00 .
+drwxr-xr-x 10 root root  4096 Aug 10 17:04 ..
+drwxr-sr-x  2 root zeek  4096 Aug 20 09:11 2026-08-10
+drwxr-sr-x  2 root zeek  4096 Aug 20 09:11 2026-08-19
+drwxr-sr-x  2 root zeek  4096 Aug 22 11:15 2026-08-20
+drwxr-sr-x  2 root zeek 12288 Oct 29 13:21 2026-08-22
+drwxr-sr-x  2 root zeek  4096 Oct 29 19:00 2026-10-29
+lrwxrwxrwx  1 root zeek    20 Aug 22 11:15 current -> /opt/zeek/spool/zeek
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'ls -la /opt/zeek/logs/2026-10-29/'
+total 452
+drwxr-sr-x 2 root zeek  4096 Oct 29 19:00 .
+drwxrws--- 7 root zeek  4096 Oct 29 14:00 ..
+-rw-r--r-- 1 root zeek   155 Oct 29 14:00 capture_loss.13:23:01-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   166 Oct 29 15:00 capture_loss.14:00:00-15:00:00.log.gz
+-rw-r--r-- 1 root zeek   167 Oct 29 16:00 capture_loss.15:00:00-16:00:00.log.gz
+-rw-r--r-- 1 root zeek   164 Oct 29 17:00 capture_loss.16:00:00-17:00:00.log.gz
+-rw-r--r-- 1 root zeek   166 Oct 29 18:00 capture_loss.17:00:00-18:00:00.log.gz
+-rw-r--r-- 1 root zeek   165 Oct 29 19:00 capture_loss.18:00:00-19:00:00.log.gz
+-rw-r--r-- 1 root zeek   540 Oct 29 14:00 conn.13:39:08-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   263 Oct 29 15:00 conn.14:00:00-15:00:00.log.gz
+-rw-r--r-- 1 root zeek   264 Oct 29 16:00 conn.15:00:00-16:00:00.log.gz
+-rw-r--r-- 1 root zeek   263 Oct 29 17:00 conn.16:00:00-17:00:00.log.gz
+-rw-r--r-- 1 root zeek   260 Oct 29 18:00 conn.17:00:00-18:00:00.log.gz
+-rw-r--r-- 1 root zeek   265 Oct 29 19:00 conn.18:00:00-19:00:00.log.gz
+-rw-r--r-- 1 root zeek   507 Oct 29 14:00 conn-summary.13:39:08-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   427 Oct 29 15:00 conn-summary.14:00:00-15:00:00.log.gz
+-rw-r--r-- 1 root zeek   429 Oct 29 16:00 conn-summary.15:00:00-16:00:00.log.gz
+-rw-r--r-- 1 root zeek   426 Oct 29 17:00 conn-summary.16:00:00-17:00:00.log.gz
+-rw-r--r-- 1 root zeek   428 Oct 29 18:00 conn-summary.17:00:00-18:00:00.log.gz
+-rw-r--r-- 1 root zeek   428 Oct 29 19:00 conn-summary.18:00:00-19:00:00.log.gz
+-rw-r--r-- 1 root zeek   323 Oct 29 14:00 cotp.13:39:43-14:00:00.log.gz
+-rw-r--r-- 1 root zeek    84 Oct 29 14:00 known_hosts.13:39:03-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   144 Oct 29 14:00 known_services.13:39:03-14:00:00.log.gz
+-rw-r--r-- 1 root zeek  3724 Oct 29 14:00 loaded_scripts.13:22:01-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   242 Oct 29 14:00 modbus.13:39:03-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   253 Oct 29 14:00 modbus_detailed.13:39:03-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   210 Oct 29 14:00 notice.13:23:01-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   226 Oct 29 15:00 notice.14:00:00-15:00:00.log.gz
+-rw-r--r-- 1 root zeek   231 Oct 29 16:00 notice.15:00:00-16:00:00.log.gz
+-rw-r--r-- 1 root zeek   227 Oct 29 17:00 notice.16:00:00-17:00:00.log.gz
+-rw-r--r-- 1 root zeek   230 Oct 29 18:00 notice.17:00:00-18:00:00.log.gz
+-rw-r--r-- 1 root zeek   229 Oct 29 19:00 notice.18:00:00-19:00:00.log.gz
+-rw-r--r-- 1 root zeek   100 Oct 29 14:00 packet_filter.13:22:01-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   351 Oct 29 14:00 s7comm.13:39:43-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   393 Oct 29 14:00 stats.13:22:01-14:00:00.log.gz
+-rw-r--r-- 1 root zeek   402 Oct 29 15:00 stats.14:00:00-15:00:00.log.gz
+-rw-r--r-- 1 root zeek   434 Oct 29 16:00 stats.15:00:00-16:00:00.log.gz
+-rw-r--r-- 1 root zeek   418 Oct 29 17:00 stats.16:00:00-17:00:00.log.gz
+-rw-r--r-- 1 root zeek   423 Oct 29 18:00 stats.17:00:00-18:00:00.log.gz
+-rw-r--r-- 1 root zeek   430 Oct 29 19:00 stats.18:00:00-19:00:00.log.gz
+-rw-r--r-- 1 root zeek 30109 Oct 29 14:00 telemetry.13:22:01-14:00:00.log.gz
+-rw-r--r-- 1 root zeek 50444 Oct 29 15:00 telemetry.14:00:00-15:00:00.log.gz
+-rw-r--r-- 1 root zeek 50530 Oct 29 16:00 telemetry.15:00:00-16:00:00.log.gz
+-rw-r--r-- 1 root zeek 50525 Oct 29 17:00 telemetry.16:00:00-17:00:00.log.gz
+-rw-r--r-- 1 root zeek 50501 Oct 29 18:00 telemetry.17:00:00-18:00:00.log.gz
+-rw-r--r-- 1 root zeek 50507 Oct 29 19:00 telemetry.18:00:00-19:00:00.log.gz
+[exit=0]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'ls /opt/zeek/logs/2026-10-29/ | grep -E "s7comm_read_szl|s7comm_upload_download|s7comm_plus|s7comm_known"'
+[exit=1]
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'zcat /opt/zeek/logs/2026-10-29/cotp.13:39:43-14:00:00.log.gz | grep -F "\"id.orig_h\":\"192.168.1.50\"" | grep -F "\"id.resp_h\":\"192.168.1.100\",\"id.resp_p\":102"'
+{"ts":1793281183.750915,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x0e","pdu_name":"CR Connection Request"}
+{"ts":1793281183.751159,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0d","pdu_name":"CC Connection Confirm"}
+{"ts":1793281183.75139,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751496,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751678,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751769,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751991,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x08","pdu_name":"DR Disconnect Request"}
+{"ts":1793281183.752204,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0c","pdu_name":"DC Disconnect Confirm"}
+[exit=0]
+--- helyi időablak-szűrés (cotp.13:39:43-14:00:00):
+ablakban: 8
+{"ts":1793281183.750915,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x0e","pdu_name":"CR Connection Request"}
+{"ts":1793281183.751159,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0d","pdu_name":"CC Connection Confirm"}
+{"ts":1793281183.75139,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751496,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751678,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751769,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0f","pdu_name":"DT Data"}
+{"ts":1793281183.751991,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"pdu_code":"0x08","pdu_name":"DR Disconnect Request"}
+{"ts":1793281183.752204,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"pdu_code":"0x0c","pdu_name":"DC Disconnect Confirm"}
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'zcat /opt/zeek/logs/2026-10-29/s7comm.13:39:43-14:00:00.log.gz | grep -F "\"id.orig_h\":\"192.168.1.50\"" | grep -F "\"id.resp_h\":\"192.168.1.100\",\"id.resp_p\":102"'
+{"ts":1793281183.75139,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"rosctr_code":1,"rosctr_name":"Job-Request","pdu_reference":256,"function_code":"0xf0","function_name":"Setup Communication"}
+{"ts":1793281183.751496,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"rosctr_code":3,"rosctr_name":"ACK-Data","pdu_reference":256,"function_code":"0xf0","function_name":"Setup Communication","error_class":"No error","error_code":"0x00"}
+{"ts":1793281183.751678,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"rosctr_code":1,"rosctr_name":"Job-Request","pdu_reference":512,"function_code":"0x04","function_name":"Read Variable"}
+{"ts":1793281183.751769,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"rosctr_code":3,"rosctr_name":"ACK-Data","pdu_reference":512,"function_code":"0x04","function_name":"Read Variable","error_class":"No error","error_code":"0x00"}
+[exit=0]
+--- helyi időablak-szűrés (s7comm.13:39:43-14:00:00):
+ablakban: 4
+{"ts":1793281183.75139,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"rosctr_code":1,"rosctr_name":"Job-Request","pdu_reference":256,"function_code":"0xf0","function_name":"Setup Communication"}
+{"ts":1793281183.751496,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"rosctr_code":3,"rosctr_name":"ACK-Data","pdu_reference":256,"function_code":"0xf0","function_name":"Setup Communication","error_class":"No error","error_code":"0x00"}
+{"ts":1793281183.751678,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":true,"source_h":"192.168.1.50","source_p":57010,"destination_h":"192.168.1.100","destination_p":102,"rosctr_code":1,"rosctr_name":"Job-Request","pdu_reference":512,"function_code":"0x04","function_name":"Read Variable"}
+{"ts":1793281183.751769,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"is_orig":false,"source_h":"192.168.1.100","source_p":102,"destination_h":"192.168.1.50","destination_p":57010,"rosctr_code":3,"rosctr_name":"ACK-Data","pdu_reference":512,"function_code":"0x04","function_name":"Read Variable","error_class":"No error","error_code":"0x00"}
+
+$ ssh -o BatchMode=yes -o ConnectTimeout=10 sensor 'zcat /opt/zeek/logs/2026-10-29/conn.13:39:08-14:00:00.log.gz | grep -F "\"id.orig_h\":\"192.168.1.50\"" | grep -F "\"id.resp_h\":\"192.168.1.100\",\"id.resp_p\":102"'
+{"ts":1793281183.750527,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"proto":"tcp","service":"cotp,s7comm","duration":0.0017621517181396484,"orig_bytes":77,"resp_bytes":82,"conn_state":"SF","local_orig":true,"local_resp":true,"missed_bytes":0,"history":"ShADadFfR","orig_pkts":10,"orig_ip_bytes":581,"resp_pkts":7,"resp_ip_bytes":454,"ip_proto":6}
+[exit=0]
+--- helyi időablak-szűrés (conn.13:39:08-14:00:00):
+ablakban: 1
+{"ts":1793281183.750527,"uid":"Ck2wWg47NKQx3bSVli","id.orig_h":"192.168.1.50","id.orig_p":57010,"id.resp_h":"192.168.1.100","id.resp_p":102,"proto":"tcp","service":"cotp,s7comm","duration":0.0017621517181396484,"orig_bytes":77,"resp_bytes":82,"conn_state":"SF","local_orig":true,"local_resp":true,"missed_bytes":0,"history":"ShADadFfR","orig_pkts":10,"orig_ip_bytes":581,"resp_pkts":7,"resp_ip_bytes":454,"ip_proto":6}
+
+# helyi szűrő (python -I -c, argv: LO HI):
+import sys,json
+lo,hi=float(sys.argv[1]),float(sys.argv[2]); n=0; out=[]
+for l in sys.stdin:
+    l=l.strip()
+    if not l: continue
+    r=json.loads(l)
+    if lo<=r["ts"]<=hi: n+=1; out.append(l)
+print("ablakban:",n)
+print("\n".join(out[:60]))
+# vége UTC: 2026-10-29T19:09:11Z

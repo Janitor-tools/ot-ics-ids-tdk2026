@@ -1,0 +1,18 @@
+M4c fustteszt kiertekeles (1 epizod/szcenario), 2026-10-31
+B1/B2: protokoll 5.2, epizodablak [start_ts-1s, end_ts+5s], VM-ido; forras=epizod src, cel=192.168.1.100.
+C0 = ES 4 icsnpp-stream (B2) VAGY Suricata-alert; C1 = Sensor nyers B2 (conn/http is) VAGY alert.
+A3/A5: conn/http nincs a C0-ban (NA) -> C1-ben LATTA (D5b). A6: blokkolt download, nincs s7comm download-rekord -> blind spot.
+
+szcenario        | status / branch                | B2 Sensor | B2 ES  | Suricata(sid:db)   | C0        | C1       
+-------------------------------------------------------------------------------------------------------------------
+A1               | executed / -                   | 1         | 1      | 2250008:1          | LÁTTA     | LÁTTA    
+A2               | executed / -                   | 4         | 4      | 2250008:2          | LÁTTA     | LÁTTA    
+A3               | executed / -                   | 2         | NA     | -                  | NEM       | LÁTTA    
+A4               | executed_no_effect / scan_running | 2         | 2      | -                  | LÁTTA     | LÁTTA    
+A6               | blocked / -                    | 0         | 0      | -                  | NEM       | NEM      
+A5               | executed_effect / listener_gone | 1         | NA     | -                  | NEM       | LÁTTA    
+V21              | executed / -                   | 2         | 2      | 2250008:1          | LÁTTA     | LÁTTA    
+V22              | executed / -                   | 2         | 2      | -                  | LÁTTA     | LÁTTA    
+V23              | executed / -                   | 2         | 2      | -                  | LÁTTA     | LÁTTA    
+V24              | executed / -                   | 1         | 1      | 2250008:1          | LÁTTA     | LÁTTA    
+V25              | executed / -                   | 1         | 1      | 2250008:1          | LÁTTA     | LÁTTA    

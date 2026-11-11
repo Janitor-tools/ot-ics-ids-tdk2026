@@ -1,0 +1,4 @@
+{"kind": "init_baseline", "campaign": "V1", "seed": 2, "register": 0, "value": 1009, "source_ip": "192.168.1.51", "performed": true, "ts": "2026-11-01T14:28:47.502644+00:00"}
+{"kind": "restore_plc", "campaign": "V1", "seed": 2, "episode_id": "A5_T0816_001", "login_status": 302, "start_status": 302, "performed": true, "verified_listener": true, "web_base": "http://192.168.56.20:8080", "ts": "2026-11-01T15:45:35.379656+00:00"}
+{"kind": "restore_plc", "campaign": "V1", "seed": 2, "episode_id": "A5_T0816_002", "login_status": 302, "start_status": 302, "performed": true, "verified_listener": true, "web_base": "http://192.168.56.20:8080", "ts": "2026-11-01T15:47:34.052165+00:00"}
+{"kind": "restore_plc", "campaign": "V1", "seed": 2, "episode_id": "A5_T0816_003", "login_status": 302, "start_status": 302, "performed": true, "verified_listener": true, "web_base": "http://192.168.56.20:8080", "ts": "2026-11-01T15:49:45.473232+00:00"}

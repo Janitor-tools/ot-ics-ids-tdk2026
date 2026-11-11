@@ -1,0 +1,109 @@
+{
+  "campaign_id": "campaign_20261031T152609Z_V1_s1",
+  "git_head": "d53a100e0241c6ec45db94193acac3da049a7214",
+  "window_vm_time": {
+    "start_vm": "2026-10-31T15:25:15.334629+00:00",
+    "end_vm": "2026-10-31T15:37:01.715708+00:00"
+  },
+  "laptop_date_u_info_only": "2026-10-31T15:37:39Z",
+  "excluded_windows": [
+    {
+      "kind": "init_baseline",
+      "episode_id": null,
+      "ts": "2026-10-31T15:26:15.334629+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A4_T0816_019",
+      "ts": "2026-10-31T15:27:21.458884+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A4_T0816_015",
+      "ts": "2026-10-31T15:29:03.520055+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A4_T0816_010",
+      "ts": "2026-10-31T15:34:22.275350+00:00"
+    },
+    {
+      "kind": "restore_plc",
+      "episode_id": "A4_T0816_002",
+      "ts": "2026-10-31T15:36:01.715708+00:00"
+    }
+  ],
+  "scripts": {
+    "attack_runner.py": {
+      "git_commit": "d53a100e0241c6ec45db94193acac3da049a7214",
+      "sha256": "7f200d99cb14681753c8d3fde37eba4f1a95086b9daf2d0d739053854e2bc6fc"
+    },
+    "benign_generator.py": {
+      "git_commit": "d53a100e0241c6ec45db94193acac3da049a7214",
+      "sha256": "13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084"
+    },
+    "run_campaign.sh": {
+      "git_commit": "d53a100e0241c6ec45db94193acac3da049a7214",
+      "sha256": "87f2c96e627036c183e8e1aa7ba1605c0b6e9d0d8cb9956d1892ab8f4ad143c1"
+    },
+    "evaluate_campaign.py": {
+      "git_commit": "d53a100e0241c6ec45db94193acac3da049a7214",
+      "sha256": "022acd2f4b799d21be39703e40b65d2d700804c5bf891049ac58f52226a9d0d1"
+    }
+  },
+  "files": {
+    "attack_control.jsonl": {
+      "sha256": "6b2bf5d9d3dab868b79a3e1fae45aff2c723a1c38dfb62d2642a7e621ef36cfb",
+      "bytes": 1191
+    },
+    "attack_log.jsonl": {
+      "sha256": "3e9410ec1abd19d018509623b27b999773be70d2c6d3e00de4544fce2c71ab19",
+      "bytes": 8793
+    },
+    "attack_schedule.jsonl": {
+      "sha256": "54d47577f809bec324cb1d7db7b88145bc6d2ae749cd6df546f5eeab26c4f146",
+      "bytes": 14598
+    },
+    "attack_stdout.log": {
+      "sha256": "cdb3e0aa3a8f02078723be2d9be7e5ce1fa65ede9edb7767b11f003288c194b4",
+      "bytes": 7271
+    },
+    "benign_log.jsonl": {
+      "sha256": "79b0b2c15b6c3094139bdb726782ceaa2033caa011ebca912b6c4978e413abbe",
+      "bytes": 12288
+    },
+    "benign_stdout.log": {
+      "sha256": "53344605d7a56ec1dfb7d0cf368d07b72a085a18869b3a55230a0363e242908a",
+      "bytes": 125
+    },
+    "capture.pcap": {
+      "sha256": "5e8b711f0e570631313352746b0e80fee9e0466d1a9b65e8b89bd50778694592",
+      "bytes": 132214
+    },
+    "capture_loss.log": {
+      "sha256": "307a10d5cd70307fbb42b12d477c8fb82b2e9799dcf023b68d1dea22dda1c79f",
+      "bytes": 212
+    },
+    "eve_slice.json": {
+      "sha256": "3880a7b3ef45117f639fd221c258d52df6673917b3fb88aca409a24defe4d72a",
+      "bytes": 1135394
+    },
+    "window.txt": {
+      "sha256": "55ac0e84c1d7d064db5602d030e61779d1141208ae498c638c1e3f9642ef5d5b",
+      "bytes": 206
+    }
+  },
+  "generated_at": "2026-10-31T15:37:40.079758+00:00",
+  "status": "ABORTED",
+  "abort": {
+    "reason": "run_episode:809 .51 BASELINE reset write -> pymodbus ModbusIOException (No response received after 3 retries) az A1_T0836_004 (10/66) epizodnal; ok: a ket megelozo A.4 (scan_running) ellenere a kod mgmt /start_plc-t hivott -> start_modbus(502) ujrakotes -> atmeneti Modbus-kieses. Lasd E-30.",
+    "last_logged_episode": "A4_T0816_002",
+    "crashed_episode": "A1_T0836_004",
+    "logged_records": 9,
+    "excluded_window_vm_time": [
+      "2026-10-31T15:25:15.334629+00:00",
+      "2026-10-31T15:37:01.715708+00:00"
+    ],
+    "exclusion": "a teljes kampany kizart (D12); a VM-idobelyegek a 2026-10-31-i VM-oran (a 2026-11-01-i ujraszinkron elott -- E-31)."
+  }
+}

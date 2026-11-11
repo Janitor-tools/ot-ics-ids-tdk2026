@@ -1,0 +1,19 @@
+scipy 1.18.1; forras: campaign_2026-08-22_metrics.json
+Kampanyhossz a JSON start/end alapjan: 2.9820 h; a szamitasban hasznalt T = 2.982 h
+
+a) Ketoldalu 95% Clopper-Pearson intervallum
+  Recall T0836 (A.1)               17/17 = 1.000  CI95 = [0.805; 1.000]
+  Recall T0816 csak A.4            20/20 = 1.000  CI95 = [0.832; 1.000]
+  Recall T0816 pooled A.4+A.5      20/23 = 0.870  CI95 = [0.664; 0.972]
+  Precision T0836 finomitott       17/17 = 1.000  CI95 = [0.805; 1.000]
+
+b) Naiv T0836 Precision, ketoldalu 95% Clopper-Pearson
+  Precision T0836 naiv             17/39 = 0.436  CI95 = [0.278; 0.604]
+
+c) Poisson felso korlat 0 FP-re
+  egyoldalu 95%                      mu_felso = 2.9957 esemeny -> 1.005 riasztas/ora (T = 2.982 h)
+  ketoldalu 95% (97,5% felso farok)  mu_felso = 3.6889 esemeny -> 1.237 riasztas/ora (T = 2.982 h)
+
+d) Makro-recall (5 tesztelt technika)
+  (1,000 + 0 + 0,870 + 0 + 0) / 5 = 0.374
+  pontos recall-ertekekkel a JSON-bol: 0.374 (JSON macro_recall.value = 0.374)

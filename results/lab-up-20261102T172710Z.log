@@ -1,0 +1,23 @@
+[2026-11-02T17:27:10Z] lab_up.sh indul (dry-run=0), repo=/c/Users/szaba/projects/ot-tdk
+[2026-11-02T17:27:10Z] git HEAD: 0930fc7714ffb5a71be6ec6c087969ae9841289c
+[2026-11-02T17:27:10Z] git status --porcelain:
+?? docs/tdk/M3-protokoll-VAZLAT.md
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-Zeek-heatmap.json
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-Zeek-mappings-enterprise.json
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-sensor-comparison-heatmap.json
+?? docs/tdk/related-works/forrasok/ics-attack-19.2.json
+?? docs/tdk/related-works/forrasok/ics-attack-20.0.json
+?? results/m5/eredmenyek_20261102T152704Z.json
+?? results/m5/eredmenyek_20261102T152704Z.md
+?? results/m5/osszesitett_20261101T171905Z.json
+?? results/m5/osszesitett_20261101T171905Z.md
+[2026-11-02T17:27:10Z] lab_up.sh sha256: 46983c0bc9ea837eb78c2174436f362ae68291012b2fd0b2db436128447ef0a5
+[2026-11-02T17:27:10Z] futtato: <USER>@<LAB_HOST>
+[2026-11-02T17:27:10Z] >>> L0 (chrony: makestep + ellenorzes) kezdete
+[2026-11-02T17:27:16Z] siem: |laptop - VM| = 55240s
+[2026-11-02T17:27:16Z] HIBA (L0): siem: a laptophoz mert oraelteres 55240s > 3s (E-31; szinkronizalj ujra)
+[2026-11-02T17:27:16Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | siem: elteres 55240s > 3s          | chronyc makestep               | siem: a laptophoz mert oraelteres 55240s > 3s (E-31; szinkronizalj ujra) | HIBA    |
+[2026-11-02T17:27:16Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261102T172710Z.log

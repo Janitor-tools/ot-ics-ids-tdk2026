@@ -1,0 +1,62 @@
+[2026-10-29T13:06:16Z] lab_up.sh indul (dry-run=1), repo=/c/Users/szaba/projects/ot-tdk
+[2026-10-29T13:06:16Z] git HEAD: a26958f679e0402cba93025cef9433ad8d5a2840
+[2026-10-29T13:06:16Z] git status --porcelain:
+ M docs/tdk/ATADAS-2026-11.md
+?? data/campaign_2026-08-22/CORRECTIONS.md
+?? data/campaign_2026-08-22/attack_log.original.jsonl
+?? docs/tdk/ELTERESNAPLO.md
+?? results/lab-baseline-2026-10-29.sha256
+?? results/lab-health-2026-10-29.txt
+?? scripts/deploy_red_team_scripts.sh
+?? scripts/lab_up.sh
+[2026-10-29T13:06:16Z] lab_up.sh sha256: 8c9322d17728bde75a15647d91f214d1f9555349895ba9bd659a3fcac9af1c4d
+[2026-10-29T13:06:17Z] futtato: <USER>@<LAB_HOST>
+[2026-10-29T13:06:17Z] FIGYELMEZTETES (dry-run): dirty tree a scripts/ alatt -- eles futas itt megallna
+[2026-10-29T13:06:17Z] >>> L0 (chrony) kezdete
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 siem chronyc\ tracking
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor chronyc\ tracking
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 plc chronyc\ tracking
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam chronyc\ tracking
+[2026-10-29T13:06:17Z] <<< L0 (chrony) vege
+[2026-10-29T13:06:17Z] >>> L0b (apt-idozitok) kezdete
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 siem systemctl\ is-enabled\ apt-daily.timer\ apt-daily-upgrade.timer
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor systemctl\ is-enabled\ apt-daily.timer\ apt-daily-upgrade.timer
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 plc systemctl\ is-enabled\ apt-daily.timer\ apt-daily-upgrade.timer
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam systemctl\ is-enabled\ apt-daily.timer\ apt-daily-upgrade.timer
+[2026-10-29T13:06:17Z] <<< L0b (apt-idozitok) vege
+[2026-10-29T13:06:17Z] >>> L1 (Sensor: Zeek) kezdete
+[2026-10-29T13:06:17Z] zeekctl start (augusztusi eljaras; NEM deploy, NEM install)
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor sudo\ -n\ /opt/zeek/bin/zeekctl\ start
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor sudo\ -n\ /opt/zeek/bin/zeekctl\ status
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor pgrep\ -a\ zeek
+[2026-10-29T13:06:17Z] <<< L1 (Sensor: Zeek) vege
+[2026-10-29T13:06:17Z] >>> L1b (Sensor: Zeek allapot, csak olvasas) kezdete
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor sudo\ -n\ /opt/zeek/bin/zeekctl\ status
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 sensor test\ -f\ /opt/zeek/spool/zeek/capture_loss.log\ \&\&\ tail\ -n\ 1\ /opt/zeek/spool/zeek/capture_loss.log\ \|\|\ echo\ \'\(nincs\ capture_loss.log\)\'
+[2026-10-29T13:06:17Z] <<< L1b (Sensor: Zeek allapot, csak olvasas) vege
+[2026-10-29T13:06:17Z] >>> L2 (Target-PLC: OpenPLC RUN) kezdete
+[2026-10-29T13:06:17Z] [DRY-RUN] hitelesito adatok: OPENPLC_USER/OPENPLC_PASS vagy read -s (nem kerul kiirasra)
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 plc bash -c <PLC_REMOTE: login + GET /start_plc a localhoston, cookie-jarral; adatok stdin-en>
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 plc ss\ -ltn
+[2026-10-29T13:06:17Z] <<< L2 (Target-PLC: OpenPLC RUN) vege
+[2026-10-29T13:06:17Z] >>> L3 (Red-Team: .51 alias) kezdete
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sudo\ -n\ ip\ addr\ add\ 192.168.1.51/24\ dev\ enp0s8
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam ip\ -br\ addr\ show\ enp0s8
+[2026-10-29T13:06:17Z] <<< L3 (Red-Team: .51 alias) vege
+[2026-10-29T13:06:17Z] >>> L4 (Red-Team szkriptek == HEAD) kezdete
+[DRY-RUN] git -C /c/Users/szaba/projects/ot-tdk show HEAD:scripts/attack_runner.py | sha256sum
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sha256sum\ /home/ot/attack_runner.py
+[DRY-RUN] git -C /c/Users/szaba/projects/ot-tdk show HEAD:scripts/benign_generator.py | sha256sum
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sha256sum\ /home/ot/benign_generator.py
+[2026-10-29T13:06:17Z] <<< L4 (Red-Team szkriptek == HEAD) vege
+[2026-10-29T13:06:17Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | (dry-run)                          | ellenorzes                     | (dry-run)                          | DRY-RUN |
+| L0b  | (dry-run)                          | ellenorzes                     | (dry-run)                          | DRY-RUN |
+| L1   | (dry-run)                          | zeekctl start                  | (dry-run)                          | DRY-RUN |
+| L1b  | (dry-run)                          | olvasas                        | (dry-run)                          | DRY-RUN |
+| L2   | (dry-run)                          | login + /start_plc             | (dry-run)                          | DRY-RUN |
+| L3   | (dry-run)                          | ip addr add .51 (nem perz.)    | (dry-run)                          | DRY-RUN |
+| L4   | (dry-run)                          | sha256 osszevetes              | (dry-run)                          | DRY-RUN |
+[2026-10-29T13:06:17Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261029T130616Z.log

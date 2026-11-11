@@ -1,0 +1,132 @@
+{
+  "1.1_detection_latency": {
+    "definicio": "attack-to-alert: epizod kezdete (attack_log.jsonl start_ts) -> a riasztast kivalto esemeny @timestamp-je. NEM azonos a Filebeat/ES ingest-kesleltetessel (lasd Milestone 4, kulon dokumentalt korlat, nincs event.ingested mezo a tarolt adatban).",
+    "T0836": {
+      "n": 17,
+      "median_s": 0.078924,
+      "p95_s": 0.1073594,
+      "min_s": 0.005607,
+      "max_s": 0.107409
+    },
+    "T0816_A4": {
+      "n": 20,
+      "median_s": 0.001604,
+      "p95_s": 0.0024741500000000005,
+      "min_s": 0.000802,
+      "max_s": 0.003085
+    },
+    "T0846": null,
+    "T0888": null,
+    "T0843": null,
+    "T0816_A5": null,
+    "note_vakfoltok": "N/A -- nincs aktiv szabaly / garantalt FN, nincs mibol kesleltetest szamolni."
+  },
+  "1.2_maxspan_sensitivity": {
+    "2": {
+      "n_naive_sequences": 39,
+      "tp": 17,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "5": {
+      "n_naive_sequences": 42,
+      "tp": 17,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "10": {
+      "n_naive_sequences": 42,
+      "tp": 17,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "30": {
+      "n_naive_sequences": 42,
+      "tp": 17,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "60": {
+      "n_naive_sequences": 42,
+      "tp": 17,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "1.3_ablation_2x2": {
+    "neither (naiv)": {
+      "fp": 22,
+      "tp": 17,
+      "precision": 0.4358974358974359,
+      "recall": 1.0,
+      "f1": 0.6071428571428571
+    },
+    "allowlist_only": {
+      "fp": 3,
+      "tp": 17,
+      "precision": 0.85,
+      "recall": 1.0,
+      "f1": 0.9189189189189189
+    },
+    "value_change_only": {
+      "fp": 2,
+      "tp": 17,
+      "precision": 0.8947368421052632,
+      "recall": 1.0,
+      "f1": 0.9444444444444444
+    },
+    "both (finomitott)": {
+      "fp": 0,
+      "tp": 17,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "1.5_confusion_matrix": {
+    "definicio_scope": "Szuk definicio: csak a ket aktiv szabaly (T0836, T0816) kereszt-teves tuzelese szamit konfuzionak. T0846/T0888/T0843 strukturalisan nem tudnak semmilyen szabalyt kivaltani (nincs rajuk epulo detekcio), ezert ezekre a matrix nem 'egyik_sem_tuzelt' cellat mutat, hanem explicit kulon oszlopot -- a vakfolt tulajdonsag nem tevesztendo ossze egy tenyleges, mert nulla, kereszt-tuzeles hianyaval.",
+    "matrix": {
+      "T0816": {
+        "T0836": 0,
+        "T0816": 20,
+        "nincs_aktiv_szabaly (T0846/T0888/T0843)": 0,
+        "egyik_sem_tuzelt": 3
+      },
+      "T0836": {
+        "T0836": 17,
+        "T0816": 0,
+        "nincs_aktiv_szabaly (T0846/T0888/T0843)": 0,
+        "egyik_sem_tuzelt": 0
+      },
+      "T0843": {
+        "T0836": 0,
+        "T0816": 0,
+        "nincs_aktiv_szabaly (T0846/T0888/T0843)": 3,
+        "egyik_sem_tuzelt": 0
+      },
+      "T0888": {
+        "T0836": 0,
+        "T0816": 0,
+        "nincs_aktiv_szabaly (T0846/T0888/T0843)": 20,
+        "egyik_sem_tuzelt": 0
+      },
+      "T0846": {
+        "T0836": 0,
+        "T0816": 0,
+        "nincs_aktiv_szabaly (T0846/T0888/T0843)": 3,
+        "egyik_sem_tuzelt": 0
+      }
+    },
+    "id_correction_note": "Javitva 2026-08-25 (2.4/0.1 tetel): a T0846/T0888 sorok tartalma felcserelve, mert a technika-ID-k korabban forditva alltak a hivatalos MITRE-definiciohoz kepest (A.2 = T0888, A.3 = T0846). Csak a cimke valtozott, a mert ertekek nem."
+  }
+}

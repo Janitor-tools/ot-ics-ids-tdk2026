@@ -1,0 +1,19 @@
+{
+  "campaign_id": "campaign_20261101T142841Z_V1_s2",
+  "rule": "reg-0 iras epizod, status != error, value_before != 1009 (D9 baseline)",
+  "note": "E-39: eloallapot-sertes; a fo elemzesben BENNE maradnak (prereg nem zarja ki), erzekenysegi elemzesben kizarva",
+  "generated_at": "2026-11-01T22:04:32.304667+00:00",
+  "violations": [
+    {
+      "episode_id": "A1_T0836_018",
+      "value_before": 1013,
+      "preceding_episode": "A4_T0816_007",
+      "preceding_reset_after": {
+        "performed": false,
+        "reason": "no_stop_effect",
+        "effect_branch": "scan_running",
+        "ts": "2026-11-01T15:28:50.555752+00:00"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[2026-10-29T13:06:33Z] HEAD:scripts/attack_runner.py sha256=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9
+[2026-10-29T13:06:33Z] fe59748 (vart regi) sha256=16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sha256sum\ /home/ot/attack_runner.py
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam test\ -e\ /home/ot/attack_runner.py.fe59748.bak\ \|\|\ cp\ -p\ /home/ot/attack_runner.py\ /home/ot/attack_runner.py.fe59748.bak
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sha256sum\ /home/ot/attack_runner.py.fe59748.bak
+[DRY-RUN] scp -o BatchMode=yes -o ConnectTimeout=10 /tmp/tmp.7xgHgZNQTx redteam:/home/ot/attack_runner.py.new
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sha256sum\ /home/ot/attack_runner.py.new
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam mv\ -f\ /home/ot/attack_runner.py.new\ /home/ot/attack_runner.py\ \&\&\ chmod\ 755\ /home/ot/attack_runner.py
+[DRY-RUN] ssh -o BatchMode=yes -o ConnectTimeout=10 redteam sha256sum\ /home/ot/attack_runner.py
+[2026-10-29T13:06:33Z] dry-run vege, semmi nem valtozott

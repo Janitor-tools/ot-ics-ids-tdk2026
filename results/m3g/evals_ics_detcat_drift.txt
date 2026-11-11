@@ -1,0 +1,7 @@
+alap: wayback-attackevals-ics-triton-detection-categories-20210729150312.txt :42–159
+
+== wayback-attackevals-ics-triton-detection-categories-20211020130407.txt :37–154
+soronként: AZONOS; szóközre normalizálva: AZONOS
+
+== wayback-attackevals-ics-triton-detection-categories-20211102094735.txt :45–162
+soronként: AZONOS; szóközre normalizálva: AZONOS

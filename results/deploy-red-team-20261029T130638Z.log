@@ -1,0 +1,6 @@
+[2026-10-29T13:06:39Z] HEAD:scripts/attack_runner.py sha256=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9
+[2026-10-29T13:06:39Z] fe59748 (vart regi) sha256=16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad
+[2026-10-29T13:06:39Z] VM /home/ot/attack_runner.py sha256=16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad
+[2026-10-29T13:06:39Z] --yes: a jovahagyas a parancssorbol jott, nincs interaktiv kerdes
+[2026-10-29T13:06:41Z] mentes rendben: /home/ot/attack_runner.py.fe59748.bak sha256=16d267c16d7487b7d4fa4b24002a4590624a2c4554c5306c0ac445bc6ad621ad
+[2026-10-29T13:06:43Z] KESZ: redteam:/home/ot/attack_runner.py sha256=6bdf18f512cf7b9426203da100eadd52b318a1db7546461dfe694aa755d12ce9 (== HEAD); mentes: /home/ot/attack_runner.py.fe59748.bak

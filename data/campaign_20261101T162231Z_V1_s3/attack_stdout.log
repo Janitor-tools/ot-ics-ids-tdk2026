@@ -1,0 +1,684 @@
+2026-11-01 16:22:36,471 INFO GATES_PRECONFIRMED=1 -- a blokkolo megerosites atugorva.
+2026-11-01 16:23:17,456 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:23:17,457 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:23:17,457 INFO Negotiated PDU length: 480
+2026-11-01 16:23:17,457 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:23:17,457 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:23:17,458 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:23:17,458 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:23:17,458 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:24:49,190 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:24:49,191 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:24:49,191 INFO Negotiated PDU length: 480
+2026-11-01 16:24:49,191 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:24:49,191 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:24:49,191 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:24:49,192 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:24:49,192 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:26:36,561 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:26:36,563 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:26:36,563 INFO Negotiated PDU length: 480
+2026-11-01 16:26:36,563 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:26:36,563 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:26:36,564 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:26:36,564 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:26:36,564 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:27:53,861 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:27:53,863 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:27:53,864 INFO Negotiated PDU length: 480
+2026-11-01 16:27:53,864 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:27:53,864 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:27:53,865 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:27:53,865 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:27:53,865 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:31:47,687 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:31:47,688 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:31:47,688 INFO Negotiated PDU length: 480
+2026-11-01 16:31:47,688 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:31:47,688 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:31:47,689 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:31:47,689 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:31:47,689 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:36:30,983 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:36:30,984 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:36:30,984 INFO Negotiated PDU length: 480
+2026-11-01 16:36:30,984 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:36:30,985 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:36:30,985 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:36:30,985 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:36:30,985 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:38:53,734 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:38:53,735 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:38:53,736 INFO Negotiated PDU length: 480
+2026-11-01 16:38:53,736 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:38:53,736 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:38:53,736 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:38:53,737 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:38:53,737 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:40:35,570 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:40:35,572 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:40:35,572 INFO Negotiated PDU length: 480
+2026-11-01 16:40:35,572 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:40:35,572 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:40:35,573 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:40:35,573 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:40:35,573 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:42:06,080 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:42:06,081 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:42:06,081 INFO Negotiated PDU length: 480
+2026-11-01 16:42:06,081 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:42:06,081 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:42:06,082 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:42:06,082 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:42:06,082 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:43:33,401 ERROR No response received after 3 retries, continue with next request
+2026-11-01 16:43:33,401 ERROR Epizod hiba: A1_T0836_013
+Traceback (most recent call last):
+  File "/home/ot/attack_runner.py", line 816, in run_episode
+    outcome = SCENARIO_RUNNERS[ep.scenario_id](ep)
+  File "/home/ot/attack_runner.py", line 504, in run_a1
+    rr = client.read_holding_registers(address=REGISTER_ADDRESS, count=1, device_id=DEVICE_ID)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/mixin.py", line 131, in read_holding_registers
+    return self.execute(
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/client/base.py", line 189, in execute
+    return self.transaction.sync_execute(no_response_expected, request)
+  File "/home/ot/.local/lib/python3.10/site-packages/pymodbus/transaction/transaction.py", line 160, in sync_execute
+    raise ModbusIOException(txt)
+pymodbus.exceptions.ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request
+2026-11-01 16:43:40,239 WARNING error-epizod (1/3 egymast koveto): A1_T0836_013
+2026-11-01 16:44:47,986 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:44:47,987 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:44:47,987 INFO Negotiated PDU length: 480
+2026-11-01 16:44:47,988 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:44:47,988 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:44:47,988 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:44:47,988 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:44:47,988 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:48:59,058 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:48:59,059 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:48:59,060 INFO Negotiated PDU length: 480
+2026-11-01 16:48:59,060 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:48:59,060 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:48:59,060 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:48:59,060 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:48:59,061 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:52:51,855 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:52:51,857 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:52:51,857 INFO Negotiated PDU length: 480
+2026-11-01 16:52:51,857 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:52:51,857 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:52:51,857 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:52:51,857 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:52:51,857 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:55:58,170 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:55:58,171 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:55:58,172 INFO Negotiated PDU length: 480
+2026-11-01 16:55:58,172 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:55:58,172 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:55:58,173 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:55:58,173 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:55:58,173 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:57:34,760 INFO S7Client initialized (pure Python implementation)
+2026-11-01 16:57:34,761 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 16:57:34,762 INFO Negotiated PDU length: 480
+2026-11-01 16:57:34,762 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 16:57:34,762 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 16:57:34,762 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:57:34,762 INFO Disconnected from 192.168.1.100:102
+2026-11-01 16:57:34,762 INFO Disconnected from 192.168.1.100:102
+Menetrend naplozva (/home/ot/results/campaigns/campaign_20261101T162231Z_V1_s3/attack_schedule.jsonl), 66 epizod, seed=3, campaign=V1.
+A tamadasi kampany elott igazolando: a Negy Kapu zold es a D9 kezdoallapot be van allitva (az ablakon kivul). Ezt a script a GATES_PRECONFIRMED=1 eseten nem kerdezi ujra.
+D9 init: register=0 value=1009 performed=True ts=2026-11-01T16:22:36.599492+00:00
+
+[1/66]
+
+=== A2_T0888_006 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 20.6 mp
+
+[2/66]
+
+=== A6_T0843_001 (A6 / T0843) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=blocked  reset_after=None
+  Szunet: 60.0 mp
+
+[3/66]
+
+=== A4_T0816_014 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:25:25.397757+00:00'}
+  Szunet: 39.8 mp
+
+[4/66]
+
+=== A4_T0816_015 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:27:09.984797+00:00'}
+  Szunet: 33.4 mp
+
+[5/66]
+
+=== A6_T0843_002 (A6 / T0843) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=blocked  reset_after=None
+  Szunet: 60.0 mp
+
+[6/66]
+
+=== A2_T0888_009 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 34.4 mp
+
+[7/66]
+
+=== A1_T0836_017 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:29:54.679744+00:00'}
+  Szunet: 32.7 mp
+
+[8/66]
+
+=== A2_T0888_001 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 33.4 mp
+
+[9/66]
+
+=== A4_T0816_002 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:32:21.032961+00:00'}
+  Szunet: 28.7 mp
+
+[10/66]
+
+=== A3_T0846.001_002 (A3 / T0846.001) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 60.0 mp
+
+[11/66]
+
+=== A4_T0816_007 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:37:05.230250+00:00'}
+  Szunet: 27.0 mp
+
+[12/66]
+
+=== A1_T0836_015 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:37:49.124634+00:00'}
+  Szunet: 32.8 mp
+
+[13/66]
+
+=== A4_T0816_013 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:39:27.070071+00:00'}
+  Szunet: 37.1 mp
+
+[14/66]
+
+=== A4_T0816_004 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:41:08.687348+00:00'}
+  Szunet: 26.0 mp
+
+[15/66]
+
+=== A4_T0816_005 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:42:39.210371+00:00'}
+  Szunet: 30.1 mp
+
+[16/66]
+
+=== A1_T0836_013 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=error  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:43:39.467842+00:00'}
+  Szunet: 36.7 mp
+
+[17/66]
+
+=== A4_T0816_001 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:45:21.331957+00:00'}
+  Szunet: 39.3 mp
+
+[18/66]
+
+=== A1_T0836_012 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:46:17.099564+00:00'}
+  Szunet: 29.4 mp
+
+[19/66]
+
+=== A2_T0888_004 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 31.8 mp
+
+[20/66]
+
+=== A1_T0836_011 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:47:45.621707+00:00'}
+  Szunet: 39.9 mp
+
+[21/66]
+
+=== A4_T0816_006 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:49:32.428334+00:00'}
+  Szunet: 27.7 mp
+
+[22/66]
+
+=== A2_T0888_012 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 38.4 mp
+
+[23/66]
+
+=== A1_T0836_009 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:51:06.451487+00:00'}
+  Szunet: 25.2 mp
+
+[24/66]
+
+=== A2_T0888_010 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 37.6 mp
+
+[25/66]
+
+=== A4_T0816_017 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:53:25.736850+00:00'}
+  Szunet: 37.2 mp
+
+[26/66]
+
+=== A1_T0836_014 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:54:19.323655+00:00'}
+  Szunet: 29.5 mp
+
+[27/66]
+
+=== A1_T0836_007 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:55:06.540028+00:00'}
+  Szunet: 20.3 mp
+
+[28/66]
+
+=== A4_T0816_008 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:56:31.616478+00:00'}
+  Szunet: 31.7 mp
+
+[29/66]
+
+=== A4_T0816_016 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T16:58:08.580173+00:00'}
+  Szunet: 23.3 mp
+
+[30/66]
+2026-11-01 17:00:38,079 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:00:38,081 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:00:38,081 INFO Negotiated PDU length: 480
+2026-11-01 17:00:38,081 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:00:38,081 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:00:38,082 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:00:38,082 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:00:38,082 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:12:11,998 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:12:11,999 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:12:11,999 INFO Negotiated PDU length: 480
+2026-11-01 17:12:12,000 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:12:12,000 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:12:12,000 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:12:12,000 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:12:12,000 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:15:47,783 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:15:47,786 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:15:47,787 INFO Negotiated PDU length: 480
+2026-11-01 17:15:47,787 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:15:47,787 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:15:47,788 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:15:47,789 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:15:47,789 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:17:27,314 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:17:27,316 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:17:27,317 INFO Negotiated PDU length: 480
+2026-11-01 17:17:27,317 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:17:27,317 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:17:27,318 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:17:27,318 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:17:27,318 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:18:50,438 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:18:50,441 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:18:50,441 INFO Negotiated PDU length: 480
+2026-11-01 17:18:50,442 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:18:50,442 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:18:50,443 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:18:50,443 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:18:50,443 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:23:29,302 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:23:29,305 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:23:29,306 INFO Negotiated PDU length: 480
+2026-11-01 17:23:29,306 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:23:29,307 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:23:29,308 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:23:29,308 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:23:29,308 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:25:15,245 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:25:15,248 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:25:15,249 INFO Negotiated PDU length: 480
+2026-11-01 17:25:15,249 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:25:15,249 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:25:15,250 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:25:15,251 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:25:15,251 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:28:18,633 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:28:18,635 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:28:18,636 INFO Negotiated PDU length: 480
+2026-11-01 17:28:18,636 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:28:18,636 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:28:18,636 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:28:18,637 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:28:18,637 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:33:25,209 INFO S7Client initialized (pure Python implementation)
+2026-11-01 17:33:25,211 INFO Connected to 192.168.1.100:102, PDU size: 1024
+2026-11-01 17:33:25,213 INFO Negotiated PDU length: 480
+2026-11-01 17:33:25,213 INFO [192.168.1.100 R0/S1] Connected to 192.168.1.100:102 rack 0 slot 1
+2026-11-01 17:33:25,213 INFO Auto-tuned max_parallel=4 (PDU=480)
+2026-11-01 17:33:25,214 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:33:25,214 INFO Disconnected from 192.168.1.100:102
+2026-11-01 17:33:25,214 INFO Disconnected from 192.168.1.100:102
+
+=== A2_T0888_014 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 36.0 mp
+
+[31/66]
+
+=== A1_T0836_004 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T16:59:34.361731+00:00'}
+  Szunet: 32.1 mp
+
+[32/66]
+
+=== A4_T0816_011 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:01:11.417542+00:00'}
+  Szunet: 33.6 mp
+
+[33/66]
+
+=== A1_T0836_001 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:02:01.920276+00:00'}
+  Szunet: 24.8 mp
+
+[34/66]
+
+=== A1_T0836_020 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:02:43.491611+00:00'}
+  Szunet: 34.8 mp
+
+[35/66]
+
+=== A3_T0846.001_003 (A3 / T0846.001) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 60.0 mp
+
+[36/66]
+
+=== A1_T0836_016 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:07:15.609079+00:00'}
+  Szunet: 23.0 mp
+
+[37/66]
+
+=== A2_T0888_013 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 27.9 mp
+
+[38/66]
+
+=== A1_T0836_018 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:08:33.436265+00:00'}
+  Szunet: 37.4 mp
+
+[39/66]
+
+=== A2_T0888_016 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 38.7 mp
+
+[40/66]
+
+=== A2_T0888_002 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 21.3 mp
+
+[41/66]
+
+=== A2_T0888_018 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 21.9 mp
+
+[42/66]
+
+=== A2_T0888_005 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 26.0 mp
+
+[43/66]
+
+=== A4_T0816_003 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:12:45.755208+00:00'}
+  Szunet: 32.5 mp
+
+[44/66]
+
+=== A2_T0888_020 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 24.3 mp
+
+[45/66]
+
+=== A2_T0888_019 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 22.7 mp
+
+[46/66]
+
+=== A1_T0836_003 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:14:45.242355+00:00'}
+  Szunet: 27.4 mp
+
+[47/66]
+
+=== A4_T0816_020 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:16:22.832857+00:00'}
+  Szunet: 31.4 mp
+
+[48/66]
+
+=== A4_T0816_010 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:18:01.808397+00:00'}
+  Szunet: 38.1 mp
+
+[49/66]
+
+=== A6_T0843_003 (A6 / T0843) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=blocked  reset_after=None
+  Szunet: 60.0 mp
+
+[50/66]
+
+=== A1_T0836_019 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:20:06.619047+00:00'}
+  Szunet: 30.5 mp
+
+[51/66]
+
+=== A1_T0836_002 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:20:54.865627+00:00'}
+  Szunet: 30.9 mp
+
+[52/66]
+
+=== A1_T0836_010 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:21:42.806628+00:00'}
+  Szunet: 24.7 mp
+
+[53/66]
+
+=== A2_T0888_007 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 37.3 mp
+
+[54/66]
+
+=== A4_T0816_019 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:24:04.045987+00:00'}
+  Szunet: 38.1 mp
+
+[55/66]
+
+=== A4_T0816_009 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:25:50.018108+00:00'}
+  Szunet: 31.7 mp
+
+[56/66]
+
+=== A2_T0888_003 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 35.2 mp
+
+[57/66]
+
+=== A1_T0836_006 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:27:23.869185+00:00'}
+  Szunet: 21.3 mp
+
+[58/66]
+
+=== A4_T0816_018 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:28:53.699686+00:00'}
+  Szunet: 39.3 mp
+
+[59/66]
+
+=== A3_T0846.001_001 (A3 / T0846.001) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 60.0 mp
+
+[60/66]
+
+=== A4_T0816_012 (A4 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_no_effect  reset_after={'performed': False, 'reason': 'no_stop_effect', 'effect_branch': 'scan_running', 'ts': '2026-11-01T17:33:59.407189+00:00'}
+  Szunet: 38.6 mp
+
+[61/66]
+
+=== A2_T0888_011 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 34.3 mp
+
+[62/66]
+
+=== A1_T0836_005 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:35:39.138720+00:00'}
+  Szunet: 32.5 mp
+
+[63/66]
+
+=== A1_T0836_008 (A1 / T0836) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after={'performed': True, 'restored_value': 1009, 'source_ip': '192.168.1.51', 'ts': '2026-11-01T17:36:29.752164+00:00'}
+  Szunet: 36.7 mp
+
+[64/66]
+
+=== A2_T0888_017 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 37.6 mp
+
+[65/66]
+
+=== A2_T0888_015 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 28.9 mp
+
+[66/66]
+
+=== A2_T0888_008 (A2 / T0888) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed  reset_after=None
+  Szunet: 29.5 mp
+
+Fo menetrend kesz. A.5 (host/HTTP) blokk kovetkezik.
+A.5 blokk inditasa  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+[A.5 1/3] A5_T0816_001 inditasa  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+
+=== A5_T0816_001 (A5 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 3, 'episode_id': 'A5_T0816_001', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-11-01T17:40:24.951389+00:00'}
+[A.5 2/3] A5_T0816_002 inditasa  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+
+=== A5_T0816_002 (A5 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 3, 'episode_id': 'A5_T0816_002', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-11-01T17:42:26.377431+00:00'}
+[A.5 3/3] A5_T0816_003 inditasa  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+
+=== A5_T0816_003 (A5 / T0816) src=192.168.1.50 ===
+Inditas  [10s auto-advance; Ctrl+C vagy SIGUSR1 a megszakitashoz]
+  -> status=executed_effect  reset_after={'kind': 'restore_plc', 'campaign': 'V1', 'seed': 3, 'episode_id': 'A5_T0816_003', 'login_status': 302, 'start_status': 302, 'performed': True, 'verified_listener': True, 'web_base': 'http://192.168.56.20:8080', 'ts': '2026-11-01T17:44:31.074617+00:00'}
+Teljes V1 kampany vegrehajtva (seed=3).

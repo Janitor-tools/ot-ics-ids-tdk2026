@@ -1,0 +1,146 @@
+klón: C:/Users/szaba/projects/_ext/ctid-sensor-mappings
+commit: 17617f08420941583593746cd2d611ef4f428afb 2025-06-21T11:40:44+02:00
+
+## STIX-leképezések (mappings/stix/*/*.json): objektumtípusok és mezők szenzoronként
+[enterprise] Auditd-mappings-enterprise.json: {'x-mitre-sensor-mapping': 122, 'relationship': 43, 'x-mitre-data-component': 4}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (26): {'Command Execution': 1, 'Drive Modification': 1, 'File Access': 2, 'File Deletion': 1, 'File Metadata': 2, 'File Modification': 2, 'Firewall Rule Modification': 1, 'Group Creation': 1, 'Group Deletion': 1, 'Host Status': 2, 'Logon Session Creation': 3, 'Logon Session Metadata': 4, 'Network Traffic Content': 1, 'Process Access': 1, 'Process Creation': 1, 'Process Termination': 1, 'Service Access': 1, 'Service Creation': 2, 'Service Metadata': 6, 'Service Modification': 18, 'User Account Access': 3, 'User Account Authentication': 8, 'User Account Creation': 3, 'User Account Deletion': 8, 'User Account Metadata': 4, 'User Account Modification': 44}
+[enterprise] CloudTrail-mappings-enterprise.json: {'x-mitre-sensor-mapping': 173, 'relationship': 63, 'x-mitre-data-component': 13, 'x-mitre-data-source': 1}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (38): {'Active Directory Object Access': 1, 'Active Directory Object Creation': 1, 'Active Directory Object Deletion': 2, 'Active Directory Object Enumeration': 4, 'Active Directory Object Metadata': 1, 'Active Directory Object Modification': 8, 'Certificate Access': 1, 'Certificate Deletion': 1, 'Certificate Enumeration': 1, 'Certificate Modification': 3, 'Cloud Service Account Access': 2, 'Cloud Service Account Metadata': 5, 'Cloud Service Disable': 1, 'Cloud Service Metadata': 1, 'Group Access': 1, 'Group Creation': 1, 'Group Deletion': 1, 'Group Enumeration': 4, 'Group Metadata': 8, 'Group Modification': 4, 'Image Creation': 1, 'Image Modification': 1, 'Instance Metadata': 10, 'Instance Start': 2, 'Instance Stop': 1, 'Logon Session Creation': 1, 'Snapshot Creation': 1, 'Snapshot Deletion': 1, 'Snapshot Modification': 1, 'User Account Access': 3, 'User Account Authentication': 11, 'User Account Creation': 1, 'User Account Deletion': 1, 'User Account Enumeration': 10, 'User Account Metadata': 63, 'User Account Modification': 11, 'Volume Creation': 1, 'Volume Modification': 2}
+[enterprise] OSQuery-mappings-enterprise.json: {'x-mitre-data-component': 13, 'x-mitre-sensor-mapping': 203, 'relationship': 58, 'x-mitre-data-source': 2}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (44): {'Active Directory Metadata': 1, 'Active Directory Object Access': 1, 'Application Log Content': 8, 'Certificate Registration': 1, 'Command Metadata': 1, 'Drive Access': 6, 'Drive Creation': 1, 'Drive Metadata': 2, 'Drive Modification': 1, 'Driver Metadata': 4, 'File Access': 3, 'File Creation': 1, 'File Deletion': 1, 'File Metadata': 21, 'File Modification': 1, 'Firewall Enumeration': 2, 'Firewall Metadata': 1, 'Firewall Rule Modification': 1, 'Firmware Metadata': 6, 'Group Metadata': 2, 'Host Status': 63, 'Image Metadata': 1, 'Kernel Metadata': 9, 'Kernel Module Load': 3, 'Logon Session Metadata': 3, 'Named Pipe Enumeration': 1, 'Network Share Access': 4, 'Network Status': 15, 'Network Traffic Content': 3, 'Process Creation': 1, 'Process Enumeration': 1, 'Process Metadata': 9, 'Scheduled Job Metadata': 3, 'Scheduled Task Enumeration': 1, 'Script Execution': 1, 'Service Enumeration': 1, 'Service Metadata': 2, 'System Settings': 1, 'User Account Access': 1, 'User Account Authentication': 1, 'User Account Metadata': 5, 'WMI Creation': 2, 'WMI Enumeration': 2, 'Windows Registry Key Access': 5}
+[enterprise] Reference-for-mappings-enterprise.json: {'relationship': 235, 'x-mitre-data-component': 35, 'x-mitre-data-source': 3, 'x-mitre-sensor-mapping': 176}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (58): {'Active Directory Credential Request': 3, 'Active Directory Object Access': 4, 'Active Directory Object Creation': 2, 'Active Directory Object Deletion': 1, 'Active Directory Object Modification': 5, 'Command Execution': 1, 'Drive Creation': 3, 'Drive Modification': 4, 'Driver Load': 1, 'File Access': 5, 'File Creation': 3, 'File Deletion': 4, 'File Metadata': 1, 'File Modification': 2, 'Firewall Disable': 2, 'Firewall Enabled': 1, 'Firewall Metadata': 5, 'Firewall Rule Modification': 7, 'Group Creation': 3, 'Group Deletion': 3, 'Group Enumeration': 2, 'Group Modification': 8, 'Host Status': 7, 'Logon Session Creation': 3, 'Logon Session Metadata': 8, 'Logon Session Modification': 1, 'Logon Session Terminated': 1, 'Module Load': 1, 'Named Pipe Connection': 1, 'Named Pipe Metadata': 5, 'Network Connection Creation': 12, 'Network Share Access': 2, 'Network Share Creation': 1, 'Network Share Deletion': 1, 'Network Share Modification': 1, 'Process Access': 3, 'Process Creation': 4, 'Process Metadata': 1, 'Process Modification': 1, 'Process Termination': 2, 'Scheduled Job Creation': 1, 'Scheduled Job Deletion': 1, 'Scheduled Job Modification': 3, 'Script Execution': 2, 'Service Access': 1, 'Service Creation': 1, 'Service Metadata': 3, 'User Account Authentication': 3, 'User Account Creation': 2, 'User Account Deletion': 2, 'User Account Metadata': 1, 'User Account Modification': 12, 'WMI Creation': 7, 'WMI Deletion': 2, 'Windows Registry Key Access': 1, 'Windows Registry Key Creation': 2, 'Windows Registry Key Deletion': 3, 'Windows Registry Key Modification': 4}
+[enterprise] Sysmon-mappings-enterprise.json: {'x-mitre-sensor-mapping': 28, 'relationship': 22, 'x-mitre-data-component': 2}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (20): {'Driver Load': 1, 'File Access': 1, 'File Creation': 2, 'File Deletion': 2, 'File Modification': 1, 'Module Load': 1, 'Named Pipe Connection': 1, 'Named Pipe Metadata': 3, 'Network Connection Creation': 1, 'Process Access': 1, 'Process Creation': 2, 'Process Metadata': 1, 'Process Modification': 1, 'Process Termination': 1, 'Service Metadata': 1, 'WMI Creation': 2, 'WMI Deletion': 2, 'Windows Registry Key Creation': 1, 'Windows Registry Key Deletion': 1, 'Windows Registry Key Modification': 2}
+[enterprise] WinEvtx-mappings-enterprise.json: {'x-mitre-sensor-mapping': 148, 'relationship': 89, 'x-mitre-data-component': 10}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (52): {'Active Directory Credential Request': 3, 'Active Directory Object Access': 4, 'Active Directory Object Creation': 2, 'Active Directory Object Deletion': 1, 'Active Directory Object Modification': 5, 'Command Execution': 1, 'Drive Creation': 3, 'Drive Modification': 4, 'File Access': 4, 'File Creation': 1, 'File Deletion': 2, 'File Metadata': 1, 'File Modification': 1, 'Firewall Disable': 2, 'Firewall Enabled': 1, 'Firewall Metadata': 5, 'Firewall Rule Modification': 7, 'Group Creation': 3, 'Group Deletion': 3, 'Group Enumeration': 2, 'Group Modification': 8, 'Host Status': 7, 'Logon Session Creation': 3, 'Logon Session Metadata': 8, 'Logon Session Modification': 1, 'Logon Session Terminated': 1, 'Named Pipe Metadata': 2, 'Network Connection Creation': 11, 'Network Share Access': 2, 'Network Share Creation': 1, 'Network Share Deletion': 1, 'Network Share Modification': 1, 'Process Access': 2, 'Process Creation': 2, 'Process Termination': 1, 'Scheduled Job Creation': 1, 'Scheduled Job Deletion': 1, 'Scheduled Job Modification': 3, 'Script Execution': 2, 'Service Access': 1, 'Service Creation': 1, 'Service Metadata': 2, 'User Account Authentication': 3, 'User Account Creation': 2, 'User Account Deletion': 2, 'User Account Metadata': 1, 'User Account Modification': 12, 'WMI Creation': 5, 'Windows Registry Key Access': 1, 'Windows Registry Key Creation': 1, 'Windows Registry Key Deletion': 2, 'Windows Registry Key Modification': 2}
+[enterprise] Zeek-mappings-enterprise.json: {'x-mitre-sensor-mapping': 226, 'relationship': 13}
+    x-mitre-sensor-mapping mezők: ['created', 'data_component', 'data_source', 'description', 'event_id', 'id', 'modified', 'relationship', 'revoked', 'source', 'spec_version', 'target', 'type', 'x_mitre_data_source_id']
+    adatkomponensek (3): {'Network Connection Creation': 18, 'Network Traffic Content': 74, 'Network Traffic Flow': 134}
+
+## CSV-bemenetek (mappings/input/*/csv/*.csv): sorok és adatkomponensek szenzoronként
+[enterprise] Auditd-sensors-mappings-enterprise.csv: 122 sor, 26 adatkomponens
+[enterprise] CloudTrail-sensors-mappings-enterprise.csv: 173 sor, 38 adatkomponens
+[enterprise] OSQuery-sensors-mappings-enterprise.csv: 203 sor, 44 adatkomponens
+[enterprise] Sysmon-sensors-mappings-enterprise.csv: 28 sor, 20 adatkomponens
+[enterprise] WinEvtx-sensors-mappings-enterprise.csv: 148 sor, 52 adatkomponens
+[enterprise] Zeek-sensors-mappings-enterprise.csv: 226 sor, 3 adatkomponens
+
+## Technika-ID-k a teljes klónban (.git nélkül, szöveges fájlok)
+bármely T####-minta fájlonként: {'docs/example_technique_mappings/cloudtrail.rst': 15, 'docs/example_technique_mappings/linux.rst': 5, 'docs/example_technique_mappings/network.rst': 5, 'docs/example_technique_mappings/windows.rst': 11, 'mappings/layers/enterprise/Auditd-heatmap.json': 162, 'mappings/layers/enterprise/CloudTrail-heatmap.json': 42, 'mappings/layers/enterprise/OSQuery-heatmap.json': 160, 'mappings/layers/enterprise/Sysmon-heatmap.json': 133, 'mappings/layers/enterprise/WinEvtx-heatmap.json': 154, 'mappings/layers/enterprise/Zeek-heatmap.json': 67, 'mappings/layers/enterprise/sensor-comparison-heatmap.json': 179}
+T08xx/T09xx/T16xx/T17xx találat: 94
+   docs/example_technique_mappings/network.rst:6: T1602.001
+   docs/example_technique_mappings/network.rst:6: T1602
+   docs/example_technique_mappings/network.rst:8: T1602.001
+   docs/example_technique_mappings/network.rst:13: T1602.001
+   docs/example_technique_mappings/network.rst:21: T1602.001
+   mappings/layers/enterprise/Auditd-heatmap.json:79: T1615
+   mappings/layers/enterprise/Auditd-heatmap.json:103: T1652
+   mappings/layers/enterprise/Auditd-heatmap.json:325: T1609
+   mappings/layers/enterprise/Auditd-heatmap.json:337: T1647
+   mappings/layers/enterprise/Auditd-heatmap.json:349: T1649
+   mappings/layers/enterprise/Auditd-heatmap.json:469: T1614
+   mappings/layers/enterprise/Auditd-heatmap.json:499: T1651
+   mappings/layers/enterprise/Auditd-heatmap.json:535: T1622
+   mappings/layers/enterprise/Auditd-heatmap.json:631: T1600
+   mappings/layers/enterprise/Auditd-heatmap.json:655: T1601
+   mappings/layers/enterprise/Auditd-heatmap.json:703: T1606
+   mappings/layers/enterprise/Auditd-heatmap.json:709: T1621
+   mappings/layers/enterprise/Auditd-heatmap.json:751: T1602
+   mappings/layers/enterprise/Auditd-heatmap.json:817: T1612
+   mappings/layers/enterprise/Auditd-heatmap.json:931: T1611
+   mappings/layers/enterprise/CloudTrail-heatmap.json:25: T1615
+   mappings/layers/enterprise/CloudTrail-heatmap.json:55: T1649
+   mappings/layers/enterprise/CloudTrail-heatmap.json:103: T1612
+   mappings/layers/enterprise/CloudTrail-heatmap.json:157: T1606
+   mappings/layers/enterprise/CloudTrail-heatmap.json:163: T1621
+   mappings/layers/enterprise/CloudTrail-heatmap.json:259: T1611
+   mappings/layers/enterprise/OSQuery-heatmap.json:25: T1615
+   mappings/layers/enterprise/OSQuery-heatmap.json:91: T1610
+   mappings/layers/enterprise/OSQuery-heatmap.json:109: T1649
+   mappings/layers/enterprise/OSQuery-heatmap.json:127: T1621
+   mappings/layers/enterprise/OSQuery-heatmap.json:217: T1622
+   mappings/layers/enterprise/OSQuery-heatmap.json:223: T1648
+   mappings/layers/enterprise/OSQuery-heatmap.json:535: T1600
+   mappings/layers/enterprise/OSQuery-heatmap.json:553: T1647
+   mappings/layers/enterprise/OSQuery-heatmap.json:565: T1601
+   mappings/layers/enterprise/OSQuery-heatmap.json:613: T1611
+   mappings/layers/enterprise/OSQuery-heatmap.json:631: T1602
+   mappings/layers/enterprise/OSQuery-heatmap.json:703: T1612
+   mappings/layers/enterprise/OSQuery-heatmap.json:781: T1652
+   mappings/layers/enterprise/OSQuery-heatmap.json:847: T1609
+   mappings/layers/enterprise/OSQuery-heatmap.json:907: T1614
+   mappings/layers/enterprise/OSQuery-heatmap.json:919: T1651
+   mappings/layers/enterprise/OSQuery-heatmap.json:961: T1620
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:68: T1615
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:88: T1652
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:273: T1609
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:283: T1647
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:293: T1649
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:393: T1614
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:418: T1651
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:448: T1622
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:528: T1600
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:548: T1601
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:588: T1606
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:593: T1621
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:628: T1602
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:683: T1612
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:778: T1611
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:846: T1610
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:857: T1648
+   mappings/layers/enterprise/sensor-comparison-heatmap.json:874: T1620
+   mappings/layers/enterprise/Sysmon-heatmap.json:157: T1649
+   mappings/layers/enterprise/Sysmon-heatmap.json:361: T1600
+   mappings/layers/enterprise/Sysmon-heatmap.json:397: T1647
+   mappings/layers/enterprise/Sysmon-heatmap.json:409: T1601
+   mappings/layers/enterprise/Sysmon-heatmap.json:439: T1620
+   mappings/layers/enterprise/Sysmon-heatmap.json:475: T1602
+   mappings/layers/enterprise/Sysmon-heatmap.json:529: T1612
+   mappings/layers/enterprise/Sysmon-heatmap.json:583: T1615
+   mappings/layers/enterprise/Sysmon-heatmap.json:589: T1652
+   mappings/layers/enterprise/Sysmon-heatmap.json:631: T1611
+   mappings/layers/enterprise/Sysmon-heatmap.json:673: T1609
+   mappings/layers/enterprise/Sysmon-heatmap.json:739: T1614
+   mappings/layers/enterprise/Sysmon-heatmap.json:745: T1651
+   mappings/layers/enterprise/Sysmon-heatmap.json:769: T1622
+   mappings/layers/enterprise/WinEvtx-heatmap.json:25: T1649
+   mappings/layers/enterprise/WinEvtx-heatmap.json:43: T1615
+   mappings/layers/enterprise/WinEvtx-heatmap.json:163: T1652
+   mappings/layers/enterprise/WinEvtx-heatmap.json:373: T1609
+   mappings/layers/enterprise/WinEvtx-heatmap.json:385: T1647
+   mappings/layers/enterprise/WinEvtx-heatmap.json:505: T1614
+   mappings/layers/enterprise/WinEvtx-heatmap.json:535: T1651
+   mappings/layers/enterprise/WinEvtx-heatmap.json:565: T1622
+   mappings/layers/enterprise/WinEvtx-heatmap.json:703: T1600
+   mappings/layers/enterprise/WinEvtx-heatmap.json:715: T1601
+   mappings/layers/enterprise/WinEvtx-heatmap.json:745: T1606
+   mappings/layers/enterprise/WinEvtx-heatmap.json:751: T1621
+   mappings/layers/enterprise/WinEvtx-heatmap.json:787: T1602
+   mappings/layers/enterprise/WinEvtx-heatmap.json:829: T1612
+   mappings/layers/enterprise/WinEvtx-heatmap.json:871: T1611
+   mappings/layers/enterprise/WinEvtx-heatmap.json:913: T1620
+   mappings/layers/enterprise/Zeek-heatmap.json:19: T1602
+   mappings/layers/enterprise/Zeek-heatmap.json:115: T1612
+   mappings/layers/enterprise/Zeek-heatmap.json:223: T1615
+
+## grep (kis/nagybetű-érzéketlen): modbus | s7comm | s7-comm | \bs7\b | ics-attack | \bics\b | suricata | wazuh – 13 találat
+   src/parse/generate_stix.py:18: ("x_mitre_domains", ListProperty(EnumProperty(allowed=['enterprise-attack', 'mobile-attack', 'ics-attack']))),
+   src/parse/generate_stix.py:46: ("x_mitre_domains", ListProperty(EnumProperty(allowed=['enterprise-attack', 'mobile-attack', 'ics-attack']))),
+   src/parse/generate_stix.py:114: ics_url = f"https://raw.githubusercontent.com/mitre/cti/ATT%26CK-v{version}/ics-attack/ics-attack.json"
+   src/parse/generate_stix.py:445: help="Attack domain we are mapping. i.e. 'enterprise-attack', 'mobile-attack', 'ics-attack'",
+   src/parse/generate_stix.py:447: choices=["enterprise-attack", "ics-attack", "mobile-attack"],
+   src/parse/README.md:15: | attack_domain       | attack domain we are mapping. i.e. 'enterprise-attack', 'mobile-attack', 'ics-attack'| enterprise-attack                                                                        
+   src/util/cli_validator.py:34: ics_url = f"https://raw.githubusercontent.com/mitre/cti/ATT%26CK-v{version}/ics-attack/ics-attack.json"
+   src/util/cli_validator.py:195: choices=["enterprise-attack", "ics-attack", "mobile-attack"],
+   src/util/create_heatmaps.py:216: choices=["enterprise-attack", "ics-attack", "mobile-attack"],
+   src/util/create_heatmaps.py:242: "ics-attack": "ics",
+   src/util/generate_docs.py:140: if attack_type == "ics":
+   src/util/README.md:35: | domain            | the domain of ATT&CK to visualize (options: enterprise-attack, ics-attack, mobile-attack)               | enterprise-attack                 |
+   src/util/README.md:69: | attack_domain        | attack domain of the mappings (options: enterprise-attack, ics-attack, mobile-attack) | enterprise-attack                        |

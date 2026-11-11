@@ -1,0 +1,51 @@
+[2026-11-02T17:34:25Z] lab_up.sh indul (dry-run=0), repo=/c/Users/szaba/projects/ot-tdk
+[2026-11-02T17:34:25Z] git HEAD: 698c3993225d30ce242dd8527950f9821af5f5d6
+[2026-11-02T17:34:25Z] git status --porcelain:
+?? docs/tdk/M3-protokoll-VAZLAT.md
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-Zeek-heatmap.json
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-Zeek-mappings-enterprise.json
+?? docs/tdk/related-works/forrasok/ctid-smap-17617f0-sensor-comparison-heatmap.json
+?? docs/tdk/related-works/forrasok/ics-attack-19.2.json
+?? docs/tdk/related-works/forrasok/ics-attack-20.0.json
+?? results/m5/osszesitett_20261101T171905Z.json
+?? results/m5/osszesitett_20261101T171905Z.md
+[2026-11-02T17:34:25Z] lab_up.sh sha256: 46983c0bc9ea837eb78c2174436f362ae68291012b2fd0b2db436128447ef0a5
+[2026-11-02T17:34:26Z] futtato: <USER>@<LAB_HOST>
+[2026-11-02T17:34:26Z] >>> L0 (chrony: makestep + ellenorzes) kezdete
+[2026-11-02T17:34:42Z] siem: |laptop - VM| = 1s
+[2026-11-02T17:34:44Z] sensor: |laptop - VM| = 1s
+[2026-11-02T17:34:46Z] plc: |laptop - VM| = 1s
+[2026-11-02T17:34:49Z] redteam: |laptop - VM| = 1s
+[2026-11-02T17:34:49Z] <<< L0 (chrony: makestep + ellenorzes) vege
+[2026-11-02T17:34:49Z] >>> L0b (apt-idozitok) kezdete
+[2026-11-02T17:34:50Z] siem: disabled disabled
+[2026-11-02T17:34:51Z] sensor: disabled disabled
+[2026-11-02T17:34:52Z] plc: disabled disabled
+[2026-11-02T17:34:53Z] redteam: disabled disabled
+[2026-11-02T17:34:53Z] <<< L0b (apt-idozitok) vege
+[2026-11-02T17:34:53Z] >>> L1 (Sensor: Zeek) kezdete
+[2026-11-02T17:34:55Z] <<< L1 (Sensor: Zeek) vege
+[2026-11-02T17:34:55Z] >>> L1b (Sensor: Zeek allapot, csak olvasas) kezdete
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   3749   29 Oct 13:21:58
+[2026-11-02T17:34:57Z] capture_loss utolso sor: {"ts":1793640746.497206,"ts_delta":55623.48411202431,"peer":"zeek","gaps":0,"acks":0,"percent_lost":0.0}
+[2026-11-02T17:34:57Z] <<< L1b (Sensor: Zeek allapot, csak olvasas) vege
+[2026-11-02T17:34:57Z] >>> L2 (Target-PLC: OpenPLC RUN) kezdete
+[2026-11-02T17:34:58Z] <<< L2 (Target-PLC: OpenPLC RUN) vege
+[2026-11-02T17:34:58Z] >>> L3 (Red-Team: .51 alias) kezdete
+[2026-11-02T17:34:59Z] <<< L3 (Red-Team: .51 alias) vege
+[2026-11-02T17:34:59Z] >>> L4 (Red-Team szkriptek == HEAD) kezdete
+[2026-11-02T17:35:00Z] attack_runner.py: HEAD=c47a7a5c669b8692249da566c29227d58b1a49dca21a43396972afb9f36c0730 VM=c47a7a5c669b8692249da566c29227d58b1a49dca21a43396972afb9f36c0730
+[2026-11-02T17:35:01Z] benign_generator.py: HEAD=13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084 VM=13fc9c947d00d422915b1d1ed7d6cf84858435de60d1dffbb2dc8a323b862084
+[2026-11-02T17:35:01Z] <<< L4 (Red-Team szkriptek == HEAD) vege
+[2026-11-02T17:35:01Z] === L5 osszesites ===
+| Lepes | Allapot elotte                     | Muvelet                        | Allapot utana                      | Eredm.  |
+|------|------------------------------------|--------------------------------|------------------------------------|---------|
+| L0   | Leap Normal, forras SIEM: siem sensor plc redteam | chronyc makestep (4 VM)        | laptop-elteres: siem=1s sensor=1s plc=1s redteam=1s | OK      |
+| L0b  | mind disabled                      | nincs (csak ellenorzes)        | valtozatlan                        | OK      |
+| L1   | running                            | kihagyva                       | running                            | OK      |
+| L1b  | -                                  | nincs (csak olvasas)           | lasd naplo                         | OK      |
+| L2   | :502 es :102 figyel                | kihagyva                       | :502 es :102 figyel                | OK      |
+| L3   | .50 es .51 jelen                   | kihagyva                       | .50 es .51 jelen                   | OK      |
+| L4   | egyezik                            | nincs                          | egyezik                            | OK      |
+[2026-11-02T17:35:01Z] Naplo: /c/Users/szaba/projects/ot-tdk/results/lab-up-20261102T173425Z.log
